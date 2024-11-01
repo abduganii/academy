@@ -1,0 +1,4 @@
+export {
+  locales,
+
+} from './data';
