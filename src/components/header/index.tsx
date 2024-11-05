@@ -1,11 +1,14 @@
+'use client'
 import Image from "next/image";
 import Container from "../container";
 import { BurgerIcons, HendmenIcons, SearchIcons } from "../icons";
 import Link from "next/link";
-import { Button } from "@nextui-org/react";
+import { Button, Modal, useDisclosure } from "@nextui-org/react";
 import Lang from "../lang";
+import AuthMadal from "../auth";
 
 export default function Header() {
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
     return (
       <header className="w-full fixed z-30 py-4 bg-[#01263A] text-white">
         <Container className={"flex items-center gap-8"}>
@@ -23,10 +26,13 @@ export default function Header() {
               <SearchIcons/>
             </span>
             <Lang/>
-            <Button className="font-inter text-[14px] font-semibold leading-[24px] " color="default" radius="sm">
+            <Button onPress={onOpen} className="font-inter text-[14px] font-semibold leading-[24px] " color="default" radius="sm">
                Регистрация
             </Button>
         </Container>
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+          <AuthMadal />
+        </Modal>
       </header>
     )
   }
