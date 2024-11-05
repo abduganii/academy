@@ -1,5 +1,5 @@
 "use server";
-import AnalyticsPage from '@/pages/analytics'
+import AnalyticsPage from '@/view/analytics'
 
 export default async function Analytics() {
   return (

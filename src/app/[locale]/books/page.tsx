@@ -1,5 +1,5 @@
 "use server";
-import BooksPage from '@/pages/books'
+import BooksPage from '@/view/books'
 
 export default async function Books() {
   return (

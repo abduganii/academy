@@ -1,5 +1,5 @@
 "use server";
-import BookByIdPage from '@/pages/books/single'
+import BookByIdPage from '@/view/books/single'
 
 export default async function BooksById() {
   return (

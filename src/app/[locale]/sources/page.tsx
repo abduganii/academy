@@ -1,5 +1,5 @@
 "use server";
-import SourcesPage from '@/pages/sources'
+import SourcesPage from '@/view/sources'
 
 export default async function Sources() {
   return (

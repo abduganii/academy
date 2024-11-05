@@ -1,5 +1,5 @@
 "use server";
-import ArticlesPage from '@/pages/articles'
+import ArticlesPage from '@/view/articles'
 
 export default async function Articles() {
   return (

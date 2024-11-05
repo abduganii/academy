@@ -1,5 +1,5 @@
 "use server";
-import InternationalOrganizationsPage from "@/pages/international-organizations";
+import InternationalOrganizationsPage from "@/view/international-organizations";
 
 export default async function InternationalOrganizations() {
   return (

@@ -1,5 +1,5 @@
 "use server";
-import CountryInformationSinglePage from '@/pages/country-information/single'
+import CountryInformationSinglePage from '@/view/country-information/single'
 
 export default async function CountryInformationSingle() {
   return (

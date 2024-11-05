@@ -1,5 +1,5 @@
 "use server";
-import InformationDatabasesPage from '@/pages/information-databases'
+import InformationDatabasesPage from '@/view/information-databases'
 
 export default async function InformationDatabases() {
   return (

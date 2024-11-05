@@ -1,5 +1,5 @@
 "use server";
-import AnticorrosivePage from '@/pages/anticorrosive'
+import AnticorrosivePage from '@/view/anticorrosive'
 
 export default async function Finncing() {
   return (

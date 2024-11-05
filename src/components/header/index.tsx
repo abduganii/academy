@@ -22,7 +22,7 @@ export default function Header() {
             <span className="cursor-pointer">
               <SearchIcons/>
             </span>
-            {/* <Lang/> */}
+            <Lang/>
             <Button className="font-inter text-[14px] font-semibold leading-[24px] " color="default" radius="sm">
                Регистрация
             </Button>

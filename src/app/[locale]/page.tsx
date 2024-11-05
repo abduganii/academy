@@ -1,6 +1,6 @@
 "use server"
 
-import HomePagae from "@/pages/home";
+import HomePagae from "@/view/home";
 import {getQueryClient, queryFn} from "@/utils";
 
 export default async function Home() {

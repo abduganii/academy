@@ -1,5 +1,5 @@
 "use server";
-import NewsIdPage from '@/pages/news/id'
+import NewsIdPage from '@/view/news/id'
 
 export default async function NewsId() {
   return (
