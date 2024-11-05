@@ -4,14 +4,12 @@ import React from 'react'
 import { Button } from '@nextui-org/react';
 import ArticlesCard from '@/components/card/articles-card';
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function ArticlesSection() {
     const router = useRouter()
     const lang = useTranslations()
-    console.log(lang)
-    // const locale = useLocale(); 
-    const locale = 'ru'
+    const locale = useLocale(); 
   return (
     <>
     <SwiperWithScrollIcons title={"articles"} slidesPerView={3} className="flex w-full items-center  text-[16px] font-semibold gap-6 mt-8">
@@ -30,9 +28,9 @@ export default function ArticlesSection() {
        
     </SwiperWithScrollIcons>
         <div className='text-center mb-[60px] mt-[32px]'>
-            {/* <Button onClick={()=>router.push(`/${locale}/articles`)} className='bg-black text-white inline-block'>
+            <Button onClick={()=>router.push(`/${locale}/articles`)} className='bg-black text-white inline-block'>
                 Подробнее
-            </Button> */}
+            </Button>
         </div>
     </>
   )

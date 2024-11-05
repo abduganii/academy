@@ -7,9 +7,11 @@ import { EyeIcons } from '@/components/icons';
 import { Button } from '@nextui-org/react';
 import NewsCard from '@/components/card/news-card';
 import { useRouter } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
 export default function NewsSection({Isgrey}:any) {
   const router = useRouter()
+  const locale = useLocale()
   return (
     <>
     <SwiperWithScrollIcons title={"news"} slidesPerView={3} className="flex w-full items-center  text-[16px] font-semibold gap-6 mt-8">
@@ -31,7 +33,7 @@ export default function NewsSection({Isgrey}:any) {
     
     </SwiperWithScrollIcons>
         <div className='text-center mb-[60px] mt-[32px]'>
-            <Button onClick={()=>router.push(`/ru/news`)} className='bg-black text-white inline-block'>
+            <Button onClick={()=>router.push(`/${locale}/news`)} className='bg-black text-white inline-block'>
                 Подробнее
             </Button>
         </div>

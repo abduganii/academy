@@ -2,13 +2,13 @@
 import BooksCard from '@/components/card/books-card'
 import SwiperWithScrollIcons from '@/components/swiper'
 import { Button } from '@nextui-org/react'
-import Image from 'next/image'
+import { useLocale } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export default function BooksSection() {
     const router = useRouter()
-     const locale = 'ru'
+     const locale = useLocale()
   return (
     <>
         <SwiperWithScrollIcons title={"books"} slidesPerView={6} className="flex w-full items-center  text-[16px] font-semibold gap-6 mt-8">
