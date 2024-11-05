@@ -1,6 +1,7 @@
+"use server";
 import InternationalOrganizationsPage from "@/pages/international-organizations";
 
-export default function InternationalOrganizations() {
+export default async function InternationalOrganizations() {
   return (
     <><InternationalOrganizationsPage/></>
   )

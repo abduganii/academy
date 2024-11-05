@@ -1,7 +1,7 @@
+"use server";
 import BooksPage from '@/pages/books'
-import React from 'react'
 
-export default function Books() {
+export default async function Books() {
   return (
     <><BooksPage/></>
   )

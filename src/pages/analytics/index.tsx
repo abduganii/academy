@@ -2,7 +2,6 @@
 
 "use client"
 import AnalyticsCard from '@/components/card/analytics-card'
-import OrganizationsCard from '@/components/card/organizations-card'
 import Container from '@/components/container'
 import React, { useState } from 'react'
 

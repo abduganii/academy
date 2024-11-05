@@ -1,1 +1,1 @@
-export const locales: any[] = ["uz", 'cyr', 'ru']
+export const locales: any[] = ["uz", 'en', 'ru']

@@ -7,6 +7,7 @@ import React from 'react'
 
 export default function ArticlesPage() {
   return (
+ 
     <>
     <div className='relative pt-[76px] mb-[60px] w-full h-[372px] flex items-center bg-[#2C2C2C] bg-center bg-no-repeat bg-cover' 
     //  style={{"backgroundImage":`url('/r6.jfif')`}}

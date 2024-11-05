@@ -1,5 +1,4 @@
 import { Link } from '@/i18n/routing';
-import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import React from 'react'
 
@@ -19,9 +18,8 @@ export default function VideoMaterialsCard({
     link,
     className,
     }:iVideoMaterialsCard) {
-      const locale = useLocale()
   return (
-    <Link href={link} locale={locale} className={`${className && className} group w-full`}>
+    <Link href={link}  className={`${className && className} group w-full`}>
             <Image
                 className='aspect-[1.8/1] w-full mb-[10px]'
                 src={image}

@@ -1,11 +1,11 @@
-import {usePathname, useRouter, useSearchParams} from 'next/navigation';
+import {usePathname, useRouter} from 'next/navigation';
 
 import {TObject} from "@/types";
 
 export const useQueryParams = () => {
   const pathname = usePathname();
   const router = useRouter();
-  const searchParams = useSearchParams();
+  // const searchParams: any = useSearchParams();
 
   const buildQueryString = (params: TObject): string => {
     const urlSearchParams = new URLSearchParams();
@@ -17,18 +17,18 @@ export const useQueryParams = () => {
     return urlSearchParams.toString();
   };
 
-  const getQueryParams = (excludeKeys?: string[]): TObject<string> => {
-    const params: TObject<string> = {};
-    const excludedKeysSet = new Set(excludeKeys);
+  // const getQueryParams = (excludeKeys?: string[]): TObject<string> => {
+    // const params: TObject<string> = {};
+    // const excludedKeysSet = new Set(excludeKeys);
 
-    for (const [key, value] of searchParams.entries()) {
-      if (!excludedKeysSet.has(key)) {
-        params[key] = value;
-      }
-    }
+    // for (const [key, value] of searchParams.entries()) {
+    //   if (!excludedKeysSet.has(key)) {
+    //     params[key] = value;
+    //   }
+    // }
 
-    return params;
-  };
+  //   return params;
+  // };
 
   const setQueryParams = (newParams: TObject): void => {
     const queryString = buildQueryString(newParams);
@@ -36,7 +36,7 @@ export const useQueryParams = () => {
   };
 
   return {
-    getQueryParams,
+    // getQueryParams,
     setQueryParams,
   };
 };

@@ -1,7 +1,7 @@
+"use server";
 import InformationDatabasesPage from '@/pages/information-databases'
-import React from 'react'
 
-export default function InformationDatabases() {
+export default async function InformationDatabases() {
   return (
     <><InformationDatabasesPage/></>
   )

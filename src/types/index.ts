@@ -2,7 +2,7 @@ import {TProvider} from "@/types/payment";
 import {ReactNode} from "react";
 import {StaticImageData} from "next/image";
 
-export type TLocale = "uz" | "ru" | "cyr";
+export type TLocale = "uz" | "ru" | "en";
 
 export interface IChildren {
   children: ReactNode;

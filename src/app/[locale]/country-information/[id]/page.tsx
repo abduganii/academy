@@ -1,7 +1,7 @@
+"use server";
 import CountryInformationSinglePage from '@/pages/country-information/single'
-import React from 'react'
 
-export default function CountryInformationSingle() {
+export default async function CountryInformationSingle() {
   return (
     <><CountryInformationSinglePage/></>
   )

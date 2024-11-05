@@ -1,5 +1,4 @@
 'use client';
-import { useLocale } from 'next-intl';
 import { FC, ReactNode } from 'react';
 import { Toaster } from 'react-hot-toast';
 
@@ -13,7 +12,8 @@ interface IProvider {
 }
 
 export const Providers: FC<IProvider> = ({ children }) => {
-	const locale = useLocale();
+	// const locale = useLocale();
+	 const locale = 'ru'
 	const queryClient = getQueryClient();
 
 	return (

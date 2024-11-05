@@ -1,7 +1,7 @@
+"use server";
 import AnalyticsPage from '@/pages/analytics'
-import React from 'react'
 
-export default function Analytics() {
+export default async function Analytics() {
   return (
     <><AnalyticsPage/></>
   )

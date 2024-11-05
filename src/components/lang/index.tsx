@@ -11,7 +11,7 @@ import ru from "../../../public/lang/ru.png"
 import uz from "../../../public/lang/uz.png"
 import en from "../../../public/lang/en.png"
 import {Link, usePathname} from '@/i18n/routing';
-import { useLocale, useTranslations } from 'next-intl';
+import {  useTranslations } from 'next-intl';
 import { LangArr } from '../../../musk/data';
 
 
@@ -21,7 +21,6 @@ const langFlag:any = {
     en:en,
 }
 export default function Lang() {
-  const locale = useLocale();
   const t = useTranslations('');
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
@@ -33,7 +32,7 @@ export default function Lang() {
             onClick={()=>setOpen(!open)} 
             className='bg-[#0000001A] text-white' 
             color="default"
-            startContent={<Image src={langFlag?.[locale]} alt='img'
+            startContent={<Image src={langFlag?.['ru']} alt='img'
             width={20} 
             height={20}/>
           } 

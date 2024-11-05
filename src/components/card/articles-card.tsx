@@ -1,4 +1,3 @@
-import { useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import React from 'react'
 interface iArticlesCard {
@@ -9,9 +8,8 @@ interface iArticlesCard {
 }
 
 export default function ArticlesCard({title,link,text,date}:iArticlesCard) {
-    const locale = useLocale();
   return (
-    <Link href={link} locale={locale}  className="group w-full inline-block bg-[#F1F1F1] dark:bg-[#001E45] rounded p-4">
+    <Link href={link}  className="group w-full inline-block bg-[#F1F1F1] dark:bg-[#001E45] rounded p-4">
         <h3 className="group-hover:text-[#13399A]  text-base font-semibold leading-6 text-left mb-3  line-clamp-2 overflow-hidden" >
         {title}
         </h3>

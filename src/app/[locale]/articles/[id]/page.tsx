@@ -1,8 +1,10 @@
-import ArticlesIdPage from '@/pages/articles/id'
-import React from 'react'
+"use server";
+import ArticlesIdPage from '@/pages/articles/single'
 
-export default function ArticlesId() {
+export default async function ArticlesId() {
   return (
-    <><ArticlesIdPage/></>
+    <>
+    <ArticlesIdPage/>
+    </>
   )
 }

@@ -1,8 +1,10 @@
-import VideoMaterialIdPage from '@/pages/video-material/id'
-import React from 'react'
+"use server";
+import VideoMaterialIdPage from '@/pages/video-material/single'
 
-export default function VideoMaterialId() {
+export default async function VideoMaterialId() {
   return (
-    <><VideoMaterialIdPage/></>
+    <>
+    <VideoMaterialIdPage/>
+    </>
   )
 }

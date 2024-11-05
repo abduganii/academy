@@ -1,3 +1,4 @@
+"use client"
 import Container from '@/components/container'
 import { PlayIcons } from '@/components/icons'
 import ContactUsForm from '@/section/contact-us'

@@ -1,7 +1,7 @@
-import BookByIdPage from '@/pages/books/id'
-import React from 'react'
+"use server";
+import BookByIdPage from '@/pages/books/single'
 
-export default function BooksById() {
+export default async function BooksById() {
   return (
     <>
         <BookByIdPage/>

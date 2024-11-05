@@ -1,7 +1,7 @@
+"use server";
 import SourcesPage from '@/pages/sources'
-import React from 'react'
 
-export default function Sources() {
+export default async function Sources() {
   return (
     <><SourcesPage/></>
   )

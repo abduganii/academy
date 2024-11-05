@@ -1,5 +1,4 @@
 import { Link } from "@/i18n/routing";
-import { useLocale } from "next-intl";
 import Image from "next/image";
 
 interface iBooksCard {
@@ -17,10 +16,9 @@ export default function BooksCard({
     link,
     className
 }:iBooksCard) {
-  const locale = useLocale()
 
   return (
-    <Link href={link} locale={locale} className={`${className && className} group w-full`}>
+    <Link href={link}  className={`${className && className} group w-full`}>
         <Image
             src={image}
             width={170} 

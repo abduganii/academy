@@ -2,7 +2,6 @@
 import Image from 'next/image'
 import React from 'react'
 import { EyeIcons } from '../icons'
-import { useLocale } from 'next-intl'
 import { Link } from '@/i18n/routing'
 
 interface iNewsCard {
@@ -27,9 +26,8 @@ export default function NewsCard({
         className,
         view,
         }:iNewsCard) {
-        const locale = useLocale()
   return (
-    <Link href={link} locale={locale}  className={`${className && className} ${Isgrey ? "bg-[#F5F5F5] rounded-lg":""} group`}>
+    <Link href={link}   className={`${className && className} ${Isgrey ? "bg-[#F5F5F5] rounded-lg":""} group`}>
                 <div className='relative w-full aspect-[1.6/1]'>
                         <p className='absolute top-2 left-2 px-4 py-[7px] rounded-3xl bg-[#FFFFFFCC]' >{category}</p>
                     <Image className=' w-full aspect-[1.6/1] mx-h-[220px] rounded-lg' src={image} width={368} height={220} alt='img' title={title}/>

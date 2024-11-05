@@ -1,3 +1,4 @@
+"use client"
 import Container from '@/components/container'
 import { Button } from '@nextui-org/react'
 import React from 'react'

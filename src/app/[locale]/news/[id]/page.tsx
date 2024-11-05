@@ -1,7 +1,7 @@
+"use server";
 import NewsIdPage from '@/pages/news/id'
-import React from 'react'
 
-export default function NewsId() {
+export default async function NewsId() {
   return (
     <><NewsIdPage/></>
   )
