@@ -3,7 +3,9 @@ import Container from '@/components/container'
 import { PlayIcons } from '@/components/icons'
 import ContactUsForm from '@/section/contact-us'
 import NewsSection from '@/section/news-section'
+import OurCourseSection from '@/section/our-course'
 import ResourcesSection from '@/section/resources-section'
+import VirtualAcademy from '@/section/virtual-academy'
 import React from 'react'
 
 interface iProps {
@@ -29,6 +31,11 @@ export default function AnticorrosivePage({title,text}:iProps) {
 
     <Container >
       <NewsSection Isgrey={true}/>
+
+      <div className='flex gap-[13px] mb-[68px]'>
+      <OurCourseSection/>
+      <VirtualAcademy/>
+      </div>
       <ResourcesSection/>
       <ContactUsForm/>
     </Container>

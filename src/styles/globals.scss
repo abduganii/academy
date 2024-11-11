@@ -4,23 +4,6 @@
 @tailwind utilities;
 @tailwind components;
 
-@layer base {
-  .container {
-    @apply w-full max-w-[1300px] 3xl:max-w-[1500px] px-3 sm:px-4 mx-auto;
-  }
-
-  .hide-scroll::-webkit-scrollbar {
-    display: none;
-  }
-
-  .transition-400 {
-    @apply transition-all duration-400;
-  }
-
-  section.page {
-    @apply mt-2 sm:mt-4 lg:mt-6;
-  }
-}
 
 html {
   scroll-behavior: smooth;
@@ -31,36 +14,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.top-shadow {
-  box-shadow: 0px -4px 12px -2px rgba(0, 0, 0, 0.2);
-}
-
-.gradient-class {
-  background: linear-gradient(
-                  0deg,
-                  rgba(255, 255, 255, 1) 0%,
-                  rgba(255, 255, 255, 0.7343312324929971) 28%,
-                  rgba(255, 255, 255, 0) 100%
-  );
-}
-
-.fancybox__backdrop {
-  background: rgba(0, 0, 0, 0.6) !important;
-  backdrop-filter: blur(5px);
-}
-
-.custom-height {
-  min-height: calc(100vh - 114px);
-  padding-bottom: 60px;
-  @include mixin.media(640px) {
-    padding-bottom: 75px;
-    min-height: calc(100vh - 210px);
-  }
-  @include mixin.media(1024px) {
-    padding-bottom: 0;
-    min-height: calc(100vh - 500px);
-  }
-}
 
 .swiper-pagination-bullet-active {
   background: #120A44 !important;
@@ -113,6 +66,20 @@ button:disabled {
 .colm4{
   width: calc((100% - 36px) / 4);
 }
+
+.myScroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.myScroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.myScroll::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 8px;
+}
+
 
 @keyframes pulse {
   0% {

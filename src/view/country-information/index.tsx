@@ -29,7 +29,7 @@ export default function CountryInformationPage() {
               <p>Рейтинг</p>
             </Link> 
             <Link href={'/country-information/1'} className='flex items-center justify-between text-[16x] leading-[24px] font-normal pb-[10px] border-b-1 '>
-            <p>Австралия</p>
+            <p >Австралия</p>
             <p className='w-[66px] text-center'>1</p>
             </Link> 
             <Link href={'/country-information/1'} className='flex items-center justify-between text-[16x] leading-[24px] font-normal py-[10px] '>
