@@ -80,6 +80,9 @@ button:disabled {
   border-radius: 8px;
 }
 
+.profileanimation{
+  width: calc(100% - 24px);
+}
 
 @keyframes pulse {
   0% {

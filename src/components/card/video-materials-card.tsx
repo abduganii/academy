@@ -30,7 +30,7 @@ export default function VideoMaterialsCard({
             />
             <div className='flex  items-start gap-3'>
               <Image
-                  className='rounded-full w-full max-w-[30px] h-[30px] aspect-square'
+                  className='rounded-full w-full max-w-[30px] h-[30px] aspect-[1/1]'
                   src={avatar}
                   width={30}
                   height={30}

@@ -1,4 +1,5 @@
 "use client"
+import ArticlesCardPage from '@/components/card/acticles-card-in-page'
 import Container from '@/components/container'
 import { LeftIcons } from '@/components/icons'
 import { Link } from '@/i18n/routing'
@@ -34,23 +35,16 @@ export default function ArticlesPage() {
 
     <Container className='mt-[60px] mb-[80px]'>
      { [1,2,3,4,5].map((e)=>( 
-          <Link  href={`/articles/${2}`} key={e} className="w-full cursor-pointer flex items-center  justify-between bg-[#F5F5F5] dark:bg-[#001E45] dark:text-[#FFFFFF] p-4 rounded-lg mb-4">
-          <div>
-          <h3 className="text-[16px] font-medium leading-[26px] mb-3" >
-          Вниманию кандидатов, рекомендованных к обучению в магистратуру
-          </h3>
-          <div className="flex items-center gap-2">
-            <p className="text-[14px] font-medium leading-[24px]">
-            Т. Усмонов
-            </p>
-            <p className="text-sm font-normal leading-6 text-left flex items-center gap-2" ><span className="bg-[#D5DADD] w-[6px] h-[6px] rounded-full"></span> 
-            {/* {dayjs(e?.created_at).format('YYYY.MM.DD')} */}
-            22.02.2024
-            </p>
-          </div>
-          </div>
-          <span className='rotate-90'>  <LeftIcons/></span> 
-      </Link>
+
+        <ArticlesCardPage
+          key={e}
+          className="mb-4"
+          title='Вниманию кандидатов, рекомендованных к обучению в магистратуру'
+          link={`/articles/${e}`}
+          name=' Т. Усмонов'
+          date=' 22.02.2024'
+        />
+          
       ))}
     </Container>
     </>

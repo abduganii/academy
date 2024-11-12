@@ -1,15 +1,16 @@
 import { Link } from '@/i18n/routing';
 import React from 'react'
 interface iArticlesCard {
+  className?:string;
     title:string,
-    text:string,
+    text?:string,
     date:string,
     link:string;
 }
 
-export default function ArticlesCard({title,link,text,date}:iArticlesCard) {
+export default function ArticlesCard({title,link,text,date,className}:iArticlesCard) {
   return (
-    <Link href={link}  className="group w-full inline-block bg-[#F1F1F1] dark:bg-[#001E45] rounded p-4">
+    <Link href={link}  className={`${className && className} group w-full inline-block bg-[#F1F1F1] dark:bg-[#001E45] rounded p-4`}>
         <h3 className="group-hover:text-[#13399A]  text-base font-semibold leading-6 text-left mb-3  line-clamp-2 overflow-hidden" >
         {title}
         </h3>

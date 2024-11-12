@@ -36,7 +36,7 @@ export default function NewsPage() {
             link={`/news/${e}`}
                 className={e == 1||e == 2 ? 'colm1' :'colm2'}
                 key={e}
-                image='/news.jfif'
+                image='/news.png'
                 Isgrey={true}
                 category='Общество'
                 text={e == 1||e == 2 ?  `30 августа т.г. в рамках Научного часа, традиционно проводимого для самостоятельных соискателей, докторантов и исследователей, состоялось…`: false}

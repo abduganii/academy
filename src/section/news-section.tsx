@@ -20,7 +20,7 @@ export default function NewsSection({Isgrey}:any) {
             <NewsCard
             link={`/news/${e}`}
             key={e}
-            image='/news.jfif'
+            image='/news.png'
             Isgrey={Isgrey}
             category='Общество'
             title='Объявляется прием на обучение на стажера-исследователя'

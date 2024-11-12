@@ -8,7 +8,7 @@ export default function NewsIdPage() {
       <Image
         className="w-full object-cover rounded-lg aspect-[1.8/1] mb-12"
         alt="img"
-        src={'/news.jfif'}
+        src={'/news.png'}
         title={"title"} 
         width={950}
         height={520}
