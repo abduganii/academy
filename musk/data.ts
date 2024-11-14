@@ -18,6 +18,76 @@ export const LangArr = [
     },
   ];
 
+  export const HeaderSiteBarrArr = [
+    {
+      id:1,
+      title:'Главная',
+      child:[
+          {
+            id:1,
+            link:'/anticorrosive',
+            text:'Виртуальная академия'
+          },
+          {
+            id:2,
+            link:'/glossary',
+            text:'Словарь'
+          },
+          {
+            id:3,
+            link:'/',
+            text:'О нас'
+          },
+          {
+            id:4,
+            link:'/faq',
+            text:'FAQ'
+          }
+        ]
+    },
+    {
+        id:2,
+        title:'ПОДФТ',
+        child:[
+            {
+              id:1,
+              link:'/',
+              text:'text'
+            },
+            {
+                id:2,
+                link:'/',
+                text:'text'
+              },
+              {
+                id:3,
+                link:'/',
+                text:'text'
+              }
+          ]
+      },
+      {
+        id:3,
+        title:'Антикор',
+        child:[
+            {
+                id:1,
+                link:'/',
+                text:'text'
+              },
+              {
+                  id:2,
+                  link:'/',
+                  text:'text'
+                },
+                {
+                  id:3,
+                  link:'/',
+                  text:'text'
+                }
+          ]
+      },
+  ]
   export const SitebarArr = [
     {
         id:1,

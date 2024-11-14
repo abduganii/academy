@@ -7,10 +7,12 @@ import SwiperWithScrollIcons from '@/components/swiper'
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea, useDisclosure } from '@nextui-org/react'
 // import { Rate, Progress } from 'antd';
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export default function BookByIdPage() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const router = useRouter()
   return (
     <Container className='py-[150px]'>
 
@@ -41,7 +43,7 @@ export default function BookByIdPage() {
                 <h3 className='text-[24px] font-semibold leading-[29px] mb-2'>320 000 сум</h3>
                 <div className='flex gap-4'>
                     <Button className='w-full bg-[#323232] text-white max-w-[220px] rounded-lg' size='md'>Купить</Button>
-                    <Button className='w-full bg-[#69696926] text-[#323232] max-w-[220px] rounded-lg' size='md'>Читать фрагмент</Button>
+                    <Button onClick={()=>router.push('/books/1/read')} className='w-full bg-[#69696926] text-[#323232] max-w-[220px] rounded-lg' size='md'>Читать фрагмент</Button>
                     <Button className='bg-[#69696926] text-[#323232] rounded-full w-[40px] min-w-[40px] p-[9px]' ><SaveIcons/></Button>
                 </div>
             </div>
