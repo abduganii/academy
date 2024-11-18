@@ -276,5 +276,10 @@ export const LangArr = [
         link:'/profile/cooperation',
         icons: ()=> ApplicationIcons()
     },
-    
-  ]
+    {
+        id:6,
+        text:'Notification',
+        link:'/profile/notifications',
+        icons: ()=> ApplicationIcons()
+    },
+]
