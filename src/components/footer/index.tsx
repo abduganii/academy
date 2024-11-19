@@ -6,7 +6,7 @@ import { FacebookIcons, InstagramIcons, TelegramIcons, YouTobeIcons } from "../i
 
 export default function Footer() {
   return (
-    <footer className="bg-[#043959] pt-10 pb-3 text-white">
+    <footer className="bg-[#01263A] pt-10 pb-3 text-white">
        <Container >
           <Link href={'/'}>
              <Image  className="mb-8" src={'/logo.svg'} width={256} height={44} alt={"logo"}/>

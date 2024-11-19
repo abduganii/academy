@@ -58,7 +58,7 @@ export default function BooksPage() {
             }
         </div>
         <div className='text-center mb-[60px] mt-[32px]'>
-            <Button className='bg-black text-white inline-block w-full max-w-[368px]'>
+            <Button className='bg-black text-white dark:bg-white dark:text-black inline-block w-full max-w-[368px]'>
             Просмотреть все
             </Button>
         </div>

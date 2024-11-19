@@ -24,19 +24,19 @@ export default function FAQPage() {
       
       <div className='w-full'>
            <div className='w-full flex items-center justify-between border-y-2 border-[#CDD6DA40]  py-4'>
-            <h3 className='text-[32px] leading-[33px] font-semibold  '>Вопрос</h3>
+            <h3 className='text-[32px] leading-[33px] font-semibold dark:text-white'>Вопрос</h3>
             <span><XIcons/></span>
            </div>
-           <TextParag font={16} line={22} className='px-[24px] font-normal text-[#3C3C43D9] py-[16px]'>text</TextParag>
+           <TextParag font={16} line={22} className='px-[24px] font-normal text-[#3C3C43D9] py-[16px] dark:text-white'>text</TextParag>
       </div>
           
       <div className='w-full'>
            <div className='w-full flex items-center justify-between border-y-2 border-[#CDD6DA40]  py-4'>
-            <h3 className='text-[32px] leading-[33px] font-semibold  '>Вопрос</h3>
+            <h3 className='text-[32px] leading-[33px] font-semibold dark:text-white'>Вопрос</h3>
             <span className='rotate-45'><XIcons/></span>
            </div>
       </div>
-    </Container>
+    </Container>W
     </>
   )
 }

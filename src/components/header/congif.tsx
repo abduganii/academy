@@ -46,7 +46,7 @@ export default function HeaderCongif() {
     <h3>Вид</h3>
     <div className='flex gap-1 my-[10px]'>
     <Tooltip showArrow={true} content="Simple">
-      <Button onClick={()=>ChangeDarkMode('light')} >A</Button>
+      <Button className='dark:text-black' onClick={()=>ChangeDarkMode('light')} >A</Button>
     </Tooltip>
     <Tooltip showArrow={true} content="Dark">
       <Button onClick={()=>ChangeDarkMode('dark')} className='bg-slate-500  text-white'>A</Button>

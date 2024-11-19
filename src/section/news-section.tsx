@@ -33,7 +33,7 @@ export default function NewsSection({Isgrey}:any) {
     
     </SwiperWithScrollIcons>
         <div className='text-center mb-[60px] mt-[32px]'>
-            <Button onClick={()=>router.push(`/${locale}/news`)} className='bg-black text-white inline-block'>
+            <Button onClick={()=>router.push(`/${locale}/news`)} className='bg-black dark:bg-white dark:text-black text-white inline-block'>
                 Подробнее
             </Button>
         </div>

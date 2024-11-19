@@ -103,7 +103,7 @@ const ColoredMap: React.FC = () => {
     };
   }, []);
 
-  return <div ref={chartRef} className='bg-[#E4F3F9] cursor-pointer' style={{ width: '100%', height: '670px' }} />;
+  return <div ref={chartRef} className='bg-[#E4F3F9] dark:bg-black cursor-pointer' style={{ width: '100%', height: '670px' }} />;
 };
 
 export default ColoredMap;

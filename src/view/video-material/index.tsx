@@ -13,7 +13,7 @@ export default function VideoMaterialPage() {
     <div className='w-full h-[372px] bg-gradient-to-r from-black/90 to-black/30 absolute z-10  top-0 left-0'></div>
     </div>
 
-    <Container className='flex flex-wrap gap-3 mb-[70px] py-[48px] bg-[#F9F9F9]'>
+    <Container className='flex flex-wrap gap-3 mb-[70px] py-[48px] bg-[#F9F9F9] dark:bg-black'>
      { [1,2,3,4,5,].map((e)=>( 
             <VideoMaterialsCard
               link={`/video-materials/${e}`}

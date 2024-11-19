@@ -44,7 +44,7 @@ export default function CountryInformationSinglePage() {
                 { [1,2,3,4,5,].map((e)=>( 
                     <div 
                       onClick={()=>setOpen1(state=> state == e ? false : e)}
-                     className={`${open1 == e ? 'border border-black':' border-[#F5F5F5]'} flex items-center cursor-pointer gap-3 w-full mb-[16px] px-4 py-3 rounded-lg bg-[#F5F5F5]`}>
+                     className={`${open1 == e ? 'border border-black':' border-[#F5F5F5]'} dark:bg-[#27272A] dark:text-[#FFFFFF]  flex items-center cursor-pointer gap-3 w-full mb-[16px] px-4 py-3 rounded-lg bg-[#F5F5F5]`}>
                         <Image
                             src={'/logoOHH.png'}
                             alt='img'
@@ -57,7 +57,7 @@ export default function CountryInformationSinglePage() {
                     ))}
             </div>
 
-            <div className='w-full mb-[16px] p-5 rounded-lg bg-[#F5F5F5]'>
+            <div className='w-full mb-[16px] p-5 rounded-lg bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] '>
             <h4 className='font-inter text-[16px] font-semibold leading-[26px] text-left mb-[16px]'>Группа государств по борьбе с коррупцией (ГРЕКО)</h4>
             <p className='mb-[12px]  font-inter text-[14px] font-normal leading-[24px] text-left'>
             Конвенция Совета Европы об уголовной ответственности за коррупцию не была ратифицирована. 
@@ -68,7 +68,7 @@ export default function CountryInformationSinglePage() {
         <h4 className='text-[32px] font-semibold leading-[46px] mt-[50px] mb-[16px]'>Индексы</h4>
         <div className='flex flex-wrap gap-4 mb-[68px]'>
         { [1,2,3,4].map((e)=>( 
-            <div className='colm1 p-5 rounded-lg bg-[#F5F5F5]'>
+            <div className='colm1 p-5 rounded-lg bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] '>
                 <h4 className='font-inter text-[20px] font-semibold leading-[24px] text-left mb-[12px]'>Index</h4>
                 <div className='flex'>
                     <div className='w-full'>

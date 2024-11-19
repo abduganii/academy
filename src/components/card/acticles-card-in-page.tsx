@@ -16,7 +16,7 @@ interface iArticlesCard {
   
   export default function ArticlesCardPage({title,link,name,date,iconsType,className,image}:iArticlesCard) {
   return (
-    <Link  href={link}  className={`${className && className} w-full cursor-pointer flex items-center  gap-[14px] bg-[#F5F5F5] dark:bg-[#001E45] dark:text-[#FFFFFF] p-4 rounded-lg`}>
+    <Link  href={link}  className={`${className && className} w-full cursor-pointer flex items-center  gap-[14px] bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] p-4 rounded-lg`}>
       { image ? <Image   
             src={image}
             width={70} 

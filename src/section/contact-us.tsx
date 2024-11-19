@@ -26,7 +26,7 @@ export default function ContactUsForm() {
        <Input size="sm" variant='bordered'  className='colm1' type="text" label="Тема" />
        <Input size="sm" variant='bordered'  className='colm1' type="email" label="Почта" />
        <Input size="sm" variant='bordered'  className='colm1' type="text" label="Описание" />
-       <Button size="lg" className='colm1'>
+       <Button  size="lg" className='colm1 dark:text-black'>
        Отправить
        </Button>
       </div>

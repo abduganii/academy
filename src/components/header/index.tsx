@@ -44,7 +44,7 @@ export default function Header() {
               <SearchIcons/>
             </span>
             <Lang/>
-            <Button onPress={onOpen} className="font-inter text-[14px] font-semibold leading-[24px] " color="default" radius="sm">
+            <Button onPress={onOpen} className="font-inter dark:text-black text-[14px] font-semibold leading-[24px] " color="default" radius="sm">
                Регистрация
             </Button>
         </Container>
@@ -69,7 +69,7 @@ export default function Header() {
         </div>
         <div className={`${openSearch ? 'h-[80px] ':'h-0'}  overflow-hidden   transition-all duration-500 top-[77px] ease-in-out w-full absolute left-0 bg-[#01263A]`}>
           <Container className="py-[16px] max-w-[900px] flex gap-4">
-          <Input size='lg' radius="sm" startContent={<SearchIcons color="black" />} type='search' placeholder='Поиск' className='w-full text-black rounded-lg'/>
+          <Input size='lg' radius="sm" startContent={<SearchIcons color="black" />} type='search' placeholder='Поиск' className='w-full  text-black rounded-lg'/>
             <Select
               size='sm'
               label="Select an book" 

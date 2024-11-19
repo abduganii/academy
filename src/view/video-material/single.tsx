@@ -1,7 +1,7 @@
 "use client"
 import CommitCard from '@/components/card/commit-card'
 import Container from '@/components/container'
-import { MoreDownIcons, SaveIcons, StartIcons } from '@/components/icons'
+import { MoreDownIcons } from '@/components/icons'
 import { Button } from '@nextui-org/react'
 // import { Rate, Progress } from 'antd';
 import Image from 'next/image'
@@ -11,7 +11,7 @@ export default function VideoMaterialIdPage() {
   return (
     <Container className='py-[150px]'>
 
-        <div className='w-full flex gap-10 mb-[56px] p-10 bg-[#F5F5F5] rounded-lg'>
+        <div className='w-full flex gap-10 mb-[56px] p-10 bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] rounded-lg'>
             <Image
             className='w-full max-w-[194px] h-[298px] object-cover'
                 alt='img'
@@ -35,16 +35,16 @@ export default function VideoMaterialIdPage() {
         </div>
         <div className='w-full max-w-[760px] my-[56px]'>
             <h3 className='text-[24px] font-semibold leading-[29px] mb-4'>Описание</h3>
-            <p className='text-[14px] font-normal text-[#5B6871] leading-[24px] mb-[32px]'>Существует 6 основных принципов убеждения, которые могут заставить людей автоматически говорить «да». Понимание этих принципов и связанных с ними методов может помочь вам улучшить свое влияние и одновременно защититься от манипуляций других. В этом бесплатном обзоре Influence вы узнаете о 6 принципах убеждения, о том, как они работают и как их можно превратить в оружие влияния против нас.
+            <p className='text-[14px] font-normal text-[#5B6871] leading-[24px] mb-[32px] dark:text-white'>Существует 6 основных принципов убеждения, которые могут заставить людей автоматически говорить «да». Понимание этих принципов и связанных с ними методов может помочь вам улучшить свое влияние и одновременно защититься от манипуляций других. В этом бесплатном обзоре Influence вы узнаете о 6 принципах убеждения, о том, как они работают и как их можно превратить в оружие влияния против нас.
             Просто существует слишком много внешних стимулов, чтобы наш мозг мог все обработать. Таким образом, мы используем определенные сигналы в качестве ментальных ярлыков, чтобы помочь нам быстро реагировать без необходимости анализировать всю информацию. Например, вспышка острых зубов или лезвия будет означать «опасность», заставляя нас инстинктивно отступить, не задумываясь. С правильными сигналами мы скажем «да» автоматически, без осознанных мыслей 
-                <span className='font-semibold underline decoration-solid text-[#2D2D2D] ml-1 cursor-pointer'>Еще</span>
+                <span className='font-semibold underline decoration-solid text-[#2D2D2D] dark:text-white ml-1 cursor-pointer'>Еще</span>
             </p>
 
             <h3 className='text-[24px] font-semibold leading-[29px] mt-[56px] mb-4'>Отзывы</h3>
             <div className='w-full flex items-start justify-between'>
                 <div className='w-full max-w-[124px]'>
-                    <h3 className='text-[40px] font-normal leading-[46px] text-[#000000CC]'>4.7</h3>
-                    <p className='my-4 text-[15px] font-normal leading-[20px] text-[#0000008F]'>На основании 56 отзывов</p>
+                    <h3 className='text-[40px] font-normal leading-[46px] text-[#000000CC] dark:text-white'>4.7</h3>
+                    <p className='my-4 text-[15px] font-normal leading-[20px] text-[#0000008F] dark:text-white'>На основании 56 отзывов</p>
                     {/* <Rate className='text-[18px]'  defaultValue={2.5} /> */}
                 </div>
                 <div className='w-full max-w-[600px]'>
@@ -54,7 +54,7 @@ export default function VideoMaterialIdPage() {
                 </div>
             </div>
             <div className='flex justify-end'>
-            <Button className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] max-w-[192px] rounded-lg' size='md'>Оставить отзыв</Button>
+            <Button className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] max-w-[192px] dark:bg-white  dark:text-black rounded-lg' size='md'>Оставить отзыв</Button>
             </div>
             <CommitCard
                 className="border-b mb-6"
@@ -71,7 +71,7 @@ export default function VideoMaterialIdPage() {
                 date='20 авг, 2024'
             />
             <div className='flex justify-center'>
-            <Button className='w-full bg-[#69696926] text-[#323232] max-w-[205px] rounded-lg' size='md' endContent={<MoreDownIcons/>}>Показать еще</Button>
+            <Button className='w-full bg-[#69696926] text-[#323232] max-w-[205px] dark:bg-white  dark:text-black rounded-lg' size='md' endContent={<MoreDownIcons/>}>Показать еще</Button>
             </div>
         </div>
         

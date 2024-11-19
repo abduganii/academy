@@ -15,7 +15,7 @@ export default function CountryInformationPage() {
     </Container>
     </div>
     <MultiSeriesMap/>
-    <Container className='max-w-[956px] mt-[60px] p-[32px] bg-[#F5F5F5] rounded-lg mb-[78px]'>
+    <Container className='max-w-[956px] mt-[60px] p-[32px] bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] rounded-lg mb-[78px]'>
       <Input
             type="email"
             placeholder="Поиск"

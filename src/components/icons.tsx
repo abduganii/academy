@@ -125,8 +125,8 @@ export const FacebookIcons =({color,iconsColor}:any)=>{
 <stop offset="1" stop-color={color? color:"#13399A"}/>
 </linearGradient>
 <linearGradient id="paint1_linear_67_2087" x1="14.2323" y1="20.4042" x2="24.1551" y2="24.9788" gradientUnits="userSpaceOnUse">
-<stop stop-color={"#043959"}/>
-<stop offset="1" stop-color={"#043959"}/>
+<stop stop-color={"#01263A"}/>
+<stop offset="1" stop-color={"#01263A"}/>
 </linearGradient>
 <clipPath id="clip0_67_2087">
 <rect width="40" height="40" fill="white" transform="translate(0.5)"/>

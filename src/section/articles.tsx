@@ -28,7 +28,7 @@ export default function ArticlesSection() {
        
     </SwiperWithScrollIcons>
         <div className='text-center mb-[60px] mt-[32px]'>
-            <Button onClick={()=>router.push(`/${locale}/articles`)} className='bg-black text-white inline-block'>
+            <Button onClick={()=>router.push(`/${locale}/articles`)} className='bg-black text-white dark:bg-white dark:text-black inline-block'>
                 Подробнее
             </Button>
         </div>

@@ -28,7 +28,7 @@ export default function OrganizationsCard(
     }:card
 ) {
   return (
-    <div className={`${className && className}  w-full px-4 py-3 rounded-lg bg-[#F5F5F5]`}>
+    <div className={`${className && className}  w-full px-4 py-3 rounded-lg bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] `}>
         <div className='flex items-center gap-3'>
             <Image 
                 src={image}
