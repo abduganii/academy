@@ -1,6 +1,7 @@
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import React from 'react'
+import TextParag from '../text';
 
 interface iVideoMaterialsCard {
     image: string;
@@ -38,10 +39,10 @@ export default function VideoMaterialsCard({
                   title={'avatar'}
                 />
                 <div>
-                 <h3 className='text-[13px] font-bold leading-[18px] mb-[5px] line-clamp-2 group-hover:text-[#13399A]'> {title}</h3>
-                 <p className='flex items-center gap-1 text-[#727272] text-[12px] font-normal leading-[14.06px]'>
+                 <TextParag type='title' font={13} line={18} className='font-bold mb-[5px] line-clamp-2 group-hover:text-[#13399A]'> {title}</TextParag>
+                 <TextParag font={12} line={14} className='flex items-center gap-1 text-[#727272] font-normal '>
                   {name} <span></span>
-                 </p>
+                 </TextParag>
                 </div>
             </div>
     </Link>

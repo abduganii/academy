@@ -1,6 +1,7 @@
 'use client'
 import Container from '@/components/container'
 import { SearchIcons, XIcons } from '@/components/icons'
+import TextParag from '@/components/text'
 import { Input } from '@nextui-org/react'
 import React, { useState } from 'react'
 
@@ -26,7 +27,7 @@ export default function FAQPage() {
             <h3 className='text-[32px] leading-[33px] font-semibold  '>Вопрос</h3>
             <span><XIcons/></span>
            </div>
-           <p className='px-[24px] text-[16px] leading-[22px] font-normal text-[#3C3C43D9] py-[16px]'>text</p>
+           <TextParag font={16} line={22} className='px-[24px] font-normal text-[#3C3C43D9] py-[16px]'>text</TextParag>
       </div>
           
       <div className='w-full'>

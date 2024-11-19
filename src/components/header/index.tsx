@@ -3,16 +3,19 @@ import Image from "next/image";
 import Container from "../container";
 import { BurgerIcons, HendmenIcons, SearchIcons, XIcons } from "../icons";
 import Link from "next/link";
-import { Button, Input, Modal, Select, SelectItem, useDisclosure } from "@nextui-org/react";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input, Modal, Popover, PopoverContent, PopoverTrigger, Select, SelectItem, useDisclosure } from "@nextui-org/react";
 import Lang from "../lang";
 import AuthMadal from "../auth";
 import { useState } from "react";
 import { HeaderSiteBarrArr } from "../../../musk/data";
+import HeaderCongif from "./congif";
 
 export default function Header() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [openSiteBar,setOpenSiteBar] = useState(false)
   const [openSearch,setOpenSearch] = useState(false)
+
+
     return (
       <header className="w-full fixed  border-black border-b z-40 py-4 bg-[#01263A] text-white">
         <Container className={"flex items-center gap-8"}>
@@ -25,10 +28,15 @@ export default function Header() {
            <Link className="mr-auto" href={'/'}>
              <Image  src={'/logo.svg'} width={256} height={44} alt={"logo"}/>
            </Link>
-
-            <span className="cursor-pointer" >
-              <HendmenIcons/>
-            </span>
+          
+          <Popover className="w-full max-w-[400px]" placement="bottom" showArrow={true}>
+            <PopoverTrigger>
+              <span className="cursor-pointer"> <HendmenIcons/></span>
+            </PopoverTrigger>
+            <PopoverContent >
+               <HeaderCongif/>
+               </PopoverContent>
+          </Popover>
             <span className="cursor-pointer" onClick={()=>{
               setOpenSearch(!openSearch)
               setOpenSiteBar(false)
@@ -43,6 +51,7 @@ export default function Header() {
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
           <AuthMadal />
         </Modal>
+        
 
         <div className={`${openSiteBar ? 'h-[307px]':'h-0'} overflow-hidden transition-all duration-500 ease-in-out w-full absolute top-[77px] left-0 bg-[#01283DCC]`}>
           <Container className="py-[25px] flex gap-4">

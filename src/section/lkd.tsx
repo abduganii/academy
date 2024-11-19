@@ -1,4 +1,6 @@
+"use client"
 import { PlayIcons } from '@/components/icons'
+import TextParag from '@/components/text'
 import React from 'react'
 
 export default function Lkd() {
@@ -6,7 +8,7 @@ export default function Lkd() {
     <div className='relative text-white justify-between rounded-lg border-r-5 h-[372px] flex items-center  mb-[68px] px-[140px]' style={{"backgroundImage":`url('/r5.png')`}}>
         <div className='w-full max-w-[298px]  z-20'>
             <h3 className='font-inter  text-[40px] font-bold leading-[48.41px] text-left'>ЛКД</h3>
-            <p className='w-full font-inter text-[14px] font-normal leading-[24px] text-left"'>Лаборатория Комплаенса и Добропорядочности</p>
+            <TextParag  className={`w-full font-inter  font-normal text-left`}>Лаборатория Комплаенса и Добропорядочности</TextParag>
         </div>
 
           <div className='w-full max-w-[380px] flex items-center justify-center border aspect-[1.6/1] z-20 border-white rounded-lg'>

@@ -1,6 +1,7 @@
 "use client"
 import OrganizationsCard from '@/components/card/organizations-card'
 import Container from '@/components/container'
+import TextParag from '@/components/text'
 import Image from 'next/image'
 import React, { useState } from 'react'
 
@@ -16,13 +17,14 @@ export default function CountryInformationSinglePage() {
     <div className='w-full h-[372px] bg-gradient-to-r from-black/90 to-black/30 absolute z-10  top-0 left-0'></div>
     </div>
     <Container>
-        <h4 className='text-[32px] font-semibold leading-[46px] mb-[16px]'>Основное законодательство</h4>
-        <ol className='pl-[20px] list-decimal text-[16px] font-normal leading-[26px] mb-[68px]'>
-            <li>О внесении изменений и дополнений в некоторые законодательные акты Республики Узбекистан, направленных на дальнейшее усиление социальной защиты граждан (lex.uz)
+        <TextParag type='title' font={32} line={46} className='font-semibold mb-[16px]'>Основное законодательство</TextParag>
+        <ol className='pl-[20px] list-decimal  font-normal mb-[68px]'>
+            <li>
+                <TextParag font={16} line={26}>О внесении изменений и дополнений в некоторые законодательные акты Республики Узбекистан, направленных на дальнейшее усиление социальной защиты граждан (lex.uz)</TextParag>
             </li>
-            <li>Об утверждении Стратегии социальной защиты населения Республики Узбекистан (lex.uz)</li>
+            <li> <TextParag font={16} line={26}>О внесении изменений и дополнений в некоторые законодательные акты Республики Узбекистан, направленных на дальнейшее усиление социальной защиты граждан (lex.uz)</TextParag></li>
         </ol>  
-        <h4 className='text-[32px] font-semibold leading-[46px] mb-[16px] '>Антикоррупционные органы</h4>
+        <TextParag type='title' font={32} line={46} className='font-semibold mb-[16px]'>Основное законодательство</TextParag>
         { [1,2,3,4,5,].map((e)=>( 
         <OrganizationsCard
             className='mb-4'
@@ -35,7 +37,7 @@ export default function CountryInformationSinglePage() {
       />
       ))}
 
-        <h4 className='text-[32px] font-semibold leading-[46px] mb-[16px] mt-[58px]'>Международное сотрудничество</h4>
+<TextParag type='title' font={32} line={46} className='font-semibold mb-[16px]'>Основное законодательство</TextParag>
 
         <div className='flex gap-5'>
             <div className='w-full'>

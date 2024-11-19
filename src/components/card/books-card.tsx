@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import TextParag from "../text";
 
 interface iBooksCard {
     image:string;
@@ -26,9 +27,9 @@ export default function BooksCard({
             alt='Think and Grow Rich Every Day' 
             title='Think and Grow Rich Every Day'
         />
-        <h3 className='font-inter text-[14px] font-semibold leading-[24px] line-clamp-2 group-hover:text-[#13399A]  '>{title}</h3>
+        <TextParag  type="title" font={14} line={24} className='font-inter  font-semibold  line-clamp-2 group-hover:text-[#13399A]'>{title}</TextParag>
         <div className='h-[1px] w-[88px] bg-[#0000001A] my-[6px]'></div>
-        <p className='font-inter text-[14px] font-medium leading-[24px] text-left text-[#2962FF]'>{price}</p>
+        <TextParag className='font-inter  font-medium  text-left text-[#2962FF]'>{price}</TextParag>
     </Link>
   )
 }

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react'
 import { DownIcons, LeftIcons } from '../icons';
+import TextParag from '../text';
 
 interface card {
     communication?:string;
@@ -37,8 +38,8 @@ export default function OrganizationsCard(
                 title='logo'
             />
             <div>   
-                <h4 className='font-inter text-[16px] font-semibold leading-[26px] text-left'>{title}</h4>
-                {text &&<p className='font-inter text-[16px] font-normal leading-[26px] text-left'>{text}</p>}
+                <TextParag type='title' className='font-inter  font-semibold  text-left'>{title}</TextParag>
+                {text &&<TextParag font={16} line={26} className='font-inter font-normal  text-left'>{text}</TextParag>}
             </div>
            
         { onClick &&<span  onClick={onClick}  className={`${isOpen ? '':"rotate-90"} cursor-pointer overflow-hidden transition-all duration-500 ease-in-out ml-auto`}>
@@ -49,13 +50,13 @@ export default function OrganizationsCard(
        className={`overflow-hidden transition-all duration-500 ease-in-out ${
         isOpen ? 'max-h-screen  mt-[25px]' : onClick ?'max-h-0': ""
       }`}>
-           {communication && <p className='mb-[12px] flex items-center gap-[9px] font-inter text-[14px] font-normal leading-[24px] text-left'>Коммуникация 
+           {communication && <TextParag className='mb-[12px] flex items-center gap-[9px] font-inter font-normal  text-left'>Коммуникация 
                 <span className="bg-[#000000] inline-block min-w-[6px] min-h-[6px] max-h-[6px] rounded-full"></span>
                 {communication}
-            </p>}
-            <p className='mb-[12px]  font-inter text-[14px] font-normal leading-[24px] text-left'>
+            </TextParag>}
+            <TextParag className='mb-[12px]  font-inter font-normal  text-left'>
                 {dicr}
-            </p>
+            </TextParag>
            {link && <a className='font-inter text-[14px] font-normal leading-[24px] text-left decoration-1 underline' target="_blank" href={link}>{link}</a>}
         </div>
     </div>

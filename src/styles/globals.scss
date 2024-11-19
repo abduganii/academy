@@ -13,7 +13,9 @@ button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
-
+.black{
+  filter: grayscale(100%);
+}
 
 .swiper-pagination-bullet-active {
   background: #120A44 !important;

@@ -1,4 +1,5 @@
 import { StarIcons } from '@/components/icons'
+import TextParag from '@/components/text'
 import React, { useState } from 'react'
 
 export default function OurCourseSection() {
@@ -15,7 +16,7 @@ export default function OurCourseSection() {
                              <StarIcons/>
                         <h3 className='text-[16px] font-semibold leading-[26px]'>Think and Grow Rich Every Day</h3>
                         </div>
-                        <p className={`${open == e ?' py-[23px] h-auto':'h-0'} overflow-hidden transition-all duration-500 ease-in-out  text-[16px] font-normal leading-[26px]`}>Небольшое описание при нажатии появляется</p>
+                        <TextParag line={26} font={16} className={`${open == e ?' py-[23px] h-auto':'h-0'} overflow-hidden transition-all duration-500 ease-in-out font-normal `}>Небольшое описание при нажатии появляется</TextParag>
                     </div>
                 ))
                }

@@ -2,6 +2,7 @@ import { Link } from '@/i18n/routing'
 import React from 'react'
 import { LeftIcons } from '../icons';
 import Image from 'next/image';
+import TextParag from '../text';
 
 interface iArticlesCard {
     className?:string;
@@ -24,17 +25,17 @@ interface iArticlesCard {
             title={title}/>
             :""}
           <div>
-            <h3 className="text-[16px] font-medium leading-[26px] mb-3" >
+            <TextParag type='title' className="text-[16px] font-medium leading-[26px] mb-3" >
             {title}
-            </h3>
+            </TextParag>
             <div className="flex items-center gap-2">
-              <p className="text-[14px] font-medium leading-[24px]">
+              <TextParag className="font-medium">
             {name}
-              </p>
-              <p className="text-sm font-normal leading-6 text-left flex items-center gap-2" ><span className="bg-[#D5DADD] w-[6px] h-[6px] rounded-full"></span> 
+              </TextParag>
+              <TextParag className="text-sm font-normal leading-6 text-left flex items-center gap-2" ><span className="bg-[#D5DADD] w-[6px] h-[6px] rounded-full"></span> 
               {/* {dayjs(e?.created_at).format('YYYY.MM.DD')} */}
               {date}
-              </p>
+              </TextParag>
             </div>
           </div>
           {iconsType == 'left'  ? <span className='ml-auto rotate-90'>  <LeftIcons/></span>:""} 

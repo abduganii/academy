@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import { EyeIcons } from '../icons'
 import { Link } from '@/i18n/routing'
+import TextParag from '../text'
 
 interface iNewsCard {
     Isgrey: boolean,
@@ -33,16 +34,17 @@ export default function NewsCard({
                     <Image className=' w-full aspect-[1.6/1] mx-h-[220px] rounded-lg' src={image} width={368} height={220} alt='img' title={title}/>
                 </div>
                 <div className='px-3 py-4'>
-                    <h3 className='font-inter text-[18px] font-semibold leading-[26px]  line-clamp-2 mb-2 group-hover:text-[#13399A]'>{title}</h3>
-                    {text && <p className='text-sm font-normal leading-6 line-clamp-2 '>{text}</p>}
+                    <TextParag type='title' line={26} font={18} className='font-inter font-semibold line-clamp-2 mb-2 group-hover:text-[#13399A]'>{title}</TextParag>
+                    {text && <TextParag className='font-normal  line-clamp-2 '>{text}</TextParag>}
                     <div className='flex items-center gap-4  mt-2'>
-                    <p className="text-sm font-normal leading-6 text-left flex items-center " > 
+                        
+                    <TextParag line={24} className=" font-normal text-left flex items-center " > 
                         {/* {dayjs(date).format('YYYY.MM.DD')} */}
                         {date}
-                    </p>
-                    <p className="text-sm font-normal leading-6 text-left flex items-center gap-[2px]" > 
-                        <EyeIcons/>  {view}
-                    </p>
+                    </TextParag>
+                    <TextParag line={24} className=" font-normal text-left flex items-center  gap-[2px]" > 
+                    <EyeIcons/>  {view}
+                    </TextParag>
                     </div>
                 </div>
     </Link>

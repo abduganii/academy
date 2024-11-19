@@ -4,6 +4,7 @@ import CommitCard from '@/components/card/commit-card'
 import Container from '@/components/container'
 import { MoreDownIcons, SaveIcons, StartIcons } from '@/components/icons'
 import SwiperWithScrollIcons from '@/components/swiper'
+import TextParag from '@/components/text'
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea, useDisclosure } from '@nextui-org/react'
 // import { Rate, Progress } from 'antd';
 import Image from 'next/image'
@@ -25,7 +26,7 @@ export default function BookByIdPage() {
                 title='title'
             />
             <div>
-                <h3 className='text-[32px] font-semibold leading-[29px] mb-4'>The concise laws of human nature</h3>
+                <TextParag type='title' line={29} font={32} className=' font-semibold  mb-4'>The concise laws of human nature</TextParag>
                 <p className="text-sm font-normal leading-6 text-left flex items-center gap-2 mb-[2px]" >
                     <span className='text-[#5B6871]'>24.08.2021</span>
                     <span className="bg-[#D5DADD] w-[6px] h-[6px] rounded-full"></span>
@@ -49,11 +50,11 @@ export default function BookByIdPage() {
             </div>
         </div>
         <div className='w-full max-w-[760px] my-[56px]'>
-            <h3 className='text-[24px] font-semibold leading-[29px] mb-4'>Описание</h3>
-            <p className='text-[14px] font-normal text-[#5B6871] leading-[24px] mb-[32px]'>Существует 6 основных принципов убеждения, которые могут заставить людей автоматически говорить «да». Понимание этих принципов и связанных с ними методов может помочь вам улучшить свое влияние и одновременно защититься от манипуляций других. В этом бесплатном обзоре Influence вы узнаете о 6 принципах убеждения, о том, как они работают и как их можно превратить в оружие влияния против нас.
+            <TextParag type={'title'} font={24} line={29} className=' font-semibold  mb-4'>Описание</TextParag>
+            <TextParag className=' font-normal text-[#5B6871]  mb-[32px]'>Существует 6 основных принципов убеждения, которые могут заставить людей автоматически говорить «да». Понимание этих принципов и связанных с ними методов может помочь вам улучшить свое влияние и одновременно защититься от манипуляций других. В этом бесплатном обзоре Influence вы узнаете о 6 принципах убеждения, о том, как они работают и как их можно превратить в оружие влияния против нас.
             Просто существует слишком много внешних стимулов, чтобы наш мозг мог все обработать. Таким образом, мы используем определенные сигналы в качестве ментальных ярлыков, чтобы помочь нам быстро реагировать без необходимости анализировать всю информацию. Например, вспышка острых зубов или лезвия будет означать «опасность», заставляя нас инстинктивно отступить, не задумываясь. С правильными сигналами мы скажем «да» автоматически, без осознанных мыслей 
                 <span className='font-semibold underline decoration-solid text-[#2D2D2D] ml-1 cursor-pointer'>Еще</span>
-            </p>
+            </TextParag>
             <div className='flex items-end gap-2 w-full mb-[12px]'>
                 <p className='text-[14px] font-normal text-[#5B6871] leading-[24px]'>Язык</p>
                 <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>

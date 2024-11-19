@@ -4,6 +4,7 @@ import { SearchIcons } from '@/components/icons'
 import { Input } from '@nextui-org/react'
 import React, { useState } from 'react'
 import { AlphabetsArray } from './alphabet'
+import TextParag from '@/components/text'
 
 
 export default function GlossaryPage() {
@@ -33,7 +34,7 @@ export default function GlossaryPage() {
            <h3 className='text-[32px] leading-[33px] font-semibold border-b border-[#C7C6C6] pb-[3px] mb-[34px]'>А</h3>
            <div className='mb-[24px]'>
             <h3 className='text-[32px] leading-[33px] font-semibold'>Аффорданс</h3>
-            <p className='mt-[12px]  text-[16px] leading-[24px] font-normal text-[#313131]'>Кнопки с микрокопиями являются примером аффорданса. Это визуальные ключи, которые отражают функционал интерфейса и возможность взаимодействовать с ним. Кнопка добавления товара в корзину без опознавательных знаков не обладает свойством аффорданса и не помогает пользователю понять, что ему следует сделать, чтобы достичь цели.</p>
+            <TextParag line={24} font={16} className='mt-[12px] font-normal text-[#313131]'>Кнопки с микрокопиями являются примером аффорданса. Это визуальные ключи, которые отражают функционал интерфейса и возможность взаимодействовать с ним. Кнопка добавления товара в корзину без опознавательных знаков не обладает свойством аффорданса и не помогает пользователю понять, что ему следует сделать, чтобы достичь цели.</TextParag>
            </div>
            <div className='mb-[24px]'>
             <h3 className='text-[32px] leading-[33px] font-semibold'>Аффорданс</h3>
