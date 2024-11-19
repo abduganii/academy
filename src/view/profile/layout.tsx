@@ -29,7 +29,6 @@ export default function ProfileLayout({children}:IChildren) {
                             </Link>
                     ))
                 }
-
                 <div onClick={()=>router.push('/')} className={`cursor-pointer mb-[4px] text-[#252C32] w-full flex items-center gap-3 p-[12px] rounded-lg text-[16px] font-normal leading-[26px]`}>
                     <span>
                     <LogoutIcons/>
@@ -37,7 +36,6 @@ export default function ProfileLayout({children}:IChildren) {
                     logout
                 </div>
                 <div  style={{top: 12 + (54 * (Number(value.id - 1)))}} className={`absolute  profileanimation   transition-all duration-300 ease-in-out left-[12px] h-[48px]   rounded-lg bg-white`}/>
-
             </div>
             <div className='w-full'>{children}</div>
         </div>
