@@ -37,10 +37,10 @@ export default function NewsSection({Isgrey}:any) {
 
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
           <ModalContent className="bg-[#fff] max-w-[1233px] py-[25px] px-[32px]">
-                {(onClose) => (
+                {() => (
               <ModalBody  className='p-0 '>
                 <h3>News</h3>
-                <div className='flex gap-[24px]  text-white'>
+                <div className='flex gap-[24px] text-white'>
                     <Link  href={'/news'}    className='group rounded-lg  w-full flex  bg-[#1451fa80] gap-8 p-[24px]'>
                         <div className='w-full flex flex-col justify-between max-w-[328px]'>
                             <h3 className=' mb-auto group-hover:text-[#1451fa80]  w-full font-inter text-[24px] font-bold leading-[29.05px] text-left'>Антикоррупционная деятельность</h3>
