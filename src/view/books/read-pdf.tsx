@@ -10,9 +10,9 @@ import React, { useRef, useState } from 'react'
 
 export default function ReadPdfPage() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [currentPage,SetCurrentPage] = useState(1)
   const book:any = useRef();
   const router = useRouter()
+  const [currentPage,setcurrentPage] = useState(0)
   return (
     <div>
         <div className='bg-[#F5F5F5] w-full py-3 fixed top-0 left-0 z-20'> 
@@ -24,29 +24,23 @@ export default function ReadPdfPage() {
             
           </Container>
         </div>
-            <Flipbook ref={book} onFlip={(e:any)=>{
-              SetCurrentPage(e?.data +2)
-              }}/>    
+            <Flipbook onFlip={(e:any)=>setcurrentPage(e?.data)} ref={book} />    
             <Container className='flex items-center gap-5 py-3'>
                 <Slider
-                label="ds"
                 step={1} 
-                maxValue={10} 
+                maxValue={5} 
+                label="hell"
                 minValue={0} 
                 size='sm' 
-                value={currentPage}
-                defaultValue={currentPage}
+                // value={currentPage}
+                defaultValue={1}
                 className="w-full"
                 color="foreground"
                 onChange={(e:any)=>{
-                  if(e % 2 == 0){
-                    book.current?.pageFlip()?.flip(e-2)
-                  }else{
-                    book.current?.pageFlip()?.flip(e-1)
-                  }
+                    book.current?.pageFlip()?.flip((e * 2)-1)
                 }}
               />
-              <p className='text-[14px] leading-[24px] font-semibold text-nowrap'>{currentPage } / 10</p>
+              <p className='text-[14px] leading-[24px] font-semibold text-nowrap'>{( currentPage+2) } / 10</p>
               <Button  onPress={onOpen} className='bg-[#323232] w-full max-w-[220px] text-center text-white rounded-lg dark:bg-white dark:text-black'>Купить: 320 000 cум</Button>
             </Container>
 
