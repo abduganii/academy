@@ -29,7 +29,6 @@ export default function ReadPdfPage() {
                 <Slider
                 step={1} 
                 maxValue={5} 
-                label="hell"
                 minValue={0} 
                 size='sm' 
                 // value={currentPage}
