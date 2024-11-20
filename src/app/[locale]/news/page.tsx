@@ -1,8 +1,8 @@
 "use server";
-import NewsPagae from '@/view/news/page';
+import NewsPage from '@/view/news'
 
 export default async function News() {
   return (
-    <><NewsPagae/></>
+    <><NewsPage/></>
   )
 }

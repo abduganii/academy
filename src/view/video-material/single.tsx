@@ -10,7 +10,6 @@ import React from 'react'
 export default function VideoMaterialIdPage() {
   return (
     <Container className='py-[150px]'>
-
         <div className='w-full flex gap-10 mb-[56px] p-10 bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] rounded-lg'>
             <Image
             className='w-full max-w-[194px] h-[298px] object-cover'

@@ -4,7 +4,9 @@
 @tailwind utilities;
 @tailwind components;
 
-
+body{
+  overflow-x: hidden;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -85,6 +87,10 @@ button:disabled {
 .profileanimation{
   width: calc(100% - 24px);
 }
+// .flipbook-page {
+//   perspective: 1000px;
+//   transform-style: preserve-3d;
+// }
 
 @keyframes pulse {
   0% {

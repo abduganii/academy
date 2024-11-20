@@ -32,7 +32,6 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
-  
       <body className={inter.className}>
       <NextTopLoader
       color="#2299DD"
@@ -46,14 +45,10 @@ export default async function RootLayout({
       shadow="0 0 10px #2299DD,0 0 5px #2299DD"
       />
       <NextIntlClientProvider  messages={messages}>
-
             <Providers>
               <BaseLayout>{children}</BaseLayout>
-            </Providers>
-          
+            </Providers> 
       </NextIntlClientProvider>
-      
-     
       </body>
     </html>
   );
