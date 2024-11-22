@@ -35,7 +35,7 @@ export const LangArr = [
           },
           {
             id:3,
-            link:'/',
+            link:'/about-us',
             text:'О нас'
           },
           {
