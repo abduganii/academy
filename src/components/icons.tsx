@@ -168,7 +168,7 @@ export const YouTobeIcons =({color,iconsColor}:any)=>{
         </>
     )
 }
-export const Btn =({color,iconsColor}:any)=>{
+export const PlayIcons =({color,iconsColor}:any)=>{
     return(
         <>
 

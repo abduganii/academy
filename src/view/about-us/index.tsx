@@ -58,7 +58,7 @@ export default function AboutUsPage() {
             </ul>
 
             <TextParag type='title' line={24} font={24} className='text-white mb-[30px] text-center font-semibold'>Наши партнеры:</TextParag>
-            <div className='flex gap-10 mb-[60px]'>
+            <div className='flex justify-center gap-10 mb-[60px]'>
             <div className='w-full flex items-center shadow-lg bg-white rounded-lg justify-center max-w-[226px] h-[110px]'>
                 <Image className='object-contain' src={'/logo-4.png'} width={162} height={45}  alt='img'/>
             </div>
