@@ -3,15 +3,17 @@ import BooksCard from '@/components/card/books-card'
 import Container from '@/components/container'
 import { Button} from '@nextui-org/react'
 import { Select, SelectItem } from '@nextui-org/select'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React from 'react'
 
 export default function BooksPage() {
+    const t = useTranslations()
   return (
     <>
         <div className='relative pt-[76px] mb-[60px] w-full h-[372px] flex items-center bg-center bg-no-repeat'  style={{"backgroundImage":`url('/r1.png')`}} >
             <Container className='z-20'>
-                <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left'>Книги</h4>
+                <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left'>{t('books')}</h4>
                 <div className='flex justify-end gap-[19px]'>
                 <Select
                     size='sm'
@@ -59,7 +61,7 @@ export default function BooksPage() {
         </div>
         <div className='text-center mb-[60px] mt-[32px]'>
             <Button className='bg-black text-white dark:bg-white dark:text-black inline-block w-full max-w-[368px]'>
-            Просмотреть все
+            {t('see-all')}
             </Button>
         </div>
       </Container>

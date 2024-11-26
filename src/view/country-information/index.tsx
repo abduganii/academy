@@ -4,14 +4,16 @@ import { SearchIcons } from '@/components/icons'
 import MultiSeriesMap from '@/components/MultiSeriesMap'
 import { Link } from '@/i18n/routing'
 import { Input, Table} from '@nextui-org/react'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 export default function CountryInformationPage() {
+  const t = useTranslations()
   return (
     <>
     <div className='relative pt-[76px] mb-[60px] w-full h-[372px] flex items-center bg-center bg-no-repeat'  style={{"backgroundImage":`url('/r2.png')`}} >
     <Container className='z-20'>
-        <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left'>Страновая информация</h4>
+        <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left'>{t('country-information')}</h4>
     </Container>
     </div>
     <MultiSeriesMap/>
@@ -25,8 +27,8 @@ export default function CountryInformationPage() {
           />
         <div className='mt-[24px] '>
             <Link href={'/country-information/1'} className='flex items-center justify-between text-[16x] leading-[24px] font-semibold mb-[10px]'>
-              <p>Страна</p>
-              <p>Рейтинг</p>
+              <p>{t('country')}</p>
+              <p>{t('rate')}</p>
             </Link> 
             <Link href={'/country-information/1'} className='flex items-center justify-between text-[16x] leading-[24px] font-normal pb-[10px] border-b-1 '>
             <p >Австралия</p>

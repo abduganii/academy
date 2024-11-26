@@ -5,15 +5,17 @@ import { Input } from '@nextui-org/react'
 import React, { useState } from 'react'
 import { AlphabetsArray } from './alphabet'
 import TextParag from '@/components/text'
+import { useTranslations } from 'next-intl'
 
 
 export default function GlossaryPage() {
   const [select,setSelect] = useState('all')
+  const t = useTranslations()
   return (
     <>
    <div className='relative pt-[76px] mb-[60px] w-full h-[372px] flex items-center bg-center bg-no-repeat'  style={{"backgroundImage":`url('/in.jfif')`}} >
     <Container className='z-20'>
-        <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left'>Глоссарий</h4>
+        <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left'>{t('glossary')}</h4>
         <Input size='lg'  startContent={
           <SearchIcons color="black" />
         }
@@ -23,7 +25,7 @@ export default function GlossaryPage() {
     </div>
     <Container className='mt-[36px] mb-[111px]'>
         <div className='flex gap-3 flex-wrap mb-[34px]'>
-            <p  onClick={()=>setSelect('all')} className={` ${select == "all" ?'bg-[#09608E] border-[#09608E] text-white' :"border border-[#BDBDBD]"} border cursor-pointer rounded-full py-[8px] px-[25px]`}>All</p>
+            <p  onClick={()=>setSelect('all')} className={` ${select == "all" ?'bg-[#09608E] border-[#09608E] text-white' :"border border-[#BDBDBD]"} border cursor-pointer rounded-full py-[8px] px-[25px]`}>{t('all')}</p>
            {
             AlphabetsArray?.ru?.map(e=>(
               <p  onClick={()=>setSelect(e)}  className={` ${select == e ?'bg-[#09608E] border-[#09608E] text-white' :"border border-[#BDBDBD]"} border rounded-full w-[40px] h-[40px] cursor-pointer flex items-center justify-center`}>{e}</p>

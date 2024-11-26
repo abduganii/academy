@@ -6,6 +6,7 @@ import { MoreDownIcons, SaveIcons, StartIcons } from '@/components/icons'
 import SwiperWithScrollIcons from '@/components/swiper'
 import TextParag from '@/components/text'
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea, useDisclosure } from '@nextui-org/react'
+import { useTranslations } from 'next-intl'
 // import { Rate, Progress } from 'antd';
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -14,6 +15,7 @@ import React from 'react'
 export default function BookByIdPage() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const router = useRouter()
+    const t = useTranslations()
   return (
     <Container className='py-[150px]'>
 
@@ -50,18 +52,18 @@ export default function BookByIdPage() {
             </div>
         </div>
         <div className='w-full max-w-[760px] my-[56px]'>
-            <TextParag type={'title'} font={24} line={29} className=' font-semibold  mb-4'>Описание</TextParag>
+            <TextParag type={'title'} font={24} line={29} className=' font-semibold  mb-4'>{t('description')}</TextParag>
             <TextParag className=' font-normal text-[#5B6871] dark:text-white mb-[32px]'>Существует 6 основных принципов убеждения, которые могут заставить людей автоматически говорить «да». Понимание этих принципов и связанных с ними методов может помочь вам улучшить свое влияние и одновременно защититься от манипуляций других. В этом бесплатном обзоре Influence вы узнаете о 6 принципах убеждения, о том, как они работают и как их можно превратить в оружие влияния против нас.
             Просто существует слишком много внешних стимулов, чтобы наш мозг мог все обработать. Таким образом, мы используем определенные сигналы в качестве ментальных ярлыков, чтобы помочь нам быстро реагировать без необходимости анализировать всю информацию. Например, вспышка острых зубов или лезвия будет означать «опасность», заставляя нас инстинктивно отступить, не задумываясь. С правильными сигналами мы скажем «да» автоматически, без осознанных мыслей 
-                <span className='font-semibold underline decoration-solid text-[#2D2D2D] dark:text-white  ml-1 cursor-pointer'>Еще</span>
+                <span className='font-semibold underline decoration-solid text-[#2D2D2D] dark:text-white  ml-1 cursor-pointer'>{t('more')}</span>
             </TextParag>
             <div className='flex items-end gap-2 w-full mb-[12px]'>
-                <p className='text-[14px] font-normal text-[#5B6871] dark:text-white  leading-[24px]'>Язык</p>
+                <p className='text-[14px] font-normal text-[#5B6871] dark:text-white  leading-[24px]'>{t('langs')}</p>
                 <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
                 <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white '>Русский</p>
             </div>
 
-            <h3 className='text-[24px] font-semibold leading-[29px] mt-[56px] mb-4'>Отзывы</h3>
+            <h3 className='text-[24px] font-semibold leading-[29px] mt-[56px] mb-4'>{t('reviews')}</h3>
             <div className='w-full flex items-start justify-between'>
                 <div className='w-full max-w-[124px]'>
                     <h3 className='text-[40px] font-normal leading-[46px] text-[#000000CC] dark:text-white '>4.7</h3>
@@ -75,7 +77,7 @@ export default function BookByIdPage() {
                 </div>
             </div>
             <div className='flex justify-end'>
-            <Button onPress={onOpen} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>Оставить отзыв</Button>
+            <Button onPress={onOpen} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
             </div>
             <CommitCard
                 className="border-b mb-6"
@@ -92,7 +94,7 @@ export default function BookByIdPage() {
                 date='20 авг, 2024'
             />
             <div className='flex justify-center'>
-            <Button className='w-full bg-[#69696926] text-[#323232] dark:bg-white max-w-[205px] rounded-lg' size='md' endContent={<MoreDownIcons/>}>Показать еще</Button>
+            <Button className='w-full bg-[#69696926] text-[#323232] dark:bg-white max-w-[205px] rounded-lg' size='md' endContent={<MoreDownIcons/>}>{t('show-all')}</Button>
             </div>
         </div>
         
@@ -100,7 +102,7 @@ export default function BookByIdPage() {
         <ModalContent className='bg-[#F5F5F5] max-w-[662px]'>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Оставить отзыв</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">{t('leave-feedback')}</ModalHeader>
               <ModalBody>
               {/* <Rate className='text-[18px]'  defaultValue={2.5} /> */}
               <Textarea
@@ -111,7 +113,7 @@ export default function BookByIdPage() {
               </ModalBody>
               <ModalFooter>
                 <Button className='w-full  max-w-[200px] rounded-lg'  color="danger" variant="light" onPress={onClose}>
-                  Close
+                  {t('close')}
                 </Button>
                 <Button className='w-full bg-[#2962FF] text-white max-w-[200px] rounded-lg' size='md' onPress={onClose}>
                   Action

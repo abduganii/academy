@@ -3,11 +3,13 @@ import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import React from 'react'
 import { ResourcesArr } from '../../musk/data'
+import { useTranslations } from 'next-intl'
 
 export default function ResourcesSection() {
+  const t = useTranslations()
   return (
     <>
-        <h4 className='font-inter text-[32px] font-semibold leading-[38.73px] mb-6 text-left'>Ресурсы</h4>
+        <h4 className='font-inter text-[32px] font-semibold leading-[38.73px] mb-6 text-left'>{t('resources')}</h4>
         <div className='flex flex-wrap gap-6 mb-[68px]'>
             {
                ResourcesArr?.map((e)=>(

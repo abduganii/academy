@@ -3,16 +3,16 @@ import Container from '@/components/container'
 import { SearchIcons, XIcons } from '@/components/icons'
 import TextParag from '@/components/text'
 import { Input } from '@nextui-org/react'
-import React, { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 
 export default function FAQPage() {
-  const [select,setSelect] = useState('all')
+  const t = useTranslations()
   return (
     <>
    <div className='relative pt-[76px] mb-[60px] w-full h-[372px] flex items-center bg-center bg-no-repeat'  style={{"backgroundImage":`url('/in.jfif')`}} >
     <Container className='z-20'>
-        <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left'>FAQ</h4>
+        <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left'>{t('faq')}</h4>
         <Input size='lg'  startContent={
           <SearchIcons color="black" />
         }
@@ -36,7 +36,7 @@ export default function FAQPage() {
             <span className='rotate-45'><XIcons/></span>
            </div>
       </div>
-    </Container>W
+    </Container>
     </>
   )
 }

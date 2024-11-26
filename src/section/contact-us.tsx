@@ -1,12 +1,14 @@
 "use client"
 import { Button, Input } from '@nextui-org/react'
 import {Select, SelectItem} from "@nextui-org/select";
+import { useTranslations } from 'next-intl';
 import React from 'react'
 // imagecon
 export default function ContactUsForm() {
+  const t = useTranslations()
   return (
     <form style={{"backgroundImage":`url('/imagecon.png')`}} className='mb-[60px] bg-auto bg-no-repeat bg-center py-[40px] px-[64px] bg-black rounded-xl text-white'>
-      <h4 className='font-inter text-[32px] font-semibold leading-[38.73px]  mb-[24px]'>Связаться с нами</h4>
+      <h4 className='font-inter text-[32px] font-semibold leading-[38.73px]  mb-[24px]'>{t('contact-us')}</h4>
       <div className='flex flex-wrap justify-end items-center gap-[20px]'>
        <Input size="sm"  variant='bordered'  className='colm1' color="default" type="text" label="Ф.И.О." />
        <Select 
@@ -27,7 +29,7 @@ export default function ContactUsForm() {
        <Input size="sm" variant='bordered'  className='colm1' type="email" label="Почта" />
        <Input size="sm" variant='bordered'  className='colm1' type="text" label="Описание" />
        <Button  size="lg" className='colm1 dark:text-black'>
-       Отправить
+        {t('send')}
        </Button>
       </div>
     </form>

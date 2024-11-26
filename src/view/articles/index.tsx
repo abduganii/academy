@@ -4,9 +4,11 @@ import Container from '@/components/container'
 import { LeftIcons } from '@/components/icons'
 import { Link } from '@/i18n/routing'
 import { Select, SelectItem } from '@nextui-org/react'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 export default function ArticlesPage() {
+  const t = useTranslations()
   return (
  
     <>
@@ -14,7 +16,7 @@ export default function ArticlesPage() {
     //  style={{"backgroundImage":`url('/r6.jfif')`}}
      >
     <Container className='z-20'>
-        <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left mb-4'>Articles</h4>
+        <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left mb-4'>{t('articles')}</h4>
         <div className='flex'>
                 <Select
                     size='sm'
@@ -35,7 +37,6 @@ export default function ArticlesPage() {
 
     <Container className='mt-[60px] mb-[80px]'>
      { [1,2,3,4,5].map((e)=>( 
-
         <ArticlesCardPage
           key={e}
           className="mb-4"

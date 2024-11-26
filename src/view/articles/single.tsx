@@ -2,9 +2,11 @@
 import Container from '@/components/container'
 import TextParag from '@/components/text'
 import { Button } from '@nextui-org/react'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 export default function ArticlesIdPage() {
+  const t = useTranslations()
   return (
     <Container className='py-[120px] md:py-[160px]'>
     <div className="w-full cursor-pointer flex items-end  justify-between bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] p-10 rounded-lg mb-12">
@@ -22,7 +24,7 @@ export default function ArticlesIdPage() {
         М.Мамасиддиқов ва Л.Исоқов
         </TextParag>
       </div>
-     <Button className='w-full bg-[#323232] text-white max-w-[220px] rounded-lg mt-4' size='md'>Читать</Button>
+     <Button className='w-full bg-[#323232] text-white max-w-[220px] rounded-lg mt-4' size='md'>{t('read')}</Button>
      </div>
     {/* <SocketIcons/> */}
   </div>

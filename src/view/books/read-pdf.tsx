@@ -4,6 +4,7 @@ import Flipbook from '@/components/Flipbook'
 import { LeftIcons } from '@/components/icons'
 import TextParag from '@/components/text'
 import { Button, Modal, ModalBody, ModalContent, Slider, useDisclosure } from '@nextui-org/react'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React, { useRef, useState } from 'react'
@@ -13,6 +14,7 @@ export default function ReadPdfPage() {
   const book:any = useRef();
   const router = useRouter()
   const [currentPage,setcurrentPage] = useState(0)
+  const t = useTranslations()
   return (
     <div>
         <div className='bg-[#F5F5F5] w-full py-3 fixed top-0 left-0 z-20'> 
@@ -40,14 +42,14 @@ export default function ReadPdfPage() {
                 }}
               />
               <p className='text-[14px] leading-[24px] font-semibold text-nowrap'>{( currentPage+2) } / 10</p>
-              <Button  onPress={onOpen} className='bg-[#323232] w-full max-w-[220px] text-center text-white rounded-lg dark:bg-white dark:text-black'>Купить: 320 000 cум</Button>
+              <Button  onPress={onOpen} className='bg-[#323232] w-full max-w-[220px] text-center text-white rounded-lg dark:bg-white dark:text-black'>{t('buy')}: 320 000 cум</Button>
             </Container>
 
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
               <ModalContent className="bg-[#fff] max-w-[640px] text-center py-[25px] px-[32px]">
                     {() => (
                   <ModalBody  className='p-0 '>
-                    <h3 className='text-[20px] leading-[28px] font-semibold'>Конец фрагмента</h3>
+                    <h3 className='text-[20px] leading-[28px] font-semibold'>{t('end-fragment')}</h3>
                     <Image
                         alt='img'
                         width={196}
@@ -56,7 +58,7 @@ export default function ReadPdfPage() {
                         title='title'
                         className='mx-auto mt-[16px] mb-[32px]'
                     />
-                    <Button   className='bg-[#323232] m-auto w-full max-w-[220px] text-center text-white rounded-lg dark:bg-white dark:text-black'>Купить: 320 000 cум</Button>
+                    <Button   className='bg-[#323232] m-auto w-full max-w-[220px] text-center text-white rounded-lg dark:bg-white dark:text-black'>{t('buy')}: 320 000 cум</Button>
                   </ModalBody>
                     )}
               </ModalContent>

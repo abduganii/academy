@@ -8,8 +8,8 @@ import { useLocale, useTranslations } from 'next-intl';
 
 export default function ArticlesSection() {
     const router = useRouter()
-    const lang = useTranslations()
     const locale = useLocale(); 
+    const t = useTranslations();
   return (
     <>
     <SwiperWithScrollIcons title={"articles"} slidesPerView={3} className="flex w-full items-center  text-[16px] font-semibold gap-6 mt-8">
@@ -29,7 +29,7 @@ export default function ArticlesSection() {
     </SwiperWithScrollIcons>
         <div className='text-center mb-[60px] mt-[32px]'>
             <Button onClick={()=>router.push(`/${locale}/articles`)} className='bg-black text-white dark:bg-white dark:text-black inline-block'>
-                Подробнее
+               {t('more-details')}
             </Button>
         </div>
     </>

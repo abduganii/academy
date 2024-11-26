@@ -15,7 +15,6 @@ export default function Header() {
   const [openSiteBar,setOpenSiteBar] = useState(false)
   const [openSearch,setOpenSearch] = useState(false)
 
-
     return (
       <header className="w-full fixed  border-black border-b z-40 py-4 bg-[#01263A] text-white">
         <Container className={"flex items-center gap-8"}>
