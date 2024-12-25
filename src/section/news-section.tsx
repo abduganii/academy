@@ -27,7 +27,6 @@ export default function NewsSection({Isgrey}:any) {
       />
         ))
         }
-       
     
     </SwiperWithScrollIcons>
         <div className='text-center mb-[60px] mt-[32px]'>

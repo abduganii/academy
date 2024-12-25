@@ -42,7 +42,7 @@ export default function Lang() {
              {t('lang')}
           </Button> 
           {
-              open ? <ul className='max-w-[108px] absolute top-12  bg-[#0000001A] sm:py-3 rounded-xl w-full left-0"'>
+              open ? <ul className='max-w-[108px] absolute top-12  z-40 bg-[#000000] sm:py-3 rounded-xl w-full left-0"'>
                   {
                   LangArr.map((e) => (
                       <Link href={pathname} className='flex font-normal text-base p-2   hover:bg-black' locale={e?.value} key={e.id}>
