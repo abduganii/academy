@@ -1,8 +1,22 @@
 "use server";
-import SourcesPage from '@/view/sources'
+import { getQueryClient, queryFn } from '@/utils';
+import { SourcesPage } from '@/view/sources';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
-export default async function Sources() {
+export default async function Sources({searchParams: {type }}:any) {
+  const queryClient = getQueryClient();
+      
+  await queryClient.prefetchQuery<any>({
+    queryKey: ['books'],
+    queryFn: (context) => queryFn<any>(context),
+  });
+  await queryClient.prefetchQuery<any>({
+    queryKey: ['articles'],
+    queryFn: (context) => queryFn<any>(context),
+  });
   return (
-    <><SourcesPage/></>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <SourcesPage type={type}/>
+    </HydrationBoundary>
   )
 }

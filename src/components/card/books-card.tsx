@@ -24,6 +24,7 @@ export default function BooksCard({
             src={image}
             width={170} 
             height={224} 
+            className="w-[170px] h-[224px] object-cover"
             alt='Think and Grow Rich Every Day' 
             title='Think and Grow Rich Every Day'
         />

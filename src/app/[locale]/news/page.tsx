@@ -1,8 +1,17 @@
 "use server";
-import NewsPage from '@/view/news'
+import { getQueryClient, queryFn } from '@/utils';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+import { NewsPage } from '@/view/news';
 
-export default async function News() {
+export default async function News({searchParams: {type }}:any) {
+   const queryClient = getQueryClient();
+    await queryClient.prefetchQuery<any>({
+      queryKey: ['news'],
+      queryFn: (context) => queryFn<any>(context),
+    });
   return (
-    <><NewsPage/></>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <NewsPage type={type}/>
+    </HydrationBoundary>
   )
 }

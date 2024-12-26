@@ -3,11 +3,14 @@ import ArticlesCardPage from '@/components/card/acticles-card-in-page'
 import Container from '@/components/container'
 import { LeftIcons } from '@/components/icons'
 import { Link } from '@/i18n/routing'
+import { hoc } from '@/utils'
 import { Select, SelectItem } from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+import { usePageProps } from './props'
 
-export default function ArticlesPage() {
+export const ArticlesPage:any = hoc(usePageProps, props => {
+  const {articles} = props
   const t = useTranslations()
   return (
  
@@ -36,18 +39,20 @@ export default function ArticlesPage() {
     </div>
 
     <Container className='mt-[60px] mb-[80px]'>
-     { [1,2,3,4,5].map((e)=>( 
-        <ArticlesCardPage
-          key={e}
-          className="mb-4"
-          title='Вниманию кандидатов, рекомендованных к обучению в магистратуру'
-          link={`/articles/${e}`}
-          name=' Т. Усмонов'
-          date=' 22.02.2024'
-        />
-          
-      ))}
+ 
+       {
+          articles?.length && articles?.map((e:any)=>(
+              <ArticlesCardPage
+              className="mb-4"
+              link={`/articles/${e?.id}`}
+              key={e?.id}
+              title={e?.title}
+              name={e?.text}
+              date={e?.created_at}
+          />
+          ))
+          }
     </Container>
     </>
   )
-}
+})

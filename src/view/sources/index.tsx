@@ -2,10 +2,13 @@
 import Container from '@/components/container'
 import ArticlesSection from '@/section/articles'
 import BooksSection from '@/section/books-section'
+import { hoc } from '@/utils'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+import { usePageProps } from './props'
 
-export default function SourcesPage() {
+  export const SourcesPage:any = hoc(usePageProps, props => {
+    const {books,articles, type}:any = props
   const t = useTranslations();
   return (
     <>
@@ -16,9 +19,9 @@ export default function SourcesPage() {
       <div className='w-full h-[372px] bg-gradient-to-r from-black/90 to-black/30 absolute z-10  top-0 left-0'></div>
       </div>
       <Container>
-      <BooksSection/>
-      <ArticlesSection/>
+      <BooksSection books={books} type={type}/>
+      <ArticlesSection articles={articles} type={type}/>
       </Container>
     </>
   )
-}
+})

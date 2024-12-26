@@ -1,4 +1,5 @@
 import { Link } from '@/i18n/routing';
+import dayjs from 'dayjs';
 import React from 'react'
 interface iArticlesCard {
   className?:string;
@@ -18,8 +19,7 @@ export default function ArticlesCard({title,link,text,date,className}:iArticlesC
        {text}
         </p>
         <p className="text-sm font-normal leading-6 text-left flex items-center gap-2" ><span className="bg-[#D5DADD] w-[6px] h-[6px] rounded-full"></span> 
-        {/* {dayjs(date).format('YYYY.MM.DD')} */}
-            {date}
+        {dayjs(date).format('YYYY.MM.DD')}
         </p>
     </Link>
   )

@@ -11,8 +11,13 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React from 'react'
+import { hoc } from '@/utils'
+import { usePageIdProps } from './props'
+import dayjs from 'dayjs'
 
-export default function BookByIdPage() {
+  export const BookByIdPage:any = hoc(usePageIdProps, props => {
+    const {oneBooks} = props
+    console.log(oneBooks)
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const router = useRouter()
     const t = useTranslations()
@@ -24,26 +29,31 @@ export default function BookByIdPage() {
                 alt='img'
                 width={196}
                 height={298}
-                src={'/books.png'}
+                className='w-[196px] h-[298px] object-cover'
+                src={`${process.env.NEXT_PUBLIC_BASE_URL}${oneBooks?.image?.path}`}
                 title='title'
             />
             <div>
-                <TextParag type='title' line={29} font={32} className=' font-semibold  mb-4'>The concise laws of human nature</TextParag>
+                <TextParag type='title' line={29} font={32} className=' font-semibold  mb-4'>{oneBooks?.name}</TextParag>
                 <p className="text-sm font-normal leading-6 text-left flex items-center gap-2 mb-[2px]" >
-                    <span className='text-[#5B6871]'>24.08.2021</span>
+                    <span className='text-[#5B6871]'> {dayjs(oneBooks?.published_at).format('YYYY.MM.DD')}</span>
                     <span className="bg-[#D5DADD] w-[6px] h-[6px] rounded-full"></span>
-                    Robert Greene
+                    {oneBooks?.author?.name}
                 </p>
                 <p className="text-sm font-normal leading-6 text-left flex items-center gap-2 " >
-                    <span className='flex items-center'><StartIcons/> 4.7</span>
+                    <span className='flex items-center'><StartIcons/>  {oneBooks?.rating}</span>
                     <span className="bg-[#D5DADD] w-[6px] h-[6px] rounded-full"></span>
                     56 отзывов
                 </p>
                 <div className='flex gap-2 mt-4 mb-6'>
-                    <p className='py-[2px] px-[12px] bg-[#0000000D] text-[#5B6871] rounded-lg text-[14px] font-normal leading-[24px]'>Business & investing</p>
-                    <p className='py-[2px] px-[12px] bg-[#0000000D] text-[#5B6871] rounded-lg text-[14px] font-normal leading-[24px]'>Communication</p>
+                  {
+                    oneBooks?.tags?.map((e:any)=>(
+
+                      <p key={e?.id} className='py-[2px] px-[12px] bg-[#0000000D] text-[#5B6871] rounded-lg text-[14px] font-normal leading-[24px]'>{e?.name}</p>
+                    ))
+                  }
                 </div>
-                <h3 className='text-[24px] font-semibold leading-[29px] mb-2'>320 000 сум</h3>
+                <h3 className='text-[24px] font-semibold leading-[29px] mb-2'>{oneBooks?.price} сум</h3>
                 <div className='flex gap-4'>
                     <Button className='w-full bg-[#323232] text-white max-w-[220px] rounded-lg' size='md'>Купить</Button>
                     <Button onClick={()=>router.push('/books/1/book-read')} className='w-full bg-[#69696926] text-[#323232] dark:bg-white max-w-[220px] rounded-lg' size='md'>Читать фрагмент</Button>
@@ -53,14 +63,13 @@ export default function BookByIdPage() {
         </div>
         <div className='w-full max-w-[760px] my-[56px]'>
             <TextParag type={'title'} font={24} line={29} className=' font-semibold  mb-4'>{t('description')}</TextParag>
-            <TextParag className=' font-normal text-[#5B6871] dark:text-white mb-[32px]'>Существует 6 основных принципов убеждения, которые могут заставить людей автоматически говорить «да». Понимание этих принципов и связанных с ними методов может помочь вам улучшить свое влияние и одновременно защититься от манипуляций других. В этом бесплатном обзоре Influence вы узнаете о 6 принципах убеждения, о том, как они работают и как их можно превратить в оружие влияния против нас.
-            Просто существует слишком много внешних стимулов, чтобы наш мозг мог все обработать. Таким образом, мы используем определенные сигналы в качестве ментальных ярлыков, чтобы помочь нам быстро реагировать без необходимости анализировать всю информацию. Например, вспышка острых зубов или лезвия будет означать «опасность», заставляя нас инстинктивно отступить, не задумываясь. С правильными сигналами мы скажем «да» автоматически, без осознанных мыслей 
+            <TextParag className=' font-normal text-[#5B6871] dark:text-white mb-[32px]'>{oneBooks?.annotation}
                 <span className='font-semibold underline decoration-solid text-[#2D2D2D] dark:text-white  ml-1 cursor-pointer'>{t('more')}</span>
             </TextParag>
             <div className='flex items-end gap-2 w-full mb-[12px]'>
                 <p className='text-[14px] font-normal text-[#5B6871] dark:text-white  leading-[24px]'>{t('langs')}</p>
                 <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
-                <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white '>Русский</p>
+                <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white '>{oneBooks?.lang}</p>
             </div>
 
             <h3 className='text-[24px] font-semibold leading-[29px] mt-[56px] mb-4'>{t('reviews')}</h3>
@@ -138,4 +147,4 @@ export default function BookByIdPage() {
         </SwiperWithScrollIcons>
     </Container>
   )
-}
+})

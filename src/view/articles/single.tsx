@@ -1,27 +1,30 @@
 "use client"
 import Container from '@/components/container'
 import TextParag from '@/components/text'
+import { hoc } from '@/utils'
 import { Button } from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+import { usePageIdProps } from './props'
+import dayjs from 'dayjs'
 
-export default function ArticlesIdPage() {
+export const ArticlesIdPage:any = hoc(usePageIdProps, props => {
+      const {oneArticles} = props
   const t = useTranslations()
   return (
     <Container className='py-[120px] md:py-[160px]'>
     <div className="w-full cursor-pointer flex items-end  justify-between bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] p-10 rounded-lg mb-12">
      <div>
       <TextParag font={24} line={29} className="font-semibold mb-3">
-        ПРИОРИТЕТНЫЕ НАПРАВЛЕНИЯ ОБЕСПЕЧЕНИЯ ПРАВОПОРЯДКА И ДАЛЬНЕЙШЕЙ РЕФОРМЫ СУДЕБНОЙ СИСТЕМЫ
+        {oneArticles?.title}
       </TextParag>
       <div className="flex items-center gap-2">
         <TextParag  className="font-normal text-left flex items-center gap-2" >
-            {/* {dayjs(articles?.created_at).format('YYYY.MM.DD')} */}
-            24.08.2019
+            {dayjs(oneArticles?.published_at).format('YYYY.MM.DD')}
             <span className="bg-black w-[6px] h-[6px] rounded-full"></span> 
             </TextParag>
         <TextParag  className="font-medium leading-[24px]">
-        М.Мамасиддиқов ва Л.Исоқов
+        {oneArticles?.author?.naame}
         </TextParag>
       </div>
      <Button className='w-full bg-[#323232] text-white max-w-[220px] rounded-lg mt-4' size='md'>{t('read')}</Button>
@@ -36,9 +39,9 @@ export default function ArticlesIdPage() {
     />
     :
    <TextParag line={26} font={16} className="text-[#48535B] dark:text-white dark:opacity-70 w-full max-w-[760px] m-auto font-normal ">
-        Ш.М. Мирзиёевнинг 2017 йил 7  февралдаги  Фармони  билан  2017-2021  йилларда  Ўзбекистон Республикасини  ривожлантиришнинг  бешта  устувор йўналиши  бўйича Ҳаракатлар  стратегиясининг  тасдиқланиши  мамлакатимиз  тараққиёти-нинг  сифат  жиҳатидан  янги  даврини  бошлаб  берди.  Мазкур  тарихий ҳужжат моҳиятан жаҳонда турли ўзгаришлар ва воқеа-ҳодисалар содир бўлаётган бир паллада давлат ва жамият қурилиши соҳасидаги демок-ратик  ислоҳотларни  чуқурлаштириш,  суд-ҳуқуқ,  иқтисодий,  ижтимоий соҳалар ва хавфсизликни таъминлаш бўйича бешта устувор йўналишда амалга  ошириш  механизми  аниқ  белгиланган  давлатимизнинг  ҳақиқий стратегиясига айланди.Ҳаракатлар  стратегияси  доирасида  амалга  оширилаётган  ислоҳот-лар натижасида инсон ҳуқуқлари кафолатини таъминлашга қаратилган амалий чора-тадбирлар  кучайтирилди.  Ушбу  жараёнда  қонун  устувор-лигини  таъминлаш,  қонунийликни  мустаҳкамлашда  прокуратура  орган-лари ходимларининг зиммасидаги масъулият янада ортди. Албатта, бу вазифаларнинг самарали бажарилиши прокуратура ходимларидан чуқур билим ва салоҳият талаб қилади.2017-2021  йилларда  Ўзбекистон  Республикасини  ривожлантириш-нинг  бешта  устувор  йўналиши  бўйича  Ҳаракатлар  стратегиясида белгиланган  вазифаларга  мувофиқ,  шунингдек,  прокуратура  органлари кадрларини  тайёрлаш,  қайта  тайёрлаш  ва уларнинг  малакасини оширишнинг замонавий тизимини яратиш мақсадида2018 йил 8 майда Ўзбекистон  Республикаси  Президентининг  “Прокуратура  органлари кадрларини тайёрлаш, қайта тайёрлаш ва уларнинг малакасини ошириш тизимини  тубдан  такомиллаштириш  чора-тадбирлари  тўғрисида”ги Фармони қабул  қилинди.  Мазкур  Фармон билан  ташкил  этилган  Бош прокуратура  Академиясининг  асосий  вазифалари  ва  йўналишларидан бири сифатидақонунчиликни  такомиллаштириш  ва  ягона  ҳуқуқни қўллаш амалиётини шакллантириш бўйича илмий асосланганхулоса ва тавсиялар ишлаб чиқишбелгиланган.Академия  мутлақо  янги  форматда  ва  инновациялар  асосида  фао-лият олиб борадиган замонавий таълим ва илмий-тадқиқот муассасаси сифатида  шаклланди.  
-   </TextParag>
+    {oneArticles?.text}  
+  </TextParag>
   }
 </Container>
   )
-}
+})

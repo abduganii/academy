@@ -13,15 +13,14 @@ const httpClient: AxiosInstance = axios.create({
   withCredentials: true,
 });
 
-const setRequestHeaders = (
-  config: InternalAxiosRequestConfig
-): InternalAxiosRequestConfig => {
+const setRequestHeaders =  async(
+  config: any
+) => {
   if (!config.headers) {
     config.headers = new AxiosHeaders();
   }
-
   config.headers.set("Content-Type", "application/json");
-
+  config.headers.set("lang", 'ru');
   return config;
 };
 
@@ -30,9 +29,7 @@ const handleTokenRefresh = async (): Promise<void> => {
     baseURL,
     withCredentials: true,
   });
-
   tokenAPI.interceptors.request.use(setRequestHeaders);
-
   await tokenAPI.post("/users/refresh-token");
 };
 

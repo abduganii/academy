@@ -1,11 +1,14 @@
 "use client"
 import NewsCard from '@/components/card/news-card'
 import Container from '@/components/container'
+import { hoc } from '@/utils'
 import { Select, SelectItem } from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+import { usePageProps } from './props'
 
-export default function NewsPage() {
+export const NewsPage:any = hoc(usePageProps, props => {
+  const {news} = props
   const t = useTranslations()
   return (
     <>
@@ -33,21 +36,21 @@ export default function NewsPage() {
     </div>
 
     <Container className='flex flex-wrap gap-5  mt-[60px] mb-[80px]'>
-     { [1,2,3,4,5].map((e)=>( 
+     {news?.map((e:any,index:number)=>( 
             <NewsCard
-            link={`/news/${e}`}
-                className={e == 1||e == 2 ? 'colm1' :'colm2'}
-                key={e}
-                image='/news.png'
+                link={`/news/${e?.id}`}
+                className={index == 0 || index == 1 ? 'colm1' :'colm2'}
+                key={e?.id}
+                image={`${process.env.NEXT_PUBLIC_BASE_URL}${e?.image?.path}`}
                 Isgrey={true}
-                category='Общество'
-                text={e == 1||e == 2 ?  `30 августа т.г. в рамках Научного часа, традиционно проводимого для самостоятельных соискателей, докторантов и исследователей, состоялось…`: false}
-                title='Объявляется прием на обучение на стажера-исследователя'
-                date='16.07.2024'
-                view={567}
+                text={index == 0||index == 1 ?  e?.content: false}
+                category={e?.section}
+                title={e?.title}
+                date={e?.publishStartTime}
+                view={e?.views}
             />
       ))}
     </Container>
     </>
   )
-}
+})

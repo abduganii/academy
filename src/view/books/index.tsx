@@ -1,13 +1,16 @@
 'use client'
 import BooksCard from '@/components/card/books-card'
 import Container from '@/components/container'
+import { hoc } from '@/utils'
 import { Button} from '@nextui-org/react'
 import { Select, SelectItem } from '@nextui-org/select'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React from 'react'
+import { usePageProps } from './props'
 
-export default function BooksPage() {
+export const BooksPage:any = hoc(usePageProps, props => {
+     const {books} = props
     const t = useTranslations()
   return (
     <>
@@ -45,18 +48,18 @@ export default function BooksPage() {
       </div>
       <Container>
         <div className='flex flex-wrap gap-6'>
-            {/* <div key={e} className='colm3'> */}
             {
-                [1,2,3,4,5,6,7,8]?.map(e=>(
+                books?.map((e:any)=>(
                     <BooksCard
+                        link={`/books/${e?.id}`}
                         key={e}
-                        link={`/books/${e}`}
                         className='colm3'
-                        image={'/books.png'}
-                        title='Think and Grow Rich Every Day'
-                        price='350 000 сум'
-                />
-                ))
+                        image={`${process.env.NEXT_PUBLIC_BASE_URL}${e?.image?.path}`}
+                        title={e?.name}
+                        price={`${e?.price} som`}
+                    />
+                )
+            )
             }
         </div>
         <div className='text-center mb-[60px] mt-[32px]'>
@@ -67,4 +70,4 @@ export default function BooksPage() {
       </Container>
     </>
   )
-}
+})

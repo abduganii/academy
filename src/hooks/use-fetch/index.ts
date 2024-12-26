@@ -9,7 +9,6 @@ interface IUseFetchData<T> extends IFetchingProps {
 export const useFetchData = <T>(props: IUseFetchData<T>) => {
   const { url, params, initialData, enabled = true } = props;
   const queryKey: QueryKey = params ? [url, params] : [url];
-
   return useQuery<T>({
     enabled,
     queryKey,

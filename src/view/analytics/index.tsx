@@ -3,10 +3,14 @@
 "use client"
 import AnalyticsCard from '@/components/card/analytics-card'
 import Container from '@/components/container'
+import { hoc } from '@/utils'
 import { useTranslations } from 'next-intl'
 import React, { useState } from 'react'
+import { usePageProps } from './props'
 
-export default function AnalyticsPage() {
+  
+    export const AnalyticsPage:any = hoc(usePageProps, props => {
+      const {analytics}=props
   const [Isopen,setIsopen] = useState<number | boolean>(1)
   const t = useTranslations()
   return (
@@ -20,19 +24,19 @@ export default function AnalyticsPage() {
 
     <Container className='flex gap-5  justify-center mb-[70px]'>
         {
-          [1,2,3,4].map(e=>(
+          analytics?.map((e:any)=>(
             <AnalyticsCard
-                key={e}
-                Isopen={Isopen== e}
-                onClick={()=>setIsopen(state=> state == e ? false: e)}
-                className={Isopen == e?  'max-w-[525px]':'max-w-[103px]'}
-                image='/Analytics.png'
-                title='Название'
-                text='Lorem ipsum dolor sit amet consectetur. In sit pellentesque eleifend eget arcu sit fringilla urna diam.'
+                key={e?.id}
+                Isopen={Isopen== e?.id}
+                onClick={()=>setIsopen(state=> state == e?.id ? false: e?.id)}
+                className={Isopen == e?.id?  'max-w-[525px]':'max-w-[103px]'}
+                image={`${process.env.NEXT_PUBLIC_BASE_URL}${e?.image?.path}`}
+                title={e?.title}
+                text={e?.description}
             />
           ))
         }
     </Container>
     </>
   )
-}
+})

@@ -9,13 +9,11 @@ import ResourcesSection from '@/section/resources-section'
 import VirtualAcademy from '@/section/virtual-academy'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+import { hoc } from '@/utils'
+import { usePageProps } from './props'
 
-interface iProps {
-  title: string,
-  text: string,
-}
-
-export default function AnticorrosivePage({title,text}:iProps) {
+  export const AnticorrosivePage:any = hoc(usePageProps, props => {
+    const {news,type,title,text} = props;
   const t = useTranslations()
   return (
     <>
@@ -33,14 +31,14 @@ export default function AnticorrosivePage({title,text}:iProps) {
     </div>
 
     <Container >
-      <NewsSection Isgrey={true}/>
+      <NewsSection type={type} news={news} Isgrey={true}/>
       <div className='flex gap-[13px] mb-[68px]'>
       <OurCourseSection/>
       <VirtualAcademy/>
       </div>
-      <ResourcesSection/>
+      <ResourcesSection type={type}/>
       <ContactUsForm/>
     </Container>
     </>
   )
-}
+})

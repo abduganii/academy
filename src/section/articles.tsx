@@ -6,7 +6,7 @@ import ArticlesCard from '@/components/card/articles-card';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 
-export default function ArticlesSection() {
+export default function ArticlesSection({articles,type}:any) {
     const router = useRouter()
     const locale = useLocale(); 
     const t = useTranslations();
@@ -14,21 +14,20 @@ export default function ArticlesSection() {
     <>
     <SwiperWithScrollIcons title={"articles"} slidesPerView={3} className="flex w-full items-center  text-[16px] font-semibold gap-6 mt-8">
        {
-        [1,2,3,4,5]?.map(e=>(
+       articles?.length && articles?.map((e:any)=>(
             <ArticlesCard
-            link={`/articles/${e}`}
-            key={e}
-            title='ПРИОРИТЕТНЫЕ НАПРАВЛЕНИЯ ОБЕСПЕЧЕНИЯ ПРАВОПОРЯДКА И ДАЛЬНЕЙШЕЙ РЕФОРМЫ СУДЕБНОЙ СИСТЕМЫ'
-            text=' В Правоохранительной академии Республики 
-                В Правоохранительной академии Республики '
-                date='  16.07.2024'
+            link={`/articles/${e?.id}`}
+            key={e?.id}
+            title={e?.title}
+            text={e?.text}
+                date={e?.created_at}
         />
         ))
         }
        
     </SwiperWithScrollIcons>
         <div className='text-center mb-[60px] mt-[32px]'>
-            <Button onClick={()=>router.push(`/${locale}/articles`)} className='bg-black text-white dark:bg-white dark:text-black inline-block'>
+            <Button onClick={()=>router.push(`/${locale}/articles?type=${type}`)} className='bg-black text-white dark:bg-white dark:text-black inline-block'>
                {t('more-details')}
             </Button>
         </div>

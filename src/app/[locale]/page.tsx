@@ -1,32 +1,21 @@
 "use server"
 
-import HomePagae from "@/view/home";
 import {getQueryClient, queryFn} from "@/utils";
-
+import { HomePage } from "@/view/home";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 export default async function Home() {
-  // const queryClient = getQueryClient();
-  // const catalogParams = {isParent: true, limit: 'all'};
-
-  // await queryClient.prefetchQuery<any>({
-  //   queryKey: ['/categories/public', catalogParams],
-  //   queryFn: (context) => queryFn<any>(context, catalogParams),
-  // });
-
-  // await queryClient.prefetchQuery({
-  //   queryKey: ['/products/public/group/category'],
-  //   queryFn: (context) => queryFn<any>(context)
-  // })
-
-  // await queryClient.prefetchQuery({
-  //   queryKey: ['/products/public/shuffle'],
-  //   queryFn: (context) => queryFn<any>(context)
-  // })
+  const queryClient = getQueryClient();
+  
+  await queryClient.prefetchQuery<any>({
+    queryKey: ['news'],
+    queryFn: (context) => queryFn<any>(context),
+  });
 
   return (
     <>
-    {/* <HydrationBoundary state={dehydrate(queryClient)}> */}
-     <HomePagae/>
-     {/* </HydrationBoundary> */}
+    <HydrationBoundary state={dehydrate(queryClient)}>
+     <HomePage/>
+     </HydrationBoundary>
     </>
   );
 }

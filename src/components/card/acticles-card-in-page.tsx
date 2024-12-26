@@ -3,6 +3,7 @@ import React from 'react'
 import { LeftIcons } from '../icons';
 import Image from 'next/image';
 import TextParag from '../text';
+import dayjs from 'dayjs';
 
 interface iArticlesCard {
     className?:string;
@@ -33,8 +34,7 @@ interface iArticlesCard {
             {name}
               </TextParag>
               <TextParag className="text-sm font-normal leading-6 text-left flex items-center gap-2" ><span className="bg-[#D5DADD] w-[6px] h-[6px] rounded-full"></span> 
-              {/* {dayjs(e?.created_at).format('YYYY.MM.DD')} */}
-              {date}
+              {dayjs(date).format('YYYY.MM.DD')}
               </TextParag>
             </div>
           </div>
