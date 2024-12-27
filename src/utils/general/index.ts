@@ -7,7 +7,6 @@ interface IHandleLikeProduct {
   onToggleLike: () => void;
 }
 
-
 export const handleLikeProduct = (props: IHandleLikeProduct) => {
   const {onToggleLike, isLiked, productId, userId} = props;
   onToggleLike();
