@@ -33,6 +33,7 @@ export default function OrganizationsCard(
             <Image 
                 src={image}
                 alt='img'
+                className='rounded-full object-cover'
                 width={40}
                 height={40}
                 title='logo'

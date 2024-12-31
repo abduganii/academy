@@ -5,11 +5,14 @@ import { hoc } from '@/utils'
 import { Select, SelectItem } from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+
 import { usePageProps } from './props'
+import Pagination from '@/components/pagination'
 
 export const NewsPage:any = hoc(usePageProps, props => {
-  const {news} = props
+  const { news } = props
   const t = useTranslations()
+
   return (
     <>
     <div className='relative pt-[76px] mb-[60px] w-full h-[372px] flex items-center bg-[#2C2C2C] bg-center bg-no-repeat bg-cover' 
@@ -36,7 +39,7 @@ export const NewsPage:any = hoc(usePageProps, props => {
     </div>
 
     <Container className='flex flex-wrap gap-5  mt-[60px] mb-[80px]'>
-     {news?.map((e:any,index:number)=>( 
+     {news?.data && news?.data?.map((e:any,index:number)=>( 
             <NewsCard
                 link={`/news/${e?.id}`}
                 className={index == 0 || index == 1 ? 'colm1' :'colm2'}
@@ -50,6 +53,7 @@ export const NewsPage:any = hoc(usePageProps, props => {
                 view={e?.views}
             />
       ))}
+        <Pagination pagination={ news?.pagination} />
     </Container>
     </>
   )

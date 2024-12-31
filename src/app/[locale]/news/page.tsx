@@ -3,7 +3,7 @@ import { getQueryClient, queryFn } from '@/utils';
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 import { NewsPage } from '@/view/news';
 
-export default async function News({searchParams: {type }}:any) {
+export default async function News({searchParams: {type ,page}}:any) {
    const queryClient = getQueryClient();
     await queryClient.prefetchQuery<any>({
       queryKey: ['news'],
@@ -11,7 +11,7 @@ export default async function News({searchParams: {type }}:any) {
     });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NewsPage type={type}/>
+      <NewsPage type={type} page={page} />
     </HydrationBoundary>
   )
 }

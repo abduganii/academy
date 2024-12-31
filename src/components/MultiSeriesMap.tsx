@@ -5,12 +5,8 @@ import * as am5map from '@amcharts/amcharts5/map';
 import am5geodata_worldLow from '@amcharts/amcharts5-geodata/worldLow';
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { useRouter } from 'next/navigation';
-type CountryColor = {
-  id: string;
-  color: string;
-};
 
-const ColoredMap: React.FC = () => {
+const ColoredMap: React.FC = ({data}:any) => {
   const chartRef = useRef<HTMLDivElement>(null);
   const router = useRouter()
   useLayoutEffect(() => {
@@ -26,12 +22,6 @@ const ColoredMap: React.FC = () => {
       })
     );
 
-    const countryColors: CountryColor[] = [
-      { id: 'US', color: '#FF6B6B' }, 
-      { id: 'FR', color: '#6BFFB5' },
-      { id: 'UZ', color: '#FFC36B' },
-    ];
-
     const polygonSeries = chart.series.push(
       am5map.MapPolygonSeries.new(root, {
         geoJSON: am5geodata_worldLow,
@@ -46,7 +36,7 @@ const ColoredMap: React.FC = () => {
         <h3 class='mb-[16px] text-[16px] leading-[26px] font-semibold'>{name}</h3>
         <div class="flex items-center justify-between gap-[32px]">
           <p class='mb-[16px] text-[16px] leading-[26px] font-normal'>Основное законодательство</p>
-          <p class='mb-[16px] text-[16px] leading-[26px] font-semibold'>34/100</p>
+          <p class='mb-[16px] text-[16px] leading-[26px] font-semibold'>{id}</p>
         </div>
          <div class="flex items-center justify-between gap-[32px]">
           <p class='mb-[16px] text-[16px] leading-[26px] font-normal'>Основное законодательство</p>
@@ -60,8 +50,8 @@ const ColoredMap: React.FC = () => {
       interactive: true,
     });
 
-    polygonSeries.mapPolygons.template.adapters.add('fill', (fill, target:any) => {
-      const country = countryColors.find((c) => c.id === target.dataItem?.get('id'));
+    polygonSeries.mapPolygons.template.adapters.add('fill', (fill:any, target:any) => {
+      const country = data?.find((c:any) => c.name === target.dataItem?.dataContext?.name);
       return country ? am5.color(country.color) : fill;
     });
 
@@ -70,19 +60,12 @@ const ColoredMap: React.FC = () => {
       strokeWidth: .2,                  
       strokeOpacity: 0.8,               
     });
-    // let previousPolygon: am5map.MapPolygon | undefined;
-
-    polygonSeries.mapPolygons.template.on("active", function (active, target) {
-      console.log(active,target,"sd")
-      router.push('/country-information/1')
-
-      // if (previousPolygon && previousPolygon !== target) {
-      // }
-      // if (target.get("active")) {
-      // } else {
-      //   chart.goHome();
-      // }
-      // previousPolygon = target;
+  
+    polygonSeries.mapPolygons.template.on("active", function (_:any, target:any) {
+      const country = data?.find((c: any) => c.name === target.dataItem?.dataContext?.name);
+      if (country) {
+        router.push(`/country-information/${country?.id}`)
+      }
     });
 
     const zoomControl = chart.set(
@@ -94,10 +77,8 @@ const ColoredMap: React.FC = () => {
     chart.chartContainer.get("background")?.events.on("click", () => {
       chart.goHome();
     });
-
     chart.appear(1000, 100);
    
-
     return () => {
       root.dispose();
     };

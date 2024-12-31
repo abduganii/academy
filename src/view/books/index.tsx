@@ -1,6 +1,7 @@
 'use client'
 import BooksCard from '@/components/card/books-card'
 import Container from '@/components/container'
+import Pagination from '@/components/pagination'
 import { hoc } from '@/utils'
 import { Button} from '@nextui-org/react'
 import { Select, SelectItem } from '@nextui-org/select'
@@ -46,10 +47,10 @@ export const BooksPage:any = hoc(usePageProps, props => {
             </Container>
             <div className='w-full h-[372px] bg-gradient-to-r from-black/90 to-black/30 absolute z-10  top-0 left-0'></div>
       </div>
-      <Container>
-        <div className='flex flex-wrap gap-6'>
+      <Container className='mb-[60px]'>
+        <div className='flex flex-wrap   gap-6'>
             {
-                books?.map((e:any)=>(
+                books?.data?.map((e:any)=>(
                     <BooksCard
                         link={`/books/${e?.id}`}
                         key={e}
@@ -62,11 +63,8 @@ export const BooksPage:any = hoc(usePageProps, props => {
             )
             }
         </div>
-        <div className='text-center mb-[60px] mt-[32px]'>
-            <Button className='bg-black text-white dark:bg-white dark:text-black inline-block w-full max-w-[368px]'>
-            {t('see-all')}
-            </Button>
-        </div>
+        
+        <Pagination pagination={ books?.pagination} />
       </Container>
     </>
   )

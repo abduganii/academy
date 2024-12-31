@@ -2,6 +2,7 @@
 import ArticlesCardPage from '@/components/card/acticles-card-in-page'
 import Container from '@/components/container'
 import { LeftIcons } from '@/components/icons'
+import Pagination from '@/components/pagination'
 import { Link } from '@/i18n/routing'
 import { hoc } from '@/utils'
 import { Select, SelectItem } from '@nextui-org/react'
@@ -41,7 +42,7 @@ export const ArticlesPage:any = hoc(usePageProps, props => {
     <Container className='mt-[60px] mb-[80px]'>
  
        {
-          articles?.length && articles?.map((e:any)=>(
+          articles?.data?.length && articles?.data?.map((e:any)=>(
               <ArticlesCardPage
               className="mb-4"
               link={`/articles/${e?.id}`}
@@ -51,7 +52,8 @@ export const ArticlesPage:any = hoc(usePageProps, props => {
               date={e?.created_at}
           />
           ))
-          }
+              }
+                <Pagination pagination={ articles?.pagination} />
     </Container>
     </>
   )

@@ -3,11 +3,15 @@ import Container from '@/components/container'
 import { SearchIcons } from '@/components/icons'
 import MultiSeriesMap from '@/components/MultiSeriesMap'
 import { Link } from '@/i18n/routing'
+import { hoc } from '@/utils'
 import { Input, Table} from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+import { usePageProps } from './props'
+  
 
-export default function CountryInformationPage() {
+export const CountryInformationPage:any = hoc(usePageProps, props => {
+  const { maps } = props
   const t = useTranslations()
   return (
     <>
@@ -16,7 +20,7 @@ export default function CountryInformationPage() {
         <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left'>{t('country-information')}</h4>
     </Container>
     </div>
-    <MultiSeriesMap/>
+      <MultiSeriesMap data={ maps?.data || []} />
     <Container className='max-w-[956px] mt-[60px] p-[32px] bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] rounded-lg mb-[78px]'>
       <Input
             type="email"
@@ -30,16 +34,18 @@ export default function CountryInformationPage() {
               <p>{t('country')}</p>
               <p>{t('rate')}</p>
             </Link> 
-            <Link href={'/country-information/1'} className='flex items-center justify-between text-[16x] leading-[24px] font-normal pb-[10px] border-b-1 '>
-            <p >Австралия</p>
-            <p className='w-[66px] text-center'>1</p>
-            </Link> 
-            <Link href={'/country-information/1'} className='flex items-center justify-between text-[16x] leading-[24px] font-normal py-[10px] '>
-            <p>Австралия</p>
-            <p className='w-[66px] text-center'>1</p>
-            </Link> 
+         
+            {
+              maps?.data && maps?.data?.map((e:any) => (
+                <Link href={`/country-information/${e?.id}`} className='flex items-center justify-between text-[16x] leading-[24px] font-normal py-[10px] '>
+                  <p>{e?.name}</p>
+                <p className='w-[66px] text-center'>{e?.rating}</p>
+                </Link> 
+              ))
+            }
+           
         </div>
     </Container>
     </>
   )
-}
+})
