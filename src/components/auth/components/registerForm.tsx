@@ -16,7 +16,8 @@ type FormData = {
 export default function RegisterForm({ steComp,setEmail }: iPops) {
     const [isVisible, setIsVisible] = React.useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
-    const [ loading,setloading] = useState(false)
+  const [loading, setloading] = useState(false)
+  console.log(loading)
     const { register,reset, handleSubmit, formState: { errors } } = useForm<FormData>();
     const onSubmit = async (data: FormData) => {
       setloading(true)
@@ -50,7 +51,7 @@ export default function RegisterForm({ steComp,setEmail }: iPops) {
         label='E-mail'
         placeholder='E-mail'
         key="outside"
-        errorMessage={errors?.email?.message}
+        errorMessage={(errors?.email?.message as string) || ""}
         isInvalid={Boolean(errors?.email?.message)}
         labelPlacement={'outside'}
         {...register("email", {
@@ -66,7 +67,7 @@ export default function RegisterForm({ steComp,setEmail }: iPops) {
         type={isVisible ? 'text' : 'password'}
         label='Пароль'
         placeholder="password"
-        errorMessage={errors?.password?.message}
+        errorMessage={(errors?.password?.message as string) ||""}
         isInvalid={Boolean(errors?.password?.message)}
         key="outside"
         endContent={
@@ -89,7 +90,7 @@ export default function RegisterForm({ steComp,setEmail }: iPops) {
           }
         )}
       />
-      <Button loading={loading} className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' type={"submit"}>
+      <Button  className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' type={"submit"}>
       Зарегистрироваться
       </Button>
       <p className='text-[16px] font-normal mt-[25px] leading-[26px] text-[#6E6E6E]'>У вас уже есть аккаунт? <span onClick={()=>steComp(6)} className='text-[#2962FF] cursor-pointer'>Авторизоваться</span></p>

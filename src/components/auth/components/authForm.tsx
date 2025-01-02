@@ -19,7 +19,8 @@ export default function AuthForm({ steComp, setEmail }: iPops) {
   const dispatch = useAppDispatch();
   const [isVisible, setIsVisible] = React.useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
-  const [ loading,setloading] = useState(false)
+  const [loading, setloading] = useState(false)
+  console.log(loading)
   const { register,reset, handleSubmit, formState: { errors } } = useForm<FormData>();
   const onSubmit = async (data: FormData) => {
     setloading(true)
@@ -57,7 +58,7 @@ export default function AuthForm({ steComp, setEmail }: iPops) {
         label='E-mail'
         placeholder='E-mail'
         key="outside"
-        errorMessage={errors?.email?.message}
+        errorMessage={(errors?.email?.message as string) || ""}
         isInvalid={Boolean(errors?.email?.message)}
         labelPlacement={'outside'}
         {...register("email", {
@@ -73,7 +74,7 @@ export default function AuthForm({ steComp, setEmail }: iPops) {
         type={isVisible ? 'text' : 'password'}
         label='Пароль'
         placeholder="password"
-        errorMessage={errors?.password?.message}
+        errorMessage={(errors?.password?.message as string)||""}
         isInvalid={Boolean(errors?.password?.message)}
         key="outside"
         endContent={
@@ -99,7 +100,7 @@ export default function AuthForm({ steComp, setEmail }: iPops) {
       <div className='flex items-right'>
       <p className='text-end text-[13px] inline-block ml-auto font-normol underline leading-[26px]  cursor-pointer' onClick={()=>steComp(10)}>Забыли пароль?</p>
       </div>
-  <Button loading={loading} className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' type={'submit'}>
+  <Button  className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' type={'submit'}>
     Войти
   </Button>
   <p className='text-[16px] font-normal mt-[25px] leading-[26px] text-[#6E6E6E]'>У вас нет аккаунта? <span onClick={()=>steComp(1)} className='text-[#2962FF] cursor-pointer'>Регистрация</span></p>

@@ -9,7 +9,7 @@ import React, { useEffect } from "react";
 import { usePageProps } from "./props/index";
 
 export const BaseLayout:any = hoc(usePageProps, props => {
-  const { me, children } = props
+  const { me, children }:any = props
   const pathName = usePathname()
   const dispatch = useAppDispatch()
 

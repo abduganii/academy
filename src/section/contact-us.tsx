@@ -21,6 +21,7 @@ type FormData = {
 export default function ContactUsForm() {
   const t = useTranslations()
   const [ loading,setloading] = useState(false)
+  console.log(loading)
   const { register,reset, handleSubmit, formState: { errors } } = useForm<FormData>();
   const onSubmit = async (data: FormData) => {
     setloading(true)
@@ -109,7 +110,7 @@ export default function ContactUsForm() {
         label="Описание" 
         {...register('message', { required: 'message is required' })}
       />
-       <Button type='submit' isLoading={loading} size="lg" className='colm1 dark:text-black'>
+       <Button type='submit'  size="lg" className='colm1 dark:text-black'>
         {t('send')}
        </Button>
       </div>

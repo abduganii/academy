@@ -15,7 +15,8 @@ export default function ForgetFrom({
     withCode,
 }:iPops) {
    
-    const [ loading,setloading] = useState(false)
+    const [loading, setloading] = useState(false)
+    console.log(loading)
     const { register,reset, handleSubmit, formState: { errors } } = useForm<any>();
     const onSubmit = async (data: any) => {
         setloading(true)
@@ -58,7 +59,7 @@ export default function ForgetFrom({
             label='E-mail'
             placeholder='E-mail'
             key="outside"
-            errorMessage={errors?.email?.message}
+            errorMessage={(errors?.email?.message as string) || ""}
             isInvalid={Boolean(errors?.email?.message)}
             labelPlacement={'outside'}
             {...register("email", {
@@ -75,7 +76,7 @@ export default function ForgetFrom({
                 type={"number"}
                 label='Пароль'
                 placeholder="code"
-                errorMessage={errors?.code?.message}
+                errorMessage={(errors?.code?.message as string)||""}
                 isInvalid={Boolean(errors?.code?.message)}
                 key="outside"
                 labelPlacement={'outside'}
@@ -92,10 +93,10 @@ export default function ForgetFrom({
         </>
         }
           <Button
-            loading={loading}
+            
             className='w-full bg-[#2962FF] text-white  rounded-lg'
             size='md'
-            type={'sumbit'}
+            type={'submit'}
           >
          Войти
         </Button>

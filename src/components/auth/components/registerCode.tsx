@@ -14,7 +14,8 @@ interface iPops {
 }
 export default function RegisterCode({ steComp, email }: iPops) {
   const dispatch = useAppDispatch();
-    const [ loading,setloading] = useState(false)
+  const [loading, setloading] = useState(false)
+  console.log(loading)
     const { register,reset, handleSubmit, formState: { errors } } = useForm<any>();
     const onSubmit = async (data: any) => {
       setloading(true)
@@ -54,7 +55,7 @@ export default function RegisterCode({ steComp, email }: iPops) {
             placeholder="Введите код"
             key="outside" 
               labelPlacement={'outside'}
-              errorMessage={errors?.password?.message}
+              errorMessage={(errors?.password?.message as string)||""}
               isInvalid={Boolean(errors?.password?.message)}
             {...register('code',
             {
@@ -66,7 +67,7 @@ export default function RegisterCode({ steComp, email }: iPops) {
             }
             )}
             />
-        <Button type={"submit"} loading={loading} className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' >
+        <Button type={"submit"}  className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' >
         Зарегистрироваться
         </Button>
     </form>
