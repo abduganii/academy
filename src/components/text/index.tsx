@@ -10,7 +10,7 @@ interface Iprops {
 }
 
 export default function TextParag({children,type,className, font,line}:Iprops) {
-    const {fontSize} = useAppSelector(store => store.fontSize);
+  const { fontSize } = useAppSelector(store => store.fontSize);
   return (
     <>
       {

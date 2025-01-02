@@ -1,26 +1,22 @@
-import {IProduct} from "@/types/product";
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IInitialState {
-    fontSize: Set<string>;
+  fontSize: Set<string>;
 }
 
 const initialState: IInitialState = {
-    fontSize: new Set(),
+  fontSize: new Set(),
 };
 
 const fontSizeSlice = createSlice({
   name: "fontSize",
   initialState,
   reducers: {
-    changeLike: (state, action: PayloadAction<any>) => {
-        state.fontSize = action.payload;
+    changeLike: (state: any, action: PayloadAction<any>) => {
+      state.fontSize = action.payload;
     },
   },
 });
 
-export const {changeLike} = fontSizeSlice.actions;
+export const { changeLike } = fontSizeSlice.actions;
 export default fontSizeSlice.reducer;
-
-
-

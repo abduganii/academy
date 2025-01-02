@@ -7,12 +7,12 @@ interface IUseFetchData<T> extends IFetchingProps {
 }
 
 export const useFetchData = <T>(props: IUseFetchData<T>) => {
-  const { url, params, initialData, enabled = true } = props;
+  const { url, params, initialData, enabled = true }: any = props;
   const queryKey: QueryKey = params ? [url, params] : [url];
   return useQuery<T>({
     enabled,
     queryKey,
     initialData,
-    queryFn: (context) => queryFn<T>(context, params),
+    queryFn: (context: any) => queryFn<T>(context, params),
   });
 };

@@ -1,35 +1,39 @@
-import Script from "next/script";
 import { Inter } from "next/font/google";
 import { getMessages, setRequestLocale} from "next-intl/server";
 import { Providers } from "@/providers";
-import { IChildren, IParams } from "@/types";
 import NextTopLoader from 'nextjs-toploader';
 
 import "@/styles/globals.scss";
 import { notFound } from "next/navigation";
-import BaseLayout from "@/layout/BaseLayout";
+import {BaseLayout} from "@/layout/BaseLayout";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider } from "next-intl";
 
+import {getQueryClient, queryFn} from "@/utils";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+
 const inter = Inter({ subsets: ["latin"] });
 
-interface IRootLayout extends IChildren {
-  params: IParams;
-}
-
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({locale}));
+  return routing.locales.map((locale:any) => ({locale}));
 }
 
 export default async function RootLayout({
   children,
   params: { locale },
-}: Readonly<IRootLayout>) {
+}: any) {
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
   setRequestLocale(locale);
   const messages = await getMessages();
+  const queryClient = getQueryClient();
+
+  await queryClient.prefetchQuery<any>({
+    queryKey: ['news'],
+    queryFn: (context:any) => queryFn<any>(context),
+  });
+
   return (
     <html lang={locale}>
       <body className={inter.className}>
@@ -46,7 +50,9 @@ export default async function RootLayout({
       />
       <NextIntlClientProvider  messages={messages}>
           <Providers>
+            <HydrationBoundary state={dehydrate(queryClient)}>
             <BaseLayout>{children}</BaseLayout>
+          </HydrationBoundary>
           </Providers> 
       </NextIntlClientProvider>
       </body>

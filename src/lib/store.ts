@@ -1,16 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { todoReducer } from './features'
+import { configureStore } from "@reduxjs/toolkit";
+import { tokenReducer, todoReducer, userMeReducer } from "./features";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-        fontSize:todoReducer
-    }
-  })
-}
+      fontSize: todoReducer,
+      token: tokenReducer,
+      userMe: userMeReducer,
+    },
+  });
+};
 
-// Infer the type of makeStore
-export type AppStore = ReturnType<typeof makeStore>
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<AppStore['getState']>
-export type AppDispatch = AppStore['dispatch']
+export type AppStore = ReturnType<typeof makeStore>;
+
+export type RootState = ReturnType<AppStore["getState"]>;
+export type AppDispatch = AppStore["dispatch"];

@@ -18,7 +18,7 @@ export default function Footer() {
                   <h4 className="font-inter text-[16px] font-semibold leading-[26px] ">{e?.text}</h4>
                   {
                     e?.child?.map((el)=>(
-                      <p className="mt-1 font-inter text-[14px] font-normal leading-[24px] text-left" key={e?.id}>{el?.text}</p>
+                      <p className="mt-1 font-inter text-[14px] font-normal leading-[24px] text-left" key={el?.id}>{el?.text}</p>
                     ))
                   }
                 </div>

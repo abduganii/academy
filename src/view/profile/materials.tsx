@@ -20,7 +20,7 @@ export default function MaterialsPage() {
         {(item) => (
           <Tab key={item.id}  title={item.label}>
             {
-                item?.id == "articles"?
+                item?.id == "articles" ?
                 <>
                        { [1,2,3,4,5].map((e)=>( 
                             <ArticlesCardPage
@@ -34,17 +34,6 @@ export default function MaterialsPage() {
                         ))}
                 </>:
                 <>
-                { [1,2,3,4,5].map((e)=>( 
-                     <ArticlesCardPage
-                        image='/books.png'
-                         className="mb-4"
-                         key={e}
-                         title='Вниманию кандидатов, рекомендованных к обучению в магистратуру'
-                         link={`/articles/${e}`}
-                         name=' Т. Усмонов'
-                         date=' 22.02.2024'
-                     />
-                 ))}
             </>
             }
           </Tab>

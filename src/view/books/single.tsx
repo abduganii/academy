@@ -17,7 +17,6 @@ import dayjs from 'dayjs'
 
   export const BookByIdPage:any = hoc(usePageIdProps, props => {
     const {oneBooks} = props
-    console.log(oneBooks)
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const router = useRouter()
     const t = useTranslations()

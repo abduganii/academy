@@ -14,7 +14,7 @@ export default function OurCourseSection() {
             <div className='overflow-y-scroll h-full rounded-lg pr-[10px] myScroll'>
                {
                 [1,2,3,4,5,6,7,8].map((e)=>(
-                    <div onClick={()=>setOpen(state => state == e ? false : e)} className='py-[23px] cursor-pointer px-[12px] bg-[#FFFFFF] rounded-lg mb-[13px]' key={e}>
+                    <div key={e} onClick={()=>setOpen(state => state == e ? false : e)} className='py-[23px] cursor-pointer px-[12px] bg-[#FFFFFF] rounded-lg mb-[13px]' >
                              <div className='flex items-center gap-[12px]'>
                              <StarIcons/>
                         <h3 className='text-[16px] font-semibold leading-[26px]'>Think and Grow Rich Every Day</h3>

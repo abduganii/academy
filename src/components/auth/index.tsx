@@ -14,7 +14,8 @@ interface iProps {
     onClose?: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export default function AuthModal({close}:any) {
+export default function AuthModal({ close }: any) {
+    const [email,setEmail]= useState()
     const compArr: Array<{ id: number; comp: (props: iProps) => JSX.Element }> = [
        {
            id: 1,
@@ -22,11 +23,11 @@ export default function AuthModal({close}:any) {
        },
        {
         id: 2,
-        comp: ({ steComp }: iProps) => <RegisterForm steComp={steComp} />
+        comp: ({ steComp }: iProps) => <RegisterForm steComp={steComp} setEmail={setEmail} />
     },
     {
         id: 3,
-        comp: ({ steComp }: iProps) => <RegisterCode steComp={steComp} />
+        comp: ({ steComp }: iProps) => <RegisterCode steComp={steComp} email={email} />
     },
     {
         id: 4,
@@ -34,7 +35,7 @@ export default function AuthModal({close}:any) {
     },
     {
         id: 5,
-        comp: ({ onClose }: iProps) => <SeccesAuth text={"Вы успешно зарегистрированы на сайт по почте nazvaniepochti@mail.com"} onClose={onClose} />
+        comp: ({ onClose }: iProps) => <SeccesAuth text={`Вы успешно зарегистрированы на сайт по почте ${email}`} onClose={onClose} />
     },
 
        {
@@ -43,7 +44,7 @@ export default function AuthModal({close}:any) {
     },
     {
         id: 7,
-        comp: ({ steComp }: iProps) => <AuthForm steComp={steComp} />
+        comp: ({ steComp }: iProps) => <AuthForm steComp={steComp} setEmail={setEmail}/>
     },
     {
         id: 8,
@@ -51,7 +52,7 @@ export default function AuthModal({close}:any) {
     },
     {
         id: 9,
-        comp: ({ onClose }: iProps) => <SeccesAuth text={"Вы успешно aвторизованы  на сайт по почте nazvaniepochti@mail.com"} onClose={onClose} />
+        comp: ({ onClose }: iProps) => <SeccesAuth text={`Вы успешно aвторизованы  на сайт по почте ${email}`} onClose={onClose} />
     },
     {
         id: 10,
@@ -64,6 +65,7 @@ export default function AuthModal({close}:any) {
     ];
 
     const [comp, steComp] = useState<number>(1);
+  
     return (
         <ModalContent className="bg-[#fff] max-w-[433px] py-[25px] px-[32px]">
               {(onClose) => (

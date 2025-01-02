@@ -4,7 +4,7 @@ import { SearchIcons } from '@/components/icons'
 import MultiSeriesMap from '@/components/MultiSeriesMap'
 import { Link } from '@/i18n/routing'
 import { hoc } from '@/utils'
-import { Input, Table} from '@nextui-org/react'
+import { Input} from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { usePageProps } from './props'
@@ -34,10 +34,9 @@ export const CountryInformationPage:any = hoc(usePageProps, props => {
               <p>{t('country')}</p>
               <p>{t('rate')}</p>
             </Link> 
-         
-            {
-              maps?.data && maps?.data?.map((e:any) => (
-                <Link href={`/country-information/${e?.id}`} className='flex items-center justify-between text-[16x] leading-[24px] font-normal py-[10px] '>
+            
+          {maps?.data && maps?.data?.map((e: any) => (
+                <Link key={e?.id} href={`/country-information/${e?.id}`} className='flex items-center justify-between text-[16x] leading-[24px] font-normal py-[10px] '>
                   <p>{e?.name}</p>
                 <p className='w-[66px] text-center'>{e?.rating}</p>
                 </Link> 

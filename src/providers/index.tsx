@@ -13,12 +13,10 @@ interface IProvider {
 }
 
 export const Providers: FC<IProvider> = ({ children }) => {
-	// const locale = useLocale();
 	 const locale = 'ru'
 	const queryClient = getQueryClient();
 	const storeRef = useRef<AppStore>()
 	if (!storeRef.current) {
-	  // Create the store instance the first time this renders
 	  storeRef.current = makeStore()
 	}
 	return (

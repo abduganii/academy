@@ -19,7 +19,7 @@ import dayjs from 'dayjs'
         width={950}
         height={520}
       />}
-    <div className="w-full m-auto md:max-w-[760px]">
+     <div className="w-full m-auto md:max-w-[760px]">
 
       <TextParag className="font-normal text-left flex items-center text-[#5B6871] dark:text-white mb-4">
         {dayjs(oneNews?.publishStartTime).format('YYYY.MM.DD')}

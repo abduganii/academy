@@ -53,7 +53,7 @@ export const BooksPage:any = hoc(usePageProps, props => {
                 books?.data?.map((e:any)=>(
                     <BooksCard
                         link={`/books/${e?.id}`}
-                        key={e}
+                        key={e?.id}
                         className='colm3'
                         image={`${process.env.NEXT_PUBLIC_BASE_URL}${e?.image?.path}`}
                         title={e?.name}

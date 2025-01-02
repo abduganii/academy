@@ -23,7 +23,6 @@ const useDarkMode = ():any => {
   }, [theme]);
 
   const ChangeDarkMode = (value:string) => {
-    console.log('ds')
     setTheme(value);
   };
 
@@ -35,7 +34,6 @@ export default function HeaderCongif() {
   const {fontSize} = useAppSelector(store => store.fontSize);
     const dispatch = useAppDispatch();
     const [theme, ChangeDarkMode] = useDarkMode();
-    console.log(ChangeDarkMode)
 
     const ChangeLikeFunc = (e:number)=>{
       dispatch(changeLike(e));

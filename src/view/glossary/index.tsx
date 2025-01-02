@@ -27,8 +27,8 @@ export default function GlossaryPage() {
         <div className='flex gap-3 flex-wrap mb-[34px]'>
             <p  onClick={()=>setSelect('all')} className={` ${select == "all" ?'bg-[#09608E] border-[#09608E] text-white' :"border border-[#BDBDBD]"} border cursor-pointer rounded-full py-[8px] px-[25px]`}>{t('all')}</p>
            {
-            AlphabetsArray?.ru?.map(e=>(
-              <p  onClick={()=>setSelect(e)}  className={` ${select == e ?'bg-[#09608E] border-[#09608E] text-white' :"border border-[#BDBDBD]"} border rounded-full w-[40px] h-[40px] cursor-pointer flex items-center justify-center`}>{e}</p>
+            AlphabetsArray?.ru?.map((e,i)=>(
+              <p  key={i} onClick={()=>setSelect(e)}  className={` ${select == e ?'bg-[#09608E] border-[#09608E] text-white' :"border border-[#BDBDBD]"} border rounded-full w-[40px] h-[40px] cursor-pointer flex items-center justify-center`}>{e}</p>
             ))
            }
         </div>

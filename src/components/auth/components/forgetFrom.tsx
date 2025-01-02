@@ -1,19 +1,49 @@
 "use client"
 import {  EyeFilledIcon, EyeSlashFilledIcon, SwiperRightIcons } from '@/components/icons';
 import { Button, Input } from '@nextui-org/react'
-import React from 'react'
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form';
+import { mutationFn } from '@/utils';
+import toast from 'react-hot-toast';
 interface iPops {
     steComp : any
     withCode? :boolean
 }
+
 export default function ForgetFrom({
     steComp,
     withCode,
 }:iPops) {
-    const [isVisible, setIsVisible] = React.useState(false);
-    const toggleVisibility = () => setIsVisible(!isVisible);
+   
+    const [ loading,setloading] = useState(false)
+    const { register,reset, handleSubmit, formState: { errors } } = useForm<any>();
+    const onSubmit = async (data: any) => {
+        setloading(true)
+        let costomData = data
+        costomData.code = Number(data?.code)
+      mutationFn({
+          url:withCode ? '/auth/recover/verify': '/auth/recover',
+          method: "POST",
+          data: costomData
+        })
+        .then((res:any) => {
+            if (withCode) {    
+                steComp(7)
+                toast.success('Login has been seccefully');
+                reset()
+            } else {
+                steComp(11) 
+                toast.success(res?.data?.message);
+            }
+        
+        })
+        .catch((error: any) => {
+          toast.error(error?.response?.data?.message);
+        })
+        .finally(() => setloading(false) )
+    };
   return (
-    <div >
+    <form onSubmit={handleSubmit(onSubmit)}>
         <div className='flex items-start mb-[54px]'>
            <div onClick={()=>steComp(7)} className='cursor-pointer'>
             <SwiperRightIcons/>
@@ -22,25 +52,53 @@ export default function ForgetFrom({
                 <p className='pb-1 text-[24px] font-semibold leading-[32px] '>Забыли пароль</p>
             </div>
         </div>
-        <Input className='mb-[46px]'  label='E-mail' placeholder='E-mail' key="outside" labelPlacement={'outside'}/>
+        <Input
+            type="email"
+            className='mb-[46px] text-left'
+            label='E-mail'
+            placeholder='E-mail'
+            key="outside"
+            errorMessage={errors?.email?.message}
+            isInvalid={Boolean(errors?.email?.message)}
+            labelPlacement={'outside'}
+            {...register("email", {
+            required: "Email is required",
+            pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Invalid email address",
+            },
+            })}
+        />
         {withCode && <>
-            <Input className='mb-[31px] text-left' type='password'  label='код' placeholder="Введите код"
-           key="outside
-           " endContent={
-               <button className="focus:outline-none" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
-               {isVisible ? (
-                   <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-               ) : (
-                   <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-               )}
-               </button>
-           }
-           labelPlacement={'outside'}/>
+            <Input
+                className='mb-4 text-left'
+                type={"number"}
+                label='Пароль'
+                placeholder="code"
+                errorMessage={errors?.code?.message}
+                isInvalid={Boolean(errors?.code?.message)}
+                key="outside"
+                labelPlacement={'outside'}
+                {...register('code',
+                {
+                    required: 'code is required',
+                    minLength: {
+                    value: 6,
+                    message: "code must be at least 6 characters",
+                    }
+                }
+                )}
+            />
         </>
         }
-        <Button className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' onPress={()=>steComp(withCode?  9 : 11)}>
-        Войти
+          <Button
+            loading={loading}
+            className='w-full bg-[#2962FF] text-white  rounded-lg'
+            size='md'
+            type={'sumbit'}
+          >
+         Войти
         </Button>
-</div>
+    </form>
   )
 }

@@ -10,7 +10,6 @@ import { usePageIdProps } from './props/index'
 
 export const CountryInformationSinglePage:any = hoc(usePageIdProps, props => {
     const { legislations, anti_corruptions, international_cooperations, indexes, national_cooperations } = props
-    console.log(legislations,anti_corruptions,international_cooperations,indexes,national_cooperations)
     const [open,setOpen] = useState<boolean | string | number>(false)
     const [open1,setOpen1] = useState<any>(international_cooperations?.[0])
     const t = useTranslations()
@@ -78,8 +77,8 @@ export const CountryInformationSinglePage:any = hoc(usePageIdProps, props => {
 
         <h4 className='text-[32px] font-semibold leading-[46px] mt-[50px] mb-[16px]'>Индексы</h4>
         <div className='flex flex-wrap gap-4 mb-[68px]'>
-        {indexes?.length && indexes?.map((e)=>( 
-            <div className='colm1 p-5 rounded-lg bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] '>
+        {indexes?.length && indexes?.map((e:any)=>( 
+            <div key={e?.id} className='colm1 p-5 rounded-lg bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] '>
                 <h4 className='font-inter text-[20px] font-semibold leading-[24px] text-left mb-[12px]'>{ e?.title}</h4>
                 <div className='flex'>
                     <div className='w-full'>

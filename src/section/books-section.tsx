@@ -17,7 +17,7 @@ export default function BooksSection({books,type}:any) {
                  books?.map((e:any)=>(
                     <BooksCard
                         link={`/books/${e?.id}`}
-                        key={e}
+                        key={e?.id}
                         image={`${process.env.NEXT_PUBLIC_BASE_URL}${e?.image?.path}`}
                         title={e?.name}
                         price={`${e?.price} som`}

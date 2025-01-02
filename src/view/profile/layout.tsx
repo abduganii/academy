@@ -1,16 +1,26 @@
 "use client"
 import Container from '@/components/container'
 import { IChildren } from '@/types'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ProfileLayoutArr } from '../../../musk/data'
 import { usePathname, useRouter } from 'next/navigation'
 import { LogoutIcons } from '@/components/icons'
 import { Link } from '@/i18n/routing'
+import { useAppSelector } from '@/lib/hooks'
+import Cookies from 'js-cookie';
 
 export default function ProfileLayout({children}:IChildren) {
    const pathName = usePathname()
     const router = useRouter()
-    const value:any = ProfileLayoutArr?.find(e=>pathName.includes(e?.link))
+    const value: any = ProfileLayoutArr?.find(e => pathName.includes(e?.link))
+    const { userMe } = useAppSelector((store: any) => store.userMe);
+    console.log(userMe,"ds")
+    useEffect(() => {
+        if (!Cookies.get('tokenAcadamySite')) {
+            router.push('/') 
+        }
+   },[])
+    
    return (
     <Container className='py-[140px]'>
         <h3 className='mb-[26px] text-[32px] font-semibold leading-[46px]'>

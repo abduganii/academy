@@ -17,7 +17,8 @@ export default function VideoMaterialPage() {
 
     <Container className='flex flex-wrap gap-3 mb-[70px] py-[48px] bg-[#F9F9F9] dark:bg-black'>
      { [1,2,3,4,5,].map((e)=>( 
-            <VideoMaterialsCard
+       <VideoMaterialsCard
+         key={e}
               link={`/video-materials/${e}`}
             className='colm4'
                 image='/vidoe.png'

@@ -1,19 +1,22 @@
 'use client'
+import { Avatar } from '@nextui-org/react'
 import Image from "next/image";
 import Container from "../container";
 import { BurgerIcons, HendmenIcons, SearchIcons, XIcons } from "../icons";
 import Link from "next/link";
-import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input, Modal, Popover, PopoverContent, PopoverTrigger, Select, SelectItem, useDisclosure } from "@nextui-org/react";
+import { Button, Input, Modal, Popover, PopoverContent, PopoverTrigger, Select, SelectItem, useDisclosure } from "@nextui-org/react";
 import Lang from "../lang";
 import AuthMadal from "../auth";
 import { useState } from "react";
 import { HeaderSiteBarrArr } from "../../../musk/data";
 import HeaderCongif from "./congif";
+import { useRouter } from 'next/navigation';
 
-export default function Header() {
+export default function Header({ user }: any) {
+  const router = useRouter()
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [openSiteBar,setOpenSiteBar] = useState(false)
-  const [openSearch,setOpenSearch] = useState(false)
+  const [openSearch, setOpenSearch] = useState(false)
 
     return (
       <header className="w-full fixed  border-black border-b z-40 py-4 bg-[#01263A] text-white">
@@ -42,10 +45,17 @@ export default function Header() {
               }}>
               <SearchIcons/>
             </span>
-            <Lang/>
+          <Lang />
+          {
+            user ?
+              <>
+                <Avatar onClick={()=>router.push('/profile/information')}  className="cursor-pointer" size='md'  name={user?.firstName }/> 
+              </>
+              :
             <Button onPress={onOpen} className="font-inter dark:text-black text-[14px] font-semibold leading-[24px] " color="default" radius="sm">
                Регистрация
             </Button>
+          }
         </Container>
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
           <AuthMadal />
