@@ -30,7 +30,7 @@ export default async function RootLayout({
   const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery<any>({
-    queryKey: ['news'],
+    queryKey: ['auth/me'],
     queryFn: (context:any) => queryFn<any>(context),
   });
 

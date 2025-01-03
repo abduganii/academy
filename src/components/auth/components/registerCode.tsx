@@ -15,7 +15,6 @@ interface iPops {
 export default function RegisterCode({ steComp, email }: iPops) {
   const dispatch = useAppDispatch();
   const [loading, setloading] = useState(false)
-  console.log(loading)
     const { register,reset, handleSubmit, formState: { errors } } = useForm<any>();
     const onSubmit = async (data: any) => {
       setloading(true)

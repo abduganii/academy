@@ -29,7 +29,7 @@ export const queryBuilder = (url: string, config: TObject): string => {
 export const queryFn = async <T>(
   context: QueryFunctionContext,
   params: TObject = {}
-): Promise<T> => {
+): Promise<any> => {
   const { queryKey, signal } = context;
   const url = queryBuilder(queryKey[0] as string, params);
   try {

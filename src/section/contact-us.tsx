@@ -21,7 +21,6 @@ type FormData = {
 export default function ContactUsForm() {
   const t = useTranslations()
   const [ loading,setloading] = useState(false)
-  console.log(loading)
   const { register,reset, handleSubmit, formState: { errors } } = useForm<FormData>();
   const onSubmit = async (data: FormData) => {
     setloading(true)

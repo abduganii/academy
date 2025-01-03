@@ -16,7 +16,6 @@ export default function ForgetFrom({
 }:iPops) {
    
     const [loading, setloading] = useState(false)
-    console.log(loading)
     const { register,reset, handleSubmit, formState: { errors } } = useForm<any>();
     const onSubmit = async (data: any) => {
         setloading(true)

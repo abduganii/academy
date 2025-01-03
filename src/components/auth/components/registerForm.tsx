@@ -17,7 +17,6 @@ export default function RegisterForm({ steComp,setEmail }: iPops) {
     const [isVisible, setIsVisible] = React.useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
   const [loading, setloading] = useState(false)
-  console.log(loading)
     const { register,reset, handleSubmit, formState: { errors } } = useForm<FormData>();
     const onSubmit = async (data: FormData) => {
       setloading(true)

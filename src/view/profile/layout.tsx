@@ -6,19 +6,15 @@ import { ProfileLayoutArr } from '../../../musk/data'
 import { usePathname, useRouter } from 'next/navigation'
 import { LogoutIcons } from '@/components/icons'
 import { Link } from '@/i18n/routing'
-import { useAppSelector } from '@/lib/hooks'
-import Cookies from 'js-cookie';
+import { useQueryClient } from '@tanstack/react-query'
 
 export default function ProfileLayout({children}:IChildren) {
    const pathName = usePathname()
     const router = useRouter()
     const value: any = ProfileLayoutArr?.find(e => pathName.includes(e?.link))
-    const { userMe } = useAppSelector((store: any) => store.userMe);
-    console.log(userMe,"ds")
+    const queryClient = useQueryClient();
     useEffect(() => {
-        if (!Cookies.get('tokenAcadamySite')) {
-            router.push('/') 
-        }
+        queryClient.invalidateQueries(['user/me'])
    },[])
     
    return (
