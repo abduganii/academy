@@ -12,7 +12,7 @@ export default function ProfileLayout({children}:IChildren) {
    const pathName = usePathname()
     const router = useRouter()
     const value: any = ProfileLayoutArr?.find(e => pathName.includes(e?.link))
-    const queryClient = useQueryClient();
+    const queryClient:any = useQueryClient();
     useEffect(() => {
         queryClient.invalidateQueries(['user/me'])
    },[])

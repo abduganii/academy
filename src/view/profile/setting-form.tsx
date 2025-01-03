@@ -24,7 +24,7 @@ export default function SettingForm() {
       const { userMe } = useAppSelector((store: any) => store.userMe);
     const { register,setValue, handleSubmit,watch, formState: { errors } } = useForm<FormData>();
     const watchedFiles = watch();
-    const queryClient = useQueryClient();
+    const queryClient:any = useQueryClient();
     useEffect(()=>{
       setValue('firstName',userMe?.data?.firstName)
       setValue('lastName',userMe?.data?.lastName)

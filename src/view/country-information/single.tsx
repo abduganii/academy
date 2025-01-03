@@ -49,10 +49,10 @@ export const CountryInformationSinglePage:any = hoc(usePageIdProps, props => {
     <TextParag type='title' font={32} line={46} className='font-semibold mb-[16px]'>Международное сотрудничество</TextParag>
         <div className='flex gap-5'>
             <div className='w-full'>
-            { international_cooperations?.length && international_cooperations?.map((e)=>( 
+            { international_cooperations?.length && international_cooperations?.map((e:any)=>( 
                     <div 
                     key={e?.id}
-                      onClick={()=>setOpen1(state=> state?.id == e?.id ? false : e)}
+                      onClick={()=>setOpen1((state:any)=> state?.id == e?.id ? false : e)}
                      className={`${open1?.id == e?.id ? 'border border-black':' border-[#F5F5F5]'} dark:bg-[#27272A] dark:text-[#FFFFFF]  flex items-center cursor-pointer gap-3 w-full mb-[16px] px-4 py-3 rounded-lg bg-[#F5F5F5]`}>
                         <Image
                             src={`${process.env.NEXT_PUBLIC_BASE_URL}${e?.logo?.path}`}

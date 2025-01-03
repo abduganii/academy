@@ -20,7 +20,7 @@ export const CountryInformationPage:any = hoc(usePageProps, props => {
         <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left'>{t('country-information')}</h4>
     </Container>
     </div>
-      <MultiSeriesMap data={ maps?.data || []} />
+      {/* <MultiSeriesMap data={maps?.data} /> */}
     <Container className='max-w-[956px] mt-[60px] p-[32px] bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] rounded-lg mb-[78px]'>
       <Input
             type="email"
