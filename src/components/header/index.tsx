@@ -3,14 +3,13 @@ import { Avatar } from '@nextui-org/react'
 import Image from "next/image";
 import Container from "../container";
 import { BurgerIcons, HendmenIcons, SearchIcons, XIcons } from "../icons";
-import Link from "next/link";
+import { Link ,useRouter} from "@/i18n/routing";
 import { Button, Input, Modal, Popover, PopoverContent, PopoverTrigger, Select, SelectItem, useDisclosure } from "@nextui-org/react";
 import Lang from "../lang";
 import AuthMadal from "../auth";
 import { useState } from "react";
 import { HeaderSiteBarrArr } from "../../../musk/data";
 import HeaderCongif from "./congif";
-import { useRouter } from 'next/navigation';
 
 export default function Header({ user }: any) {
   const router = useRouter()

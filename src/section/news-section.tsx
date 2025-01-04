@@ -6,7 +6,7 @@ import { Button, Modal, ModalBody, ModalContent, useDisclosure } from '@nextui-o
 import NewsCard from '@/components/card/news-card';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/routing';
 
 export default function NewsSection({type,news,Isgrey}:any) {
   const t = useTranslations()

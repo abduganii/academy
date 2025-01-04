@@ -41,8 +41,8 @@ export default function ProfileLayout({children}:IChildren) {
                         url: '/watchers/live/kill',
                         method: "PATCH",
                     })
-                     Cookies.remove("tokenAcadamySite");
-                     queryClient.invalidateQueries(['user/me'])
+                    //  Cookies.remove("tokenAcadamySite");
+                    //  queryClient.invalidateQueries(['user/me'])
                     }} className={`cursor-pointer mb-[4px] text-[#252C32] w-full flex items-center gap-3 p-[12px] rounded-lg text-[16px] font-normal leading-[26px]`}>
                     <span>
                     <LogoutIcons/>

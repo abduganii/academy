@@ -3,7 +3,7 @@ import BooksCard from '@/components/card/books-card'
 import SwiperWithScrollIcons from '@/components/swiper'
 import { Button } from '@nextui-org/react'
 import { useLocale, useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/routing';
 import React from 'react'
 
 export default function BooksSection({books,type}:any) {

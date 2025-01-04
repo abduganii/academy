@@ -9,7 +9,7 @@ import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Progr
 import { useTranslations } from 'next-intl'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/routing';
 import React, { useState } from 'react'
 import { hoc, mutationFn } from '@/utils'
 import { usePageIdProps } from './props'
@@ -17,6 +17,7 @@ import dayjs from 'dayjs'
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form'
 import { useQueryClient } from '@tanstack/react-query'
+
   export const BookByIdPage:any = hoc(usePageIdProps, props => {
     const {oneBooks,comments,books} = props
     const queryClient:any = useQueryClient();
@@ -78,7 +79,6 @@ import { useQueryClient } from '@tanstack/react-query'
                 <div className='flex gap-2 mt-4 mb-6'>
                   {
                     oneBooks?.tags?.map((e:any)=>(
-
                       <p key={e?.id} className='py-[2px] px-[12px] bg-[#0000000D] text-[#5B6871] rounded-lg text-[14px] font-normal leading-[24px]'>{e?.name}</p>
                     ))
                   }
@@ -97,11 +97,26 @@ import { useQueryClient } from '@tanstack/react-query'
                 <span className='font-semibold underline decoration-solid text-[#2D2D2D] dark:text-white  ml-1 cursor-pointer'>{t('more')}</span>
             </TextParag>
             <div className='flex items-end gap-2 w-full mb-[12px]'>
-                <p className='text-[14px] font-normal text-[#5B6871] dark:text-white  leading-[24px]'>{t('langs')}</p>
+                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'>langs</p>
                 <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
-                <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white '>{oneBooks?.lang}</p>
+                <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white text-nowrap'>{oneBooks?.lang}</p>
             </div>
 
+            <div className='flex items-end gap-2 w-full mb-[12px]'>
+                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'> Переводчик</p>
+                <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
+                <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white text-nowrap'>{oneBooks?.translator?.name}</p>
+            </div>
+            <div className='flex items-end gap-2 w-full mb-[12px]'>
+                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'>Количество страниц</p>
+                <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
+                <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white text-nowrap '>{oneBooks?.pageCount}</p>
+            </div>
+            <div className='flex items-end gap-2 w-full mb-[12px]'>
+                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'>Издательство</p>
+                <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
+                <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white text-nowrap '>{oneBooks?.publisher?.name}</p>
+            </div>
             <h3 className='text-[24px] font-semibold leading-[29px] mt-[56px] mb-4'>{t('reviews')}</h3>
             <div className='w-full flex items-start justify-between'>
                 <div className='w-full max-w-[124px]'>

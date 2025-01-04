@@ -3,7 +3,7 @@ import SwiperWithScrollIcons from '@/components/swiper'
 import React from 'react'
 import { Button } from '@nextui-org/react';
 import ArticlesCard from '@/components/card/articles-card';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/routing';
 import { useLocale, useTranslations } from 'next-intl';
 
 export default function ArticlesSection({articles,type}:any) {

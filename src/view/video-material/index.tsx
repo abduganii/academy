@@ -3,8 +3,13 @@ import VideoMaterialsCard from '@/components/card/video-materials-card'
 import Container from '@/components/container'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+import { usePageProps } from './props'
+import { hoc } from '@/utils'
+import Pagination from '@/components/pagination'
 
-export default function VideoMaterialPage() {
+export const VideoMaterialPage:any = hoc(usePageProps, props => {
+  const { videos } = props
+  console.log(videos)
   const t = useTranslations();
   return (
     <>
@@ -16,18 +21,19 @@ export default function VideoMaterialPage() {
     </div>
 
     <Container className='flex flex-wrap gap-3 mb-[70px] py-[48px] bg-[#F9F9F9] dark:bg-black'>
-     { [1,2,3,4,5,].map((e)=>( 
+    {videos?.data && videos?.data?.map((e:any)=>( 
        <VideoMaterialsCard
-         key={e}
-              link={`/video-materials/${e}`}
-            className='colm4'
-                image='/vidoe.png'
-                avatar='/avatar.jfif'
-                title={'Lorem ipsum dolor sit amet, consectetur adipiscing elit'}
-                name='Name profile'
-            />
+        key={e?.id}
+        link={`/video-materials/${e?.id}`}
+        className='colm4'
+        image={`${process.env.NEXT_PUBLIC_BASE_URL}${e?.poster?.path}`}
+        avatar='/avatar.jfif'
+        title={e?.name}
+        name={e?.description}
+      />
       ))}
+        <Pagination pagination={videos?.pagination} />
     </Container>
     </>
   )
-}
+})

@@ -6,7 +6,7 @@ import TextParag from '@/components/text'
 import { Button, Modal, ModalBody, ModalContent, Slider, useDisclosure } from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/routing';
 import React, { useRef, useState } from 'react'
 
 export default function ReadPdfPage() {

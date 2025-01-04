@@ -1,6 +1,6 @@
 'use client'
-import {usePathname, useRouter} from 'next/navigation';
-
+import {usePathname} from 'next/navigation';
+import { useRouter } from '@/i18n/routing';
 import {TObject} from "@/types";
 
 export const useQueryParams = () => {

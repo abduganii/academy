@@ -1,7 +1,7 @@
 'use client'
 import { DoneIcon } from '@/components/icons'
 import { Button } from '@nextui-org/react'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/routing';
 import React from 'react'
 
 export default function SeccesAuth({onClose,text}:any) {

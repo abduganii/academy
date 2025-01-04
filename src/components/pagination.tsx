@@ -1,7 +1,8 @@
 'use client'
 import React from 'react'
 import { usePathname } from '@/i18n/routing'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from '@/i18n/routing';
+import { useSearchParams } from 'next/navigation'
 
 export default function Pagination({ pagination }: any) {
     const { replace } = useRouter();
