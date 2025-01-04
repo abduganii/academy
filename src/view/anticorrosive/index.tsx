@@ -12,8 +12,8 @@ import React from 'react'
 import { hoc } from '@/utils'
 import { usePageProps } from './props'
 
-  export const AnticorrosivePage:any = hoc(usePageProps, props => {
-    const {news,type,title,text} = props;
+export const AnticorrosivePage:any = hoc(usePageProps, props => {
+  const {news,type,title,text,coursesLocal,coursesVirtual,coursesInternational} = props;
   const t = useTranslations()
   return (
     <>
@@ -30,11 +30,11 @@ import { usePageProps } from './props'
         <div className='w-full h-full bg-gradient-to-r from-black/90 to-black/30 absolute z-10  top-0 left-0'></div>
     </div>
 
-    <Container >
+    <Container>
       <NewsSection type={type} news={news} Isgrey={true}/>
       <div className='flex gap-[13px] mb-[68px]'>
-      <OurCourseSection/>
-      <VirtualAcademy/>
+      <OurCourseSection className={type == "anti_terrorism" ? 'w-full': 'w-1/2'} title={ type == "anti_corruption" ? 'our-courses' :'Международные курсы'}  data={type == "anti_terrorism" ? coursesInternational: coursesLocal}/>
+     {type == "anti_corruption"?  <VirtualAcademy data={coursesVirtual} />:""}
       </div>
       <ResourcesSection type={type}/>
       <ContactUsForm/>

@@ -66,7 +66,7 @@ export default function RegisterCode({ steComp, email }: iPops) {
             }
             )}
             />
-        <Button type={"submit"}  className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' >
+        <Button isLoading={loading}  type={"submit"}  className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' >
         Зарегистрироваться
         </Button>
     </form>

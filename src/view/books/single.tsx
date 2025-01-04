@@ -25,24 +25,33 @@ import { useQueryClient } from '@tanstack/react-query'
     const router = useRouter()
     const t = useTranslations()
     const [ loading,setloading] = useState(false)
-    const { register,reset, handleSubmit, formState: { errors } } = useForm<any>();
+    const [ updateId,setUpdateId] = useState(false)
+    const { register,reset,setValue,watch, handleSubmit } = useForm<any>();
+    const watchedFiles = watch();
     const onSubmit = async (data: any) => {
       setloading(true)
       try {
        mutationFn({
-       url: '/comments',
-       method: "POST",
-       data: {
-        comment :data?.comment,
+       url:updateId? `/comments/${updateId}`: '/comments',
+       method: updateId? "PUT":"POST",
+       data: updateId ? data : {
+        comment:data?.comment,
         star:5,
         type:"book",
         item:oneBooks?.id
       }})
        .then(()=>{
-         toast.success('Form submitted successfully!');
-         queryClient.invalidateQueries(['comments'])
-         onClose()
         reset()
+        queryClient.invalidateQueries(['comments'])
+        onClose()
+
+        if(updateId){
+          setUpdateId(false)
+          toast.success('Form updated successfully!');
+        }else{
+          toast.success('Form submitted successfully!');
+        }
+         
        })
        .catch(()=>{
             toast.error('Failed to submit form');
@@ -131,15 +140,23 @@ import { useQueryClient } from '@tanstack/react-query'
                 </div>
             </div>
             <div className='flex justify-end'>
-            <Button onPress={onOpen} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
+            <Button onClick={()=>reset()} onPress={onOpen} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
             </div>
             {
               comments?.map((e:any)=>(
                 <CommitCard
+                    key={e?.id}
+                    id={e?.id}
                     className="border-b mb-6"
                     name={e?.user?.firstName}
                     text={e?.comment}
                     date={e?.created_at}
+                    userId={e?.user?.id}
+                    onUpdate={()=>{
+                      onOpen()
+                      setUpdateId(e?.id)
+                      setValue('comment',e?.comment)
+                    }}
                 />
               ))
             }
@@ -157,10 +174,12 @@ import { useQueryClient } from '@tanstack/react-query'
               {/* <Rate className='text-[18px]'  defaultValue={2.5} /> */}
               <Textarea
                classNames={{ inputWrapper:"bg-white border-[2px] border-white  group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white group-data-[focus=true]:bg-white group-data-[hover=true]:bg-white" }} 
-                    label="Description"
-                    placeholder="Enter your description"
-                    className="w-full"
-                    {...register('comment', { required: 'comment is required' })}
+                label="Description"
+                placeholder="Enter your description"
+                className="w-full"
+                value={watchedFiles.comment || ""}
+                {...register('comment', { required: 'comment is required' })}
+                required={true}
                 />
               </ModalBody>
               <ModalFooter>

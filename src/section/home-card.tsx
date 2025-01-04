@@ -18,8 +18,8 @@ export default function HomeCard() {
         </Link>
         <Link  href={'/financing'}   className='group rounded-lg  w-full flex items-start bg-[#1451fa80] gap-8 p-[24px]'>
             <div className='w-full  max-w-[328px]'>
-                <h4 className='mb-2 w-full font-inter text-[24px]  group-hover:text-[#1451fa80] font-bold leading-[29.05px] text-left'>{t('anticorruption')}</h4>
-                <TextParag className='w-full font-inter  font-normal  text-left"'>{t('anticorruption-text')}</TextParag>
+                <h4 className='mb-2 w-full font-inter text-[24px]  group-hover:text-[#1451fa80] font-bold leading-[29.05px] text-left'>{t('Opposition')}</h4>
+                <TextParag className='w-full font-inter  font-normal  text-left"'>{t('Opposition-text')}</TextParag>
             </div>
             <Image className='aspect-[1/1] my-[46px]' src={'/image1608.png'} width={180} height={180} alt='dsd' title='ds'/>
         </Link>

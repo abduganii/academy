@@ -89,7 +89,7 @@ export default function RegisterForm({ steComp,setEmail }: iPops) {
           }
         )}
       />
-      <Button  className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' type={"submit"}>
+      <Button isLoading={loading}   className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' type={"submit"}>
       Зарегистрироваться
       </Button>
       <p className='text-[16px] font-normal mt-[25px] leading-[26px] text-[#6E6E6E]'>У вас уже есть аккаунт? <span onClick={()=>steComp(6)} className='text-[#2962FF] cursor-pointer'>Авторизоваться</span></p>

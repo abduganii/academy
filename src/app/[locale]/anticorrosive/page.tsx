@@ -10,9 +10,14 @@ export default async function Anticorrosive() {
       queryKey: ['news'],
       queryFn: (context) => queryFn<any>(context),
     });
+    await queryClient.prefetchQuery<any>({
+      queryKey: ['courses'],
+      queryFn: (context) => queryFn<any>(context),
+    });
+    
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-    <AnticorrosivePage type={'anti_corruption'} title='Антикоррупционная деятельность' text='Объявляется прием на обучение на стажера-исследователя, в базовую докторантуру.'/>
+      <AnticorrosivePage type={'anti_corruption'} title='Антикоррупционная деятельность' text='Объявляется прием на обучение на стажера-исследователя, в базовую докторантуру.'/>
     </HydrationBoundary>
   )
 }

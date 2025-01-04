@@ -35,7 +35,9 @@ export const usePageIdProps = ({ id }: any) => {
     params:{
       item:id,
       type:'book',
-      relations:'user'
+      relations:'user',
+      sortBy:'DESC'
+      
     }
   });
   return {

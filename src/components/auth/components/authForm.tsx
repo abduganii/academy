@@ -98,7 +98,7 @@ export default function AuthForm({ steComp, setEmail }: iPops) {
       <div className='flex items-right'>
       <p className='text-end text-[13px] inline-block ml-auto font-normol underline leading-[26px]  cursor-pointer' onClick={()=>steComp(10)}>Забыли пароль?</p>
       </div>
-  <Button  className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' type={'submit'}>
+  <Button isLoading={loading}  className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' type={'submit'}>
     Войти
   </Button>
   <p className='text-[16px] font-normal mt-[25px] leading-[26px] text-[#6E6E6E]'>У вас нет аккаунта? <span onClick={()=>steComp(1)} className='text-[#2962FF] cursor-pointer'>Регистрация</span></p>

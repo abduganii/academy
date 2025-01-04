@@ -10,6 +10,10 @@ export default async function Anticorrosive() {
       queryKey: ['news'],
       queryFn: (context) => queryFn<any>(context),
     });
+    await queryClient.prefetchQuery<any>({
+      queryKey: ['courses'],
+      queryFn: (context) => queryFn<any>(context),
+    });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
     <AnticorrosivePage type={'anti_terrorism'} title={'Противодействие легализации преступных доходов и финансированию терроризма'} text='Объявляется прием на обучение на стажера-исследователя, в базовую докторантуру.' />

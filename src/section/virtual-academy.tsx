@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import { SwiperLeftIcons, SwiperRightIcons } from '@/components/icons';
 import { useTranslations } from 'next-intl';
 
-export default function VirtualAcademy() {
+export default function VirtualAcademy({data}:any) {
     const [swipers, setSwiper] = useState<any>()
     const t = useTranslations()
   return (
@@ -26,9 +26,9 @@ export default function VirtualAcademy() {
             >
 
                 {
-                    [1,2,3,4,5].map(e=>(
-                        <SwiperSlide key={e} className='w-full  items-end  bg-center bg-no-repeat p-[25px] '  style={{"backgroundImage":`url('/verual.jfif')`, "display":"flex"}}>
-                            <h3 className='text-[14px] text-white  font-medium leading-[24px]'>Объявляется прием на обучение на стажера-исследователя, в базовую докторантуру.</h3>
+                    data?.map((e:any)=>(
+                        <SwiperSlide key={e?.id} className='w-full  items-end  bg-center bg-no-repeat p-[25px] '  style={{"backgroundImage":`url(${process.env.NEXT_PUBLIC_BASE_URL}${e?.image?.path})`, "display":"flex"}}>
+                            <h3 className='text-[14px] text-white  font-medium leading-[24px]'>{e?.text}.</h3>
                         </SwiperSlide>
                     ))
                 }
