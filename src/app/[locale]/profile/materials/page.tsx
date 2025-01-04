@@ -1,7 +1,16 @@
-import MaterialsPage from "@/view/profile/materials";
+import {MaterialsPage} from "@/view/profile/materials";
+import { getQueryClient, queryFn } from "@/utils";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
-export default function page() {
-    return (
-      <><MaterialsPage/></>
-    )
-  }  
+export default async function page() {
+   const queryClient = getQueryClient();
+      await queryClient.prefetchQuery<any>({
+        queryKey: ['my-materials/articles'],
+        queryFn: (context) => queryFn<any>(context),
+      });
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <MaterialsPage  />
+    </HydrationBoundary>
+  )
+}

@@ -6,7 +6,7 @@ import am5geodata_worldLow from '@amcharts/amcharts5-geodata/worldLow';
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { useRouter } from 'next/navigation';
 
-const ColoredMap: React.FC = ({data}:any):any => {
+const ColoredMap: any= ({data}:any):any => {
   const chartRef = useRef<HTMLDivElement>(null);
   const router = useRouter()
   useLayoutEffect(() => {

@@ -35,7 +35,6 @@ export default function AuthForm({ steComp, setEmail }: iPops) {
         reset()
         dispatch(setToken(res?.data?.token));
         res?.data?.token &&  Cookies.set('tokenAcadamySite',res?.data?.token) 
-        
       })
       .catch((error: any) => {
         toast.error(error?.response?.data?.message);

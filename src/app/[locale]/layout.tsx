@@ -36,6 +36,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
+        <head >
+          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+      </head>
       <body className={inter.className}>
       <NextTopLoader
       color="#2299DD"

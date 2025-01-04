@@ -49,7 +49,7 @@ export default function Header({ user }: any) {
           {
             user ?
               <>
-                <Avatar onClick={()=>router.push('/profile/information')}  className="cursor-pointer" size='md'  name={user?.firstName }/> 
+                <Avatar  onClick={()=>router.push('/profile/information')}  className="cursor-pointer bg-[#bdd2f5] text-[#3A86FF]" size='md'  /> 
               </>
               :
             <Button onPress={onOpen} className="font-inter dark:text-black text-[14px] font-semibold leading-[24px] " color="default" radius="sm">

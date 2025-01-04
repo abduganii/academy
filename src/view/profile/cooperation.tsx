@@ -1,36 +1,100 @@
 "use client"
 import { EmailIcons, TelIcons } from '@/components/icons'
 import FileUpload from '@/components/upload/file'
+import { hoc } from '@/utils'
+import { useAppSelector } from '@/lib/hooks';
+import { mutationFn } from '@/utils';
 import { Button, Input, Select, SelectItem, Textarea } from '@nextui-org/react'
 import React from 'react'
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { usePageProps } from './props'
 
-export default function CooperationPage() {
+type FormData = {
+  type:string;
+  message: string;
+  email: string;
+  file:number
+};
+
+
+export const CooperationPage:any = hoc(usePageProps, props => {
+    const {MyMaterialTypes} = props
+    const { register,reset,setValue, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const onSubmit = async (data: FormData) => {
+      mutationFn({
+          url: '/cooperations',
+          method: "POST",
+          data: data
+        })
+        .then((res: any) => {
+          reset()
+          toast.success('seccefully sent');
+          
+        })
+        .catch((error: any) => {
+          toast.error(error?.response?.data?.message);
+        })
+        // .finally(() => setloading(false) )
+    };
   return (
     <div className='w-full flex gap-5'>  
-    <div className='w-full max-w-[616px] bg-[#F5F5F5] rounded-lg gap-4 flex flex-wrap justify-end p-[32px]'>
-    <h3 className='text-[28px] leading-[34px] mb-[16px] font-semibold w-full'>Заполнить заявку</h3>
-    <Select
+    <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-[616px] bg-[#F5F5F5] rounded-lg gap-4 flex flex-wrap justify-end p-[32px]'>
+      <h3 className='text-[28px] leading-[34px] mb-[16px] font-semibold w-full'>Заполнить заявку</h3>
+      <Select
         label="Тип контента" 
         size={'sm'}
-         variant='bordered'
+        variant='bordered'
+        errorMessage={(errors?.type?.message as string) || ""}
+        isInvalid={Boolean(errors?.type?.message)}
+        {...register("type", {
+          required: "type is required",
+        })}
       >
-        <SelectItem key={1}>
-            items
+      {
+        MyMaterialTypes?.length && MyMaterialTypes?.map((e:any)=>(
+        <SelectItem key={e?.id} value={e?.id}>
+            {e?.name}
           </SelectItem>
+        ))
+      }
       </Select>
       <Textarea
-            label="Сообщение модератору "
-            className="w-full"
-            variant='bordered'
-             cols={2}
-             rows={2}
-            />
-        <Input className='w-full ' variant='bordered' size={'sm'} type="email" label="Email"  />
-
-        <FileUpload/>
-        <Button size='lg' className='colm1 rounded-lg bg-[#DDE2E4]'>Отменить</Button>
-        <Button size='lg' className='colm1 rounded-lg bg-[#2962FF] text-white'>Обновить</Button>
-    </div>
+        label="Сообщение модератору "
+        className="w-full"
+        variant='bordered'
+          cols={2}
+          rows={2}
+          errorMessage={(errors?.message?.message as string) || ""}
+          isInvalid={Boolean(errors?.message?.message)}
+          {...register("message", {
+            required: "text is required",
+          })}
+        />
+      <Input 
+        className='w-full' 
+        variant='bordered' 
+        size={'sm'} 
+        type="email" 
+        label="Email" 
+        errorMessage={(errors?.email?.message as string) || ""}
+        isInvalid={Boolean(errors?.email?.message)}
+        {...register("email", {
+          required: "Email is required",
+          pattern: {
+            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            message: "Invalid email address",
+          },
+        })}
+        />
+      <FileUpload
+      errors={errors?.file?.message}
+      onUpload={(e:any)=>setValue("file",e?.data?.id)}
+      
+      />
+      <Button size='lg' className='colm1 rounded-lg bg-[#DDE2E4]'>Отменить</Button>
+      <Button type='submit' size='lg' className='colm1 rounded-lg bg-[#2962FF] text-white'>Обновить</Button>
+    </form>
     <div className='w-full max-w-[244px]'>
         <Button size='lg' className='w-full rounded-lg bg-[#1C43AE] text-white mb-[10px]'>Прейскурант</Button>
         <Button size='lg' className='w-full rounded-lg bg-[#1C43AE] text-white mb-[10px]'>Скачать договор</Button>
@@ -44,4 +108,4 @@ export default function CooperationPage() {
     </div>
     </div>
   )
-}
+})

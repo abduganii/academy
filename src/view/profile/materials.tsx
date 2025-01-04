@@ -1,8 +1,13 @@
 'use client'
 import ArticlesCardPage from "@/components/card/acticles-card-in-page";
-import {Tabs, Tab, Card, CardBody,} from "@nextui-org/react";
+import { hoc } from "@/utils";
+import {Tabs, Tab} from "@nextui-org/react";
+import { useArticlesProps } from "./props";
 
-export default function MaterialsPage() {
+
+export const MaterialsPage:any = hoc(useArticlesProps, props => {
+    const {articles} = props
+    console.log(articles)
   let tabs = [
     {
       id: "articles",
@@ -22,16 +27,18 @@ export default function MaterialsPage() {
             {
                 item?.id == "articles" ?
                 <>
-                       { [1,2,3,4,5].map((e)=>( 
-                            <ArticlesCardPage
-                                className="mb-4"
-                                key={e}
-                                title='Вниманию кандидатов, рекомендованных к обучению в магистратуру'
-                                link={`/articles/${e}`}
-                                name=' Т. Усмонов'
-                                date=' 22.02.2024'
-                            />
+                       { 
+                             articles?.data?.length && articles?.data?.map((e:any)=>(
+                                          <ArticlesCardPage
+                                          className="mb-4"
+                                          link={`/articles/${e?.article?.id}`}
+                                          key={e?.article?.id}
+                                          title={e?.article?.title}
+                                          name={e?.article?.text}
+                                          date={e?.article?.created_at}
+                                      />
                         ))}
+                        
                 </>:
                 <>
             </>
@@ -40,4 +47,4 @@ export default function MaterialsPage() {
         )}
       </Tabs>
   );
-}
+})

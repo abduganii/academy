@@ -5,24 +5,55 @@ import Container from '@/components/container'
 import { MoreDownIcons, SaveIcons, StartIcons } from '@/components/icons'
 import SwiperWithScrollIcons from '@/components/swiper'
 import TextParag from '@/components/text'
-import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea, useDisclosure } from '@nextui-org/react'
+import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Progress, Textarea, useDisclosure } from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
-// import { Rate, Progress } from 'antd';
+
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import React from 'react'
-import { hoc } from '@/utils'
+import React, { useState } from 'react'
+import { hoc, mutationFn } from '@/utils'
 import { usePageIdProps } from './props'
 import dayjs from 'dayjs'
-
+import toast from 'react-hot-toast';
+import { useForm } from 'react-hook-form'
+import { useQueryClient } from '@tanstack/react-query'
   export const BookByIdPage:any = hoc(usePageIdProps, props => {
-    const {oneBooks} = props
-    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const {oneBooks,comments,books} = props
+    const queryClient:any = useQueryClient();
+    const {isOpen,onClose, onOpen, onOpenChange} = useDisclosure();
     const router = useRouter()
     const t = useTranslations()
+    const [ loading,setloading] = useState(false)
+    const { register,reset, handleSubmit, formState: { errors } } = useForm<any>();
+    const onSubmit = async (data: any) => {
+      setloading(true)
+      try {
+       mutationFn({
+       url: '/comments',
+       method: "POST",
+       data: {
+        comment :data?.comment,
+        star:5,
+        type:"book",
+        item:oneBooks?.id
+      }})
+       .then(()=>{
+         toast.success('Form submitted successfully!');
+         queryClient.invalidateQueries(['comments'])
+         onClose()
+        reset()
+       })
+       .catch(()=>{
+            toast.error('Failed to submit form');
+         })
+         .finally(()=>{setloading(false)})
+    } catch (error:any) {
+      setloading(false)
+      toast.error('Error sending date:', error)
+    }
+  };
   return (
     <Container className='py-[150px]'>
-
         <div className='w-full flex gap-10 mb-[56px] p-10 bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] rounded-lg'>
             <Image
                 alt='img'
@@ -55,7 +86,7 @@ import dayjs from 'dayjs'
                 <h3 className='text-[24px] font-semibold leading-[29px] mb-2'>{oneBooks?.price} сум</h3>
                 <div className='flex gap-4'>
                     <Button className='w-full bg-[#323232] text-white max-w-[220px] rounded-lg' size='md'>Купить</Button>
-                    <Button onClick={()=>router.push('/books/1/book-read')} className='w-full bg-[#69696926] text-[#323232] dark:bg-white max-w-[220px] rounded-lg' size='md'>Читать фрагмент</Button>
+                    <Button onClick={()=>router.push('/books/1/book-read')} className='w-full bg-[#69696926] text-[#323232] dark:bg-white max-w-[220px] px-6 rounded-lg' size='md'>Читать фрагмент</Button>
                     <Button className='bg-[#69696926] text-[#323232] rounded-full w-[40px] min-w-[40px] p-[9px] dark:bg-white ' ><SaveIcons/></Button>
                 </div>
             </div>
@@ -87,62 +118,62 @@ import dayjs from 'dayjs'
             <div className='flex justify-end'>
             <Button onPress={onOpen} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
             </div>
-            <CommitCard
-                className="border-b mb-6"
-                name='Александр'
-                text='Очень качественно сшито, строчка ровная, стильно. Сыну очень понравилось, спасибо)'
-                like={'324'}
-                date='20 авг, 2024'
-            />
-             <CommitCard
-                className="mb-6"
-                name='Александр'
-                text='Очень качественно сшито, строчка ровная, стильно. Сыну очень понравилось, спасибо)'
-                like={'324'}
-                date='20 авг, 2024'
-            />
-            <div className='flex justify-center'>
+            {
+              comments?.map((e:any)=>(
+                <CommitCard
+                    className="border-b mb-6"
+                    name={e?.user?.firstName}
+                    text={e?.comment}
+                    date={e?.created_at}
+                />
+              ))
+            }
+            {/* <div className='flex justify-center'>
             <Button className='w-full bg-[#69696926] text-[#323232] dark:bg-white max-w-[205px] rounded-lg' size='md' endContent={<MoreDownIcons/>}>{t('show-all')}</Button>
-            </div>
+            </div> */}
         </div>
         
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent className='bg-[#F5F5F5] max-w-[662px]'>
           {(onClose) => (
-            <>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <ModalHeader className="flex flex-col gap-1">{t('leave-feedback')}</ModalHeader>
               <ModalBody>
               {/* <Rate className='text-[18px]'  defaultValue={2.5} /> */}
               <Textarea
+               classNames={{ inputWrapper:"bg-white border-[2px] border-white  group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white group-data-[focus=true]:bg-white group-data-[hover=true]:bg-white" }} 
                     label="Description"
                     placeholder="Enter your description"
                     className="w-full"
+                    {...register('comment', { required: 'comment is required' })}
                 />
               </ModalBody>
               <ModalFooter>
-                <Button className='w-full  max-w-[200px] rounded-lg'  color="danger" variant="light" onPress={onClose}>
+                <Button className='w-full  max-w-[200px] rounded-lg' isLoading={loading}  color="danger" variant="light" onPress={onClose}>
                   {t('close')}
                 </Button>
-                <Button className='w-full bg-[#2962FF] text-white max-w-[200px] rounded-lg' size='md' onPress={onClose}>
+                <Button className='w-full bg-[#2962FF] text-white max-w-[200px] rounded-lg' size='md' type='submit'>
                   Action
                 </Button>
               </ModalFooter>
-            </>
+            </form>
           )}
         </ModalContent>
         </Modal>
         <SwiperWithScrollIcons title={"books"} slidesPerView={6} className="flex w-full items-center  text-[16px] font-semibold gap-6 mt-8">
             {
-                [1,2,3,4,5,6,7,8]?.map(e=>(
-                <BooksCard
-                    link={`/books/${e}`}
-                    key={e}
-                    image={'/books.png'}
-                    title='Think and Grow Rich Every Day'
-                    price='350 000 сум'
-                />
-                )
-            )}
+                  books?.map((e:any)=>(
+                      <BooksCard
+                          link={`/books/${e?.id}`}
+                          key={e?.id}
+                          className='colm3'
+                          image={`${process.env.NEXT_PUBLIC_BASE_URL}${e?.image?.path}`}
+                          title={e?.name}
+                          price={`${e?.price} som`}
+                      />
+                  )
+              )
+              }
         </SwiperWithScrollIcons>
     </Container>
   )

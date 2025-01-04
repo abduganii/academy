@@ -3,14 +3,15 @@ import Container from '@/components/container'
 import { IChildren } from '@/types'
 import React, { useEffect } from 'react'
 import { ProfileLayoutArr } from '../../../musk/data'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { LogoutIcons } from '@/components/icons'
 import { Link } from '@/i18n/routing'
+import Cookies from "js-cookie"
 import { useQueryClient } from '@tanstack/react-query'
+import { mutationFn } from '@/utils'
 
 export default function ProfileLayout({children}:IChildren) {
    const pathName = usePathname()
-    const router = useRouter()
     const value: any = ProfileLayoutArr?.find(e => pathName.includes(e?.link))
     const queryClient:any = useQueryClient();
     useEffect(() => {
@@ -35,7 +36,14 @@ export default function ProfileLayout({children}:IChildren) {
                             </Link>
                     ))
                 }
-                <div onClick={()=>router.push('/')} className={`cursor-pointer mb-[4px] text-[#252C32] w-full flex items-center gap-3 p-[12px] rounded-lg text-[16px] font-normal leading-[26px]`}>
+                <div onClick={()=>{
+                    mutationFn({
+                        url: '/watchers/live/kill',
+                        method: "PATCH",
+                    })
+                     Cookies.remove("tokenAcadamySite");
+                     queryClient.invalidateQueries(['user/me'])
+                    }} className={`cursor-pointer mb-[4px] text-[#252C32] w-full flex items-center gap-3 p-[12px] rounded-lg text-[16px] font-normal leading-[26px]`}>
                     <span>
                     <LogoutIcons/>
                     </span> 

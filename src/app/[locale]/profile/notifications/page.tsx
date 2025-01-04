@@ -1,8 +1,17 @@
-import NotificationPage from '@/view/profile/notification'
+import {NotificationPage} from '@/view/profile/notification'
 import React from 'react'
+import { getQueryClient, queryFn } from "@/utils";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
-export default function Notifications() {
+export default async function Notifications() {
+   const queryClient = getQueryClient();
+      await queryClient.prefetchQuery<any>({
+        queryKey: ['notificatio'],
+        queryFn: (context) => queryFn<any>(context),
+      });
   return (
-    <><NotificationPage/></>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <><NotificationPage/></>
+    </HydrationBoundary>
   )
 }

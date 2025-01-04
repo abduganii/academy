@@ -9,6 +9,10 @@ export default async function BooksById({params:{id}}:any) {
       queryKey: ['books'],
       queryFn: (context) => queryFn<any>(context),
     });
+    await queryClient.prefetchQuery<any>({
+      queryKey: ['comments'],
+      queryFn: (context) => queryFn<any>(context),
+    });
   return (
     <>
      <HydrationBoundary state={dehydrate(queryClient)}>
