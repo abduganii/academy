@@ -2,13 +2,12 @@
 import BooksCard from '@/components/card/books-card'
 import SwiperWithScrollIcons from '@/components/swiper'
 import { Button } from '@nextui-org/react'
-import { useLocale, useTranslations } from 'next-intl'
+import {  useTranslations } from 'next-intl'
 import { useRouter } from '@/i18n/routing';
 import React from 'react'
 
 export default function BooksSection({books,type}:any) {
     const router = useRouter()
-     const locale = useLocale()
      const t = useTranslations();
   return (
     <>
@@ -27,7 +26,7 @@ export default function BooksSection({books,type}:any) {
             }
         </SwiperWithScrollIcons>
         <div className='text-center mb-[60px] mt-[32px]'>
-            <Button onClick={()=>router.push(`/${locale}/books?type=${type}`)} className='bg-black text-white dark:bg-white dark:text-black inline-block'>
+            <Button onClick={()=>router.push(`/books?type=${type}`)} className='bg-black text-white dark:bg-white dark:text-black inline-block'>
                     {t('more-details')}
             </Button>
         </div>

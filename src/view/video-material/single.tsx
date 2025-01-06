@@ -1,9 +1,8 @@
 "use client"
 import CommitCard from '@/components/card/commit-card'
 import Container from '@/components/container'
-import { MoreDownIcons } from '@/components/icons'
-import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Progress, Textarea, useDisclosure } from '@nextui-org/react'
-// import { Rate, Progress } from 'antd';
+import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea, useDisclosure } from '@nextui-org/react'
+import { Rate, Progress } from 'antd';
 import { useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -25,7 +24,7 @@ const VideoPlayer: React.FC<{ videoUrl: string }> = ({ videoUrl }) => {
     );
   };
 export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
-    const {onevideos,comments} = props
+    const {onevideos,comments,stat} = props
     const queryClient:any = useQueryClient();
     const {isOpen,onClose, onOpen, onOpenChange} = useDisclosure();
     const router = useRouter()
@@ -76,7 +75,8 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
                 alt='img'
                 width={196}
                 height={298}
-                src={'/vidoe.png'}
+                // src={'/vidoe.png'}
+                src={`${process.env.NEXT_PUBLIC_BASE_URL}${onevideos?.poster?.path}`}
                 title='title'
             />
             <div className='w-full max-w-[760px]'>
@@ -112,19 +112,36 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
                 {/* <span className='font-semibold underline decoration-solid text-[#2D2D2D] dark:text-white ml-1 cursor-pointer'>Еще</span> */}
             </p>
             <VideoPlayer videoUrl={'https://api.proacademy.calypso.uz/files/stream/66'} />
-            {/* <h3 className='text-[24px] font-semibold leading-[29px] mt-[56px] mb-4'>Отзывы</h3>
+             <h3 className='text-[24px] font-semibold leading-[29px] mt-[56px] mb-4'>Отзывы</h3>
             <div className='w-full flex items-start justify-between'>
                 <div className='w-full max-w-[124px]'>
-                    <h3 className='text-[40px] font-normal leading-[46px] text-[#000000CC] dark:text-white'>4.7</h3>
-                    <p className='my-4 text-[15px] font-normal leading-[20px] text-[#0000008F] dark:text-white'>На основании 56 отзывов</p>
-                    <Rate className='text-[18px]'  defaultValue={2.5} />
+                    <h3 className='text-[40px] font-normal leading-[46px] text-[#000000CC] dark:text-white '>4.7</h3>
+                    <p className='my-4 text-[15px] font-normal leading-[20px] text-[#0000008F] dark:text-white '>На основании 56 отзывов</p>
+                    <Rate value={stat?.avg}/>
                 </div>
                 <div className='w-full max-w-[600px]'>
                     <div className="flex items-center gap-2 mb-1">
-                      <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  <Progress percent={30} />
+                      <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  
+                      <Progress  percent={(stat?.five /stat?.total ) * 100}/>
+                    </div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  
+                      <Progress  percent={(stat?.four /stat?.total ) * 100}/>
+                    </div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  
+                      <Progress  percent={(stat?.three /stat?.total ) * 100}/>
+                    </div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  
+                      <Progress  percent={(stat?.two /stat?.total ) * 100}/>
+                    </div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  
+                      <Progress  percent={(stat?.one /stat?.total ) * 100}/>
                     </div>
                 </div>
-            </div> */}
+            </div>
              <div className='flex justify-end'>
             <Button onClick={()=>reset()} onPress={onOpen} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
             </div>

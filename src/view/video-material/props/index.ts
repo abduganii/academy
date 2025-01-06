@@ -30,9 +30,13 @@ export const usePageIdProps = ({ id }: any) => {
       relations:'user'
     }
   });
+  const { data: stats } = useFetchData<any>({
+    url: `comments/stats/${id}/video`,
+  });
   return {
     onevideos: onevideos?.data,
     comments:comments?.data,
+    stat:stats?.data
   };
 };
 

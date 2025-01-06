@@ -2,12 +2,12 @@
 import BooksCard from '@/components/card/books-card'
 import CommitCard from '@/components/card/commit-card'
 import Container from '@/components/container'
-import { MoreDownIcons, SaveIcons, StartIcons } from '@/components/icons'
+import {  SaveIcons, StartIcons } from '@/components/icons'
 import SwiperWithScrollIcons from '@/components/swiper'
 import TextParag from '@/components/text'
-import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Progress, Textarea, useDisclosure } from '@nextui-org/react'
+import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea, useDisclosure } from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
-
+import { Progress, Rate } from "antd";
 import Image from 'next/image'
 import { useRouter } from '@/i18n/routing';
 import React, { useState } from 'react'
@@ -17,10 +17,12 @@ import dayjs from 'dayjs'
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form'
 import { useQueryClient } from '@tanstack/react-query'
+import { useAppSelector } from '@/lib/hooks'
 
   export const BookByIdPage:any = hoc(usePageIdProps, props => {
-    const {oneBooks,comments,books} = props
-    const queryClient:any = useQueryClient();
+    const {oneBooks,comments,books,stat} = props
+    const queryClient:any = useQueryClient()
+    const { userMe } = useAppSelector((store: any) => store.userMe);
     const {isOpen,onClose, onOpen, onOpenChange} = useDisclosure();
     const router = useRouter()
     const t = useTranslations()
@@ -131,16 +133,33 @@ import { useQueryClient } from '@tanstack/react-query'
                 <div className='w-full max-w-[124px]'>
                     <h3 className='text-[40px] font-normal leading-[46px] text-[#000000CC] dark:text-white '>4.7</h3>
                     <p className='my-4 text-[15px] font-normal leading-[20px] text-[#0000008F] dark:text-white '>На основании 56 отзывов</p>
-                    {/* <Rate className='text-[18px]'  defaultValue={2.5} /> */}
+                    <Rate value={stat?.avg}/>
                 </div>
                 <div className='w-full max-w-[600px]'>
                     <div className="flex items-center gap-2 mb-1">
-                      {/* <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  <Progress percent={30} /> */}
+                      <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  
+                      <Progress  percent={(stat?.five /stat?.total ) * 100}/>
+                    </div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  
+                      <Progress  percent={(stat?.four /stat?.total ) * 100}/>
+                    </div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  
+                      <Progress  percent={(stat?.three /stat?.total ) * 100}/>
+                    </div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  
+                      <Progress  percent={(stat?.two /stat?.total ) * 100}/>
+                    </div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <p className='text-[14px] mt-[1px] font-normal leading-[24px] text-[#2D2D2D]'>1</p>  
+                      <Progress  percent={(stat?.one /stat?.total ) * 100}/>
                     </div>
                 </div>
             </div>
             <div className='flex justify-end'>
-            <Button onClick={()=>reset()} onPress={onOpen} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
+            <Button onClick={()=>reset()} onPress={userMe ? onOpen: ()=>{}} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
             </div>
             {
               comments?.map((e:any)=>(

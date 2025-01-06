@@ -4,11 +4,10 @@ import React from 'react'
 import { Button } from '@nextui-org/react';
 import ArticlesCard from '@/components/card/articles-card';
 import { useRouter } from '@/i18n/routing';
-import { useLocale, useTranslations } from 'next-intl';
+import {  useTranslations } from 'next-intl';
 
 export default function ArticlesSection({articles,type}:any) {
     const router = useRouter()
-    const locale = useLocale(); 
     const t = useTranslations();
   return (
     <>
@@ -27,7 +26,7 @@ export default function ArticlesSection({articles,type}:any) {
        
     </SwiperWithScrollIcons>
         <div className='text-center mb-[60px] mt-[32px]'>
-            <Button onClick={()=>router.push(`/${locale}/articles?type=${type}`)} className='bg-black text-white dark:bg-white dark:text-black inline-block'>
+            <Button onClick={()=>router.push(`/articles?type=${type}`)} className='bg-black text-white dark:bg-white dark:text-black inline-block'>
                {t('more-details')}
             </Button>
         </div>

@@ -9,9 +9,10 @@ import { Select, SelectItem } from '@nextui-org/react'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { usePageProps } from './props'
+import FilterPage from './filter'
 
 export const ArticlesPage:any = hoc(usePageProps, props => {
-  const {articles} = props
+  const {articles,authors,section} = props
   const t = useTranslations()
   return (
  
@@ -21,20 +22,7 @@ export const ArticlesPage:any = hoc(usePageProps, props => {
      >
     <Container className='z-20'>
         <h4 className='text-white font-inter text-[40px] font-bold leading-[48.41px]  text-left mb-4'>{t('articles')}</h4>
-        <div className='flex'>
-                <Select
-                    size='sm'
-                    label="Select an book" 
-                    className="w-full max-w-[220px]" 
-                    >
-                    <SelectItem key={1}>
-                        items 1
-                    </SelectItem>
-                    <SelectItem key={2}>
-                        items 2
-                    </SelectItem>
-                </Select>
-                </div>
+     <FilterPage authors={authors} section={section}/>
     </Container>
     {/* <div className='w-full h-[372px] bg-gradient-to-r from-black/90 to-black/30 absolute z-10  top-0 left-0'></div> */}
     </div>
