@@ -7,14 +7,18 @@ import { Button, Modal, ModalBody, ModalContent, Slider, useDisclosure } from '@
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { useRouter } from '@/i18n/routing';
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { usePagePdfProps } from './props'
+import { hoc } from '@/utils'
 
-export default function ReadPdfPage() {
+export const ReadPdfPage:any = hoc(usePagePdfProps, props => {
+  const {id}:any = props
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const book:any = useRef();
   const router = useRouter()
   const [currentPage,setcurrentPage] = useState(0)
   const t = useTranslations()
+
   return (
     <div>
         <div className='bg-[#F5F5F5] w-full py-3 fixed top-0 left-0 z-20'> 
@@ -26,6 +30,7 @@ export default function ReadPdfPage() {
             
           </Container>
         </div>
+        
             <Flipbook onFlip={(e:any)=>setcurrentPage(e?.data)} ref={book} />    
             <Container className='flex items-center gap-5 py-3'>
                 <Slider
@@ -65,4 +70,4 @@ export default function ReadPdfPage() {
             </Modal>
     </div>
   )
-}
+})

@@ -85,7 +85,8 @@ import { useAppSelector } from '@/lib/hooks'
                 <p className="text-sm font-normal leading-6 text-left flex items-center gap-2 " >
                     <span className='flex items-center'><StartIcons/>  {oneBooks?.rating}</span>
                     <span className="bg-[#D5DADD] w-[6px] h-[6px] rounded-full"></span>
-                    56 отзывов
+                    {stat?.total} отзывов
+                  
                 </p>
                 <div className='flex gap-2 mt-4 mb-6'>
                   {

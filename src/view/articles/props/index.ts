@@ -30,7 +30,11 @@ export const usePageIdProps = ({ id }: any) => {
   const { data: oneArticles } = useFetchData<any>({
     url: `articles/${id}`,
   });
+  // const { data: pdf } = useFetchData<any>({
+  //   url: `articles/download/${id}/`,
+  // });
   return {
     oneArticles: oneArticles?.data,
+    // pdf:pdf
   };
 };

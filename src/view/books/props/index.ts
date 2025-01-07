@@ -84,5 +84,12 @@ export const usePageIdProps = ({ id }: any) => {
 
 
 
-
-
+export const usePagePdfProps = ({ id }: any) => {
+ 
+  // const { data: pdf } = useFetchData<any>({
+  //   url: `books/download/${id}`,
+  // });
+  return {
+    pdf:'',
+  };
+};

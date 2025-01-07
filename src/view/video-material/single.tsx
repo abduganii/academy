@@ -6,17 +6,18 @@ import { Rate, Progress } from 'antd';
 import { useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { hoc, mutationFn } from '@/utils'
 import { usePageIdProps } from './props'
 import dayjs from 'dayjs'
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form'
 import { useQueryClient } from '@tanstack/react-query'
-const VideoPlayer: React.FC<{ videoUrl: string }> = ({ videoUrl }) => {
+import { useAppSelector } from '@/lib/hooks';
+const VideoPlayer: React.FC<{ videoUrl: string ,onPlay:any,onPause:any}> = ({ videoUrl,onPlay,onPause }) => {
     return (
       <div className="video-container">
-        <video  className='w-full  aspect-video h-[420px]' controls width="100%">
+        <video onPlay={onPlay}  onPause={onPause} className='w-full  aspect-video h-[420px]' controls width="100%">
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -24,15 +25,16 @@ const VideoPlayer: React.FC<{ videoUrl: string }> = ({ videoUrl }) => {
     );
   };
 export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
-    const {onevideos,comments,stat} = props
+    const {onevideos,comments,stat, id}:any = props
     const queryClient:any = useQueryClient();
+      const { userMe } = useAppSelector((store: any) => store.userMe);
     const {isOpen,onClose, onOpen, onOpenChange} = useDisclosure();
-    const router = useRouter()
     const t = useTranslations()
     const [ loading,setloading] = useState(false)
      const [ updateId,setUpdateId] = useState(false)
     const { register,reset,setValue,watch, handleSubmit, formState: { errors } } = useForm<any>();
     const watchedFiles = watch();
+    const intervalRef = useRef<any>(null);
     const onSubmit = async (data: any) => {
       setloading(true)
       try {
@@ -65,6 +67,37 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
     } catch (error:any) {
       setloading(false)
       toast.error('Error sending date:', error)
+    }
+  };
+
+  const OnPlay = () => {
+    if (userMe) {
+      mutationFn({
+        url: `/watchers/watching/${id}`,
+        method: "PATCH",
+      });
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+      intervalRef.current = setInterval(() => {
+        mutationFn({
+          url: `/watchers/watching/${id}`,
+          method: "PATCH",
+        });
+      }, 30000); 
+    }
+  };
+
+  const OnPause = () => {
+    if (userMe) {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null; 
+      }
+      mutationFn({
+        url: `/watchers/watching/${id}/kill`,
+        method: "PATCH",
+      });
     }
   };
   return (
@@ -111,12 +144,12 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
             <p className='text-[14px] font-normal text-[#5B6871] leading-[24px] mb-[32px] dark:text-white'>{onevideos?.description}
                 {/* <span className='font-semibold underline decoration-solid text-[#2D2D2D] dark:text-white ml-1 cursor-pointer'>Еще</span> */}
             </p>
-            <VideoPlayer videoUrl={'https://api.proacademy.calypso.uz/files/stream/66'} />
+            <VideoPlayer onPlay={OnPlay} onPause={OnPause} videoUrl={'https://api.proacademy.calypso.uz/files/stream/66'} />
              <h3 className='text-[24px] font-semibold leading-[29px] mt-[56px] mb-4'>Отзывы</h3>
             <div className='w-full flex items-start justify-between'>
                 <div className='w-full max-w-[124px]'>
-                    <h3 className='text-[40px] font-normal leading-[46px] text-[#000000CC] dark:text-white '>4.7</h3>
-                    <p className='my-4 text-[15px] font-normal leading-[20px] text-[#0000008F] dark:text-white '>На основании 56 отзывов</p>
+                    <h3 className='text-[40px] font-normal leading-[46px] text-[#000000CC] dark:text-white '>{stat?.avg}</h3>
+                    <p className='my-4 text-[15px] font-normal leading-[20px] text-[#0000008F] dark:text-white '>На основании {stat?.total} отзывов</p>
                     <Rate value={stat?.avg}/>
                 </div>
                 <div className='w-full max-w-[600px]'>
@@ -143,7 +176,7 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
                 </div>
             </div>
              <div className='flex justify-end'>
-            <Button onClick={()=>reset()} onPress={onOpen} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
+            <Button onClick={()=>reset()} onPress={userMe ? onOpen: ()=>{}} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
             </div>
             {
                 comments?.map((e:any)=>(

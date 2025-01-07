@@ -7,9 +7,10 @@ import { useTranslations } from 'next-intl'
 import React from 'react'
 import { usePageIdProps } from './props'
 import dayjs from 'dayjs'
+import PdfViewer from './PdfViewer'
 
 export const ArticlesIdPage:any = hoc(usePageIdProps, props => {
-      const {oneArticles} = props
+      const {oneArticles,id}:any = props
   const t = useTranslations()
   return (
     <Container className='py-[120px] md:py-[160px]'>
@@ -32,14 +33,11 @@ export const ArticlesIdPage:any = hoc(usePageIdProps, props => {
     {/* <SocketIcons/> */}
   </div>
        
-   <TextParag line={26} font={16} className="text-[#48535B] dark:text-white dark:opacity-70 w-full max-w-[760px] m-auto font-normal ">
+   <TextParag line={26} font={16} className="text-[#48535B] mb-3 dark:text-white dark:opacity-70 w-full max-w-[760px] m-auto font-normal ">
     {oneArticles?.text}  
   </TextParag>
-  {oneArticles?.file?.path? 
-        <iframe
-          src={`${process.env.NEXT_PUBLIC_BASE_URL}${oneArticles?.file?.path}`}
-          style={{ width: '100%', height: '100vh' }}
-    />
+  {oneArticles?.file? 
+       <PdfViewer id={id}/>
     :""}
  
 
