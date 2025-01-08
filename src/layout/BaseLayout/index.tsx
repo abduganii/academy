@@ -7,6 +7,8 @@ import { hoc, mutationFn } from "@/utils/index";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 import { usePageProps } from "./props/index";
+import LottieAnimation from "@/components/header/man-animation";
+import animationData from "../../../public/hiii.json";
 
 export const BaseLayout:any = hoc(usePageProps, props => {
   const { me, children }:any = props
@@ -36,6 +38,12 @@ export const BaseLayout:any = hoc(usePageProps, props => {
   return (
     <>
       {!pathName.includes('book-read') && <Header user={ me?.data} />}
+      {/* <LottieAnimation
+        animationData={animationData}
+        autoplay
+        loop
+        className="w-96 h-96 fixed top-[30px] right-[30px]"
+      /> */}
         {children}
       {!pathName.includes('book-read') && <Footer/>}
     </>

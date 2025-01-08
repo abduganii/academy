@@ -38,12 +38,12 @@ export default function Header({ user }: any) {
                <HeaderCongif/>
                </PopoverContent>
           </Popover>
-            <span className="cursor-pointer" onClick={()=>{
+            {/* <span className="cursor-pointer" onClick={()=>{
               setOpenSearch(!openSearch)
               setOpenSiteBar(false)
               }}>
               <SearchIcons/>
-            </span>
+            </span> */}
           <Lang />
           {
             user ?
@@ -68,7 +68,7 @@ export default function Header({ user }: any) {
                   <div className="w-full text-white" key={e?.id}>
                     <h4 className="text-[20px] w-full leading-[24px] font-semibold mb-[8px]"> {e?.title}</h4>
                     {e?.child?.map(ch=>(
-                      <Link href={ch?.link} onClick={()=>setOpenSearch(false)} key={ch.id} className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">{ch.text}</Link>
+                      <Link href={ch?.link} onClick={()=>setOpenSiteBar(false)} key={ch.id} className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">{ch.text}</Link>
                     ))}
                   </div>
                 ))

@@ -71,7 +71,9 @@ export default async function RootLayout({
       <NextIntlClientProvider  messages={messages}>
           <Providers>
             <HydrationBoundary state={dehydrate(queryClient)}>
-            <BaseLayout>{children}</BaseLayout>
+            <BaseLayout>
+            {children}
+            </BaseLayout>
           </HydrationBoundary>
           </Providers> 
       </NextIntlClientProvider>

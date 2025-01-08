@@ -57,18 +57,38 @@ export const HeaderSiteBarrArr = [
     child: [
       {
         id: 21,
-        link: "/",
-        text: "text",
+        link: "/news?type=anti_terrorism",
+        text: "Новости",
       },
       {
         id: 22,
         link: "/",
-        text: "text",
+        text: "Литература",
       },
       {
         id: 23,
+        link: "/country-information?type=anti_terrorism",
+        text: "Страновая информация",
+      },
+      {
+        id: 24,
+        link: "/international-organizations?type=anti_terrorism",
+        text: "Международные организации",
+      },
+      {
+        id: 25,
         link: "/",
-        text: "text",
+        text: "Полезные ссылки",
+      },
+      {
+        id: 26,
+        link: "/analytics?type=anti_terrorism",
+        text: "Аналитические данные",
+      },
+      {
+        id: 27,
+        link: "/video-materials?type=anti_terrorism",
+        text: "Видеоматериалы",
       },
     ],
   },
@@ -78,18 +98,38 @@ export const HeaderSiteBarrArr = [
     child: [
       {
         id: 31,
-        link: "/",
-        text: "text",
+        link: "/news?type=anti_corruption",
+        text: "Новости",
       },
       {
         id: 32,
         link: "/",
-        text: "text",
+        text: "Литература",
       },
       {
         id: 33,
+        link: "/country-information?type=anti_corruption",
+        text: "Страновая информация",
+      },
+      {
+        id: 34,
+        link: "/international-organizations?type=anti_corruption",
+        text: "Международные организации",
+      },
+      {
+        id: 35,
         link: "/",
-        text: "text",
+        text: "Полезные ссылки",
+      },
+      {
+        id: 36,
+        link: "/analytics?type=anti_corruption",
+        text: "Аналитические данные",
+      },
+      {
+        id: 37,
+        link: "/video-materials?type=anti_corruption",
+        text: "Видеоматериалы",
       },
     ],
   },
