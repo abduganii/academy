@@ -38,6 +38,23 @@ export default async function RootLayout({
     <html lang={locale}>
         <head >
           <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+        {/* Chatra Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(d, w, c) {
+                  w.ChatraID = 'n7jaTr4L6XeTJtDbo';
+                  var s = d.createElement('script');
+                  w[c] = w[c] || function() {
+                      (w[c].q = w[c].q || []).push(arguments);
+                  };
+                  s.async = true;
+                  s.src = 'https://call.chatra.io/chatra.js';
+                  if (d.head) d.head.appendChild(s);
+              })(document, window, 'Chatra');
+            `,
+          }}
+        />
       </head>
       <body className={inter.className}>
       <NextTopLoader

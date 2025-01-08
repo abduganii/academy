@@ -144,7 +144,7 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
             <p className='text-[14px] font-normal text-[#5B6871] leading-[24px] mb-[32px] dark:text-white'>{onevideos?.description}
                 {/* <span className='font-semibold underline decoration-solid text-[#2D2D2D] dark:text-white ml-1 cursor-pointer'>Еще</span> */}
             </p>
-            <VideoPlayer onPlay={OnPlay} onPause={OnPause} videoUrl={'https://api.proacademy.calypso.uz/files/stream/66'} />
+           {onevideos?.file && <VideoPlayer onPlay={OnPlay} onPause={OnPause} videoUrl={`https://api.proacademy.calypso.uz/files/stream/${onevideos?.file?.id}`} />}
              <h3 className='text-[24px] font-semibold leading-[29px] mt-[56px] mb-4'>Отзывы</h3>
             <div className='w-full flex items-start justify-between'>
                 <div className='w-full max-w-[124px]'>
