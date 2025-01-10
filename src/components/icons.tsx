@@ -67,6 +67,56 @@ export const DoteIcons =()=>{
       </>
   )
 }
+
+
+export const AIIcons =()=>{
+  return(
+      <>
+     
+
+ 
+<svg className="inline-block" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.071 3.6625C16.93 3.18267 16.6375 2.76139 16.2371 2.4617C15.8367 2.16201 15.3501 2.00003 14.85 2H14.175C13.6335 1.99999 13.1092 2.18978 12.6931 2.53638C12.2771 2.88297 11.9958 3.36442 11.898 3.897L10.74 10.2035L11.0275 9.221C11.168 8.74054 11.4606 8.31859 11.8612 8.0184C12.2618 7.71821 12.7489 7.55597 13.2495 7.556H17.176L18.823 8.197L20.4105 7.5555H19.9475C19.4473 7.55558 18.9605 7.39365 18.5601 7.09395C18.1596 6.79425 17.867 6.37291 17.726 5.893L17.071 3.6625Z" fill="url(#paint0_radial_2778_51533)"/>
+<path d="M7.16505 20.3276C7.30446 20.8098 7.5968 21.2336 7.99803 21.5351C8.39925 21.8367 8.88762 21.9997 9.38955 21.9996H10.8245C11.4282 21.9997 12.008 21.764 12.4403 21.3427C12.8727 20.9215 13.1234 20.348 13.139 19.7446L13.295 13.6631L12.968 14.7796C12.8274 15.2599 12.5349 15.6817 12.1344 15.9817C11.734 16.2818 11.247 16.444 10.7465 16.4441H6.78705L5.37555 15.6781L3.84705 16.4441H4.30305C4.8048 16.4442 5.29294 16.6073 5.69396 16.9088C6.09499 17.2104 6.38718 17.6341 6.52655 18.1161L7.16605 20.3276H7.16505Z" fill="url(#paint1_radial_2778_51533)"/>
+<path d="M14.75 2H6.73004C4.43854 2 3.06404 5.0285 2.14755 8.0565C1.06155 11.645 -0.359955 16.4425 3.75154 16.4425H7.21405C7.71747 16.443 8.20732 16.2793 8.60937 15.9763C9.01141 15.6733 9.30374 15.2476 9.44204 14.7635C10.2583 11.9006 11.0868 9.04126 11.9275 6.1855C12.349 4.764 12.6995 3.5435 13.238 2.783C13.54 2.357 14.043 2 14.75 2Z" fill="url(#paint2_linear_2778_51533)"/>
+<path d="M14.75 2H6.73004C4.43854 2 3.06405 5.0285 2.14755 8.0565C1.06155 11.645 -0.359955 16.4425 3.75154 16.4425H7.21405C7.71747 16.443 8.20732 16.2793 8.60937 15.9763C9.01141 15.6733 9.30374 15.2476 9.44205 14.7635C10.2583 11.9006 11.0868 9.04126 11.9275 6.1855C12.349 4.764 12.6995 3.5435 13.238 2.783C13.54 2.357 14.043 2 14.75 2Z" fill="url(#paint3_linear_2778_51533)"/>
+<path d="M9.24902 21.9997H17.269C19.56 21.9997 20.935 18.9707 21.8515 15.9422C22.937 12.3537 24.358 7.55469 20.2475 7.55469H16.7845C16.2812 7.55434 15.7914 7.71806 15.3895 8.02103C14.9876 8.324 14.6953 8.74972 14.557 9.23369C13.7406 12.0972 12.9119 14.9573 12.071 17.8137C11.65 19.2352 11.299 20.4562 10.761 21.2167C10.459 21.6427 9.95602 21.9997 9.24902 21.9997Z" fill="url(#paint4_radial_2778_51533)"/>
+<path d="M9.24902 21.9997H17.269C19.56 21.9997 20.935 18.9707 21.8515 15.9422C22.937 12.3537 24.358 7.55469 20.2475 7.55469H16.7845C16.2812 7.55434 15.7914 7.71806 15.3895 8.02103C14.9876 8.324 14.6953 8.74972 14.557 9.23369C13.7406 12.0972 12.9119 14.9573 12.071 17.8137C11.65 19.2352 11.299 20.4562 10.761 21.2167C10.459 21.6427 9.95602 21.9997 9.24902 21.9997Z" fill="url(#paint5_linear_2778_51533)"/>
+<defs>
+<radialGradient id="paint0_radial_2778_51533" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(19.0025 10.257) rotate(-129.304) scale(8.65165 8.1353)">
+<stop offset="0.096" stop-color="#00AEFF"/>
+<stop offset="0.773" stop-color="#2253CE"/>
+<stop offset="1" stop-color="#0736C4"/>
+</radialGradient>
+<radialGradient id="paint1_radial_2778_51533" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(5.56074 16.408) rotate(51.84) scale(7.9956 7.75595)">
+<stop stop-color="#FFB657"/>
+<stop offset="0.634" stop-color="#FF5F3D"/>
+<stop offset="0.923" stop-color="#C02B3C"/>
+</radialGradient>
+<linearGradient id="paint2_linear_2778_51533" x1="6.25004" y1="3.75" x2="7.39404" y2="16.9875" gradientUnits="userSpaceOnUse">
+<stop offset="0.156" stop-color="#0D91E1"/>
+<stop offset="0.487" stop-color="#52B471"/>
+<stop offset="0.652" stop-color="#98BD42"/>
+<stop offset="0.937" stop-color="#FFC800"/>
+</linearGradient>
+<linearGradient id="paint3_linear_2778_51533" x1="7.25004" y1="2" x2="7.87504" y2="16.4425" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3DCBFF"/>
+<stop offset="0.247" stop-color="#0588F7" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="paint4_radial_2778_51533" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(20.6589 6.14024) rotate(109.274) scale(19.1936 22.9933)">
+<stop offset="0.066" stop-color="#8C48FF"/>
+<stop offset="0.5" stop-color="#F2598A"/>
+<stop offset="0.896" stop-color="#FFB152"/>
+</radialGradient>
+<linearGradient id="paint5_linear_2778_51533" x1="21.293" y1="6.67269" x2="21.2845" y2="10.6072" gradientUnits="userSpaceOnUse">
+<stop offset="0.058" stop-color="#F8ADFA"/>
+<stop offset="0.708" stop-color="#A86EDD" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>
+</>
+  )
+}
 export const TelegramIcons = ({color,iconsColor}:any)=>{
     
     return(
