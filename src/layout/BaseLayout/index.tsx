@@ -10,12 +10,19 @@ import { usePageProps } from "./props/index";
 import LottieAnimation from "@/components/header/man-animation";
 import animationData from "../../../public/hiii.json";
 import MassageAnimation from "@/components/Animation-message";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 export const BaseLayout:any = hoc(usePageProps, props => {
   const { me, children }:any = props
   const pathName = usePathname()
   const dispatch = useAppDispatch()
-  
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+      easing: 'ease-in',
+      once: true,
+    });
+  }, []);
   useEffect(() => {
     dispatch(setUserMe(me))
     if(me){
@@ -67,7 +74,7 @@ export const BaseLayout:any = hoc(usePageProps, props => {
   return (
     <>
       {!pathName.includes('book-read') && <Header user={ me?.data} />}
-      {/* <MassageAnimation/> */}
+      <MassageAnimation/>
       <LottieAnimation
         autoplay
         loop

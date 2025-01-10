@@ -8,7 +8,6 @@ import {BaseLayout} from "@/layout/BaseLayout";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider } from "next-intl";
 // import Cookies from "js-cookie";
-
 import {getQueryClient, queryFn} from "@/utils";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
