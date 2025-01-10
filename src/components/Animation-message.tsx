@@ -1,11 +1,20 @@
 "use client"
 import { useTranslations } from 'next-intl'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function MassageAnimation() {
   const t = useTranslations()
+  const [visble,setVisble] = useState(true)
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setVisble(false)
+    }, 5000);
+    return () => {
+      clearTimeout(timeout)
+    }; 
+  }, []);
   return (
-    <div data-aos="zoom-in" className='fixed bottom-[200px] z-50 right-[260px]' >
+    <div data-aos="zoom-in" className={`${visble ? "": "hidden"} fixed bottom-[200px] z-50 right-[260px]`} >
         <div className='text-[15px]  shadow-md font-normal leading-[18px] p-[20px] rounded-xl w-full max-w-[298px] bg-white z-50 cursor-pointer'>
             
             {t('hello')}

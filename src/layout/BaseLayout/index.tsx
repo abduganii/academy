@@ -16,6 +16,16 @@ export const BaseLayout:any = hoc(usePageProps, props => {
   const { me, children }:any = props
   const pathName = usePathname()
   const dispatch = useAppDispatch()
+
+  const [visble,setVisble] = useState(true)
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setVisble(false)
+    }, 60000);
+    return () => {
+      clearTimeout(timeout)
+    }; 
+  }, []);
   useEffect(() => {
     AOS.init({
       duration: 500,
@@ -78,7 +88,7 @@ export const BaseLayout:any = hoc(usePageProps, props => {
       <LottieAnimation
         autoplay
         loop
-        className="w-96 h-96 fixed bottom-[1px] z-50 right-[1px] cursor-pointer"
+        className={`${visble ? "":"hidden"} w-96 h-96 fixed bottom-[1px] z-50 right-[1px] cursor-pointer`}
       />
         {children}
       {!pathName.includes('book-read') && <Footer/>}

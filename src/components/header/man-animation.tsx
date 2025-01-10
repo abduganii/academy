@@ -23,6 +23,7 @@ const LottieAnimation: FC<LottieAnimationProps> = ({
 }) => {
   const [file,setFile] = useState<any>(animationData)
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  
   useEffect(() => {
     const timeout = setTimeout(() => {
       setFile(animationidData)
@@ -32,7 +33,7 @@ const LottieAnimation: FC<LottieAnimationProps> = ({
     }; 
   }, []);
 
-  
+
   
   return (
     <>
