@@ -13,7 +13,7 @@ export const usePageProps = () => {
 export const usePageIdProps = ({ id }: any) => {
   const { data: legislations } = useFetchData<any>({
     url: `map-items`,
-    params: { mapId: id, type: "legislation" },
+    params: { mapId: id, type: "legislation",page:10000},
   });
   const { data: anti_corruptions } = useFetchData<any>({
     url: `map-items`,

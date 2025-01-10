@@ -1,6 +1,5 @@
 import axios, { AxiosHeaders, AxiosInstance } from "axios";
 import Cookies from "js-cookie";
-
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const httpClient: AxiosInstance = axios.create({
@@ -14,7 +13,7 @@ const setRequestHeaders = async (config: any) => {
     config.headers = new AxiosHeaders();
   }
   config.headers.set("Content-Type", "application/json");
-  config.headers.set("lang", "ru");
+  config.headers.set("lang",Cookies.get("NEXT_LOCALE")||"ru");
   if (Cookies.get("tokenAcadamySite")) {
     config.headers["Authorization"] = `Bearer ${Cookies.get(
       "tokenAcadamySite"
@@ -22,6 +21,7 @@ const setRequestHeaders = async (config: any) => {
   }
   return config;
 };
+
 
 // const handleTokenRefresh = async (): Promise<void> => {
 //   const tokenAPI: AxiosInstance = axios.create({

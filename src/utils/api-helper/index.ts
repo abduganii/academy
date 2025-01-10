@@ -28,7 +28,7 @@ export const queryBuilder = (url: string, config: TObject): string => {
 
 export const queryFn = async <T>(
   context: QueryFunctionContext,
-  params: TObject = {}
+  params: TObject = {},
 ): Promise<any> => {
   const { queryKey, signal } = context;
   const url = queryBuilder(queryKey[0] as string, params);
@@ -37,7 +37,8 @@ export const queryFn = async <T>(
       url,
       signal,
       method: "GET",
-    });
+    },
+  );
     return data;
   } catch (err: any) {
     if (err?.status == 401) {

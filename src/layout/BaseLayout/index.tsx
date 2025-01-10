@@ -5,16 +5,17 @@ import { setUserMe } from "@/lib/features/index";
 import { useAppDispatch } from "@/lib/hooks";
 import { hoc, mutationFn } from "@/utils/index";
 import { usePathname } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { usePageProps } from "./props/index";
 import LottieAnimation from "@/components/header/man-animation";
 import animationData from "../../../public/hiii.json";
+import MassageAnimation from "@/components/Animation-message";
 
 export const BaseLayout:any = hoc(usePageProps, props => {
   const { me, children }:any = props
   const pathName = usePathname()
   const dispatch = useAppDispatch()
-
+  
   useEffect(() => {
     dispatch(setUserMe(me))
     if(me){
@@ -35,15 +36,43 @@ export const BaseLayout:any = hoc(usePageProps, props => {
       return () => clearInterval(interval);
     }
   },[me])
+
+ 
+  // useEffect(() => {
+  //   // Ensure Chatra object is initialized
+  //   window.Chatra = window.Chatra || function () {
+  //     (window.Chatra.q = window.Chatra.q || []).push(arguments);
+  //   };
+
+  //   // Open Chatra programmatically based on an external event
+  //   const openChat = () => {
+  //     console.log('Chatra modal opened');
+  //   };
+
+  //   const closeChat = () => {
+  //     console.log('Chatra modal closed');
+  //   };
+
+  //   // Example: Trigger open/close based on an application event
+  //   document.addEventListener('chat-open', openChat);
+  //   document.addEventListener('chat-close', closeChat);
+
+  //   // Cleanup
+  //   return () => {
+  //     document.removeEventListener('chat-open', openChat);
+  //     document.removeEventListener('chat-close', closeChat);
+  //   };
+  // }, []);
+
   return (
     <>
       {!pathName.includes('book-read') && <Header user={ me?.data} />}
-      {/* <LottieAnimation
-        animationData={animationData}
+      {/* <MassageAnimation/> */}
+      <LottieAnimation
         autoplay
         loop
-        className="w-96 h-96 fixed top-[30px] right-[30px]"
-      /> */}
+        className="w-96 h-96 fixed bottom-[1px] z-50 right-[1px] cursor-pointer"
+      />
         {children}
       {!pathName.includes('book-read') && <Footer/>}
     </>

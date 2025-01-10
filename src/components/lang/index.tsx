@@ -1,6 +1,6 @@
 
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@nextui-org/react'
 import Image from 'next/image';
 import React from 'react'
@@ -12,6 +12,7 @@ import en from "../../../public/lang/en.png"
 import {Link, usePathname} from '@/i18n/routing';
 import {  useLocale, useTranslations } from 'next-intl';
 import { LangArr } from '../../../musk/data';
+import { useQueryClient } from '@tanstack/react-query';
 
 
 const langFlag:any = {
@@ -20,10 +21,15 @@ const langFlag:any = {
     en:en,
 }
 export default function Lang() {
+  const queryClient:any = useQueryClient();
   const t = useTranslations('');
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const locele = useLocale()
+
+  useEffect(()=>{
+    queryClient.invalidateQueries()
+  },[locele])
   return (
     <>
     <div className="relative"

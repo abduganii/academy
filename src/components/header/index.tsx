@@ -27,7 +27,7 @@ export default function Header({ user }: any) {
            {openSiteBar ?   <XIcons color='white'/>:<BurgerIcons/>}
            </span>
            <Link className="mr-auto" href={'/'}>
-             <Image  src={'/logo.svg'} width={256} height={44} alt={"logo"}/>
+             <Image src={'/logo.svg'} width={256} height={44} alt={"logo"}/>
            </Link>
           
           <Popover className="w-full max-w-[400px]" placement="bottom" showArrow={true}>
@@ -59,7 +59,6 @@ export default function Header({ user }: any) {
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
           <AuthMadal />
         </Modal>
-        
 
         <div className={`${openSiteBar ? 'h-[307px]':'h-0'} overflow-hidden transition-all duration-500 ease-in-out w-full absolute top-[77px] left-0 bg-[#01283DCC]`}>
           <Container className="py-[25px] flex gap-4">
