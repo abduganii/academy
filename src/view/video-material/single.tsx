@@ -43,7 +43,7 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
         method: updateId? "PUT":"POST",
         data: updateId ? data : {
         comment:data?.comment,
-        star:5,
+        star:data?.star,
         type:"video",
         item:onevideos?.id
       }})
@@ -123,29 +123,29 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
                   }
                 </div>
                 <div className='flex items-end gap-2 w-full mb-[12px]'>
-                    <p className='text-[14px] font-normal text-[#5B6871] text-nowrap leading-[24px]'>Язык</p>
+                    <p className='text-[14px] font-normal text-[#5B6871] text-nowrap leading-[24px]'>{t('langs')}</p>
                     <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
                     <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D]'>{onevideos?.language}</p>
                 </div>
                 <div className='flex items-end gap-2 w-full mb-[12px]'>
-                    <p className='text-[14px] font-normal text-[#5B6871] text-nowrap leading-[24px]'>country</p>
+                    <p className='text-[14px] font-normal text-[#5B6871] text-nowrap leading-[24px]'>{t('country')}</p>
                     <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
                     <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D]'>{onevideos?.country}</p>
                 </div>
                 <div className='flex items-end gap-2 w-full mb-[12px]'>
-                    <p className='text-[14px] font-normal text-[#5B6871] text-nowrap leading-[24px]'>Год выпуска</p>
+                    <p className='text-[14px] font-normal text-[#5B6871] text-nowrap leading-[24px]'>{t('publeshedYear')}</p>
                     <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
                     <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D]'>{dayjs(onevideos?.created_at).format('YYYY')}</p>
                 </div>
             </div>
         </div>
         <div className='w-full max-w-[760px] my-[56px]'>
-            <h3 className='text-[24px] font-semibold leading-[29px] mb-4'>Описание</h3>
+            <h3 className='text-[24px] font-semibold leading-[29px] mb-4'>{t('description')}</h3>
             <p className='text-[14px] font-normal text-[#5B6871] leading-[24px] mb-[32px] dark:text-white'>{onevideos?.description}
                 {/* <span className='font-semibold underline decoration-solid text-[#2D2D2D] dark:text-white ml-1 cursor-pointer'>Еще</span> */}
             </p>
            {onevideos?.file && <VideoPlayer onPlay={OnPlay} onPause={OnPause} videoUrl={`https://api.proacademy.calypso.uz/files/stream/${onevideos?.file?.id}`} />}
-             <h3 className='text-[24px] font-semibold leading-[29px] mt-[56px] mb-4'>Отзывы</h3>
+             <h3 className='text-[24px] font-semibold leading-[29px] mt-[56px] mb-4'>{t('reviews')}</h3>
             <div className='w-full flex items-start justify-between'>
                 <div className='w-full max-w-[124px]'>
                     <h3 className='text-[40px] font-normal leading-[46px] text-[#000000CC] dark:text-white '>{stat?.avg}</h3>
@@ -206,7 +206,7 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <ModalHeader className="flex flex-col gap-1">{t('leave-feedback')}</ModalHeader>
               <ModalBody>
-              {/* <Rate className='text-[18px]'  defaultValue={2.5} /> */}
+             <Rate className='text-[18px]' onChange={(e)=>setValue('star',e)}  value={ watchedFiles.star|| stat?.avg} />
               <Textarea
                classNames={{ inputWrapper:"bg-white border-[2px] border-white  group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white group-data-[focus=true]:bg-white group-data-[hover=true]:bg-white" }} 
                     label="Description"
@@ -222,7 +222,7 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
                   {t('close')}
                 </Button>
                 <Button className='w-full bg-[#2962FF] text-white max-w-[200px] rounded-lg' size='md' type='submit'>
-                  Action
+                  {t('action')}
                 </Button>
               </ModalFooter>
             </form>

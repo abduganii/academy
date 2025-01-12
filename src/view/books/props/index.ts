@@ -86,10 +86,10 @@ export const usePageIdProps = ({ id }: any) => {
 
 export const usePagePdfProps = ({ id }: any) => {
  
-  // const { data: pdf } = useFetchData<any>({
-  //   url: `books/download/${id}`,
-  // });
+  const { data: oneBooks } = useFetchData<any>({
+    url: `books/${id}`,
+  });
   return {
-    pdf:'',
+    oneBooks:oneBooks?.data,
   };
 };

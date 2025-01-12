@@ -29,11 +29,11 @@ export default function ContactUsForm() {
      url: '/contact-us-messages',
      method:  "POST",
      data: data}).then(()=>{
-      toast.success('Form submitted successfully!');
+      toast.success(t('saccessForm') );
       reset()
      })
      .catch(()=>{
-          toast.error('Failed to submit form');
+          toast.error(t('errorForm'));
        })
        .finally(()=>{setloading(false)})
   } catch (error:any) {
@@ -51,7 +51,7 @@ export default function ContactUsForm() {
         variant='bordered'  
         classNames={{inputWrapper:"group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white" }} 
         type="text" 
-        label="Ф.И.О." 
+        label={t('fullName')} 
         {...register('fullName', { required: 'fullName is required' })}
         />
        <Select 
@@ -62,15 +62,15 @@ export default function ContactUsForm() {
           value:"group-data-[has-value=true]:text-white",
         }
       }
-        label="Противодействие легализации преступных доходов ..." 
+        label={t('sectionText')} 
         className="colm1"
         {...register('section', { required: 'section is required' })}
       >
           <SelectItem  key={'anti_corruption'}>
-          anti_corruption
+          {t('anti_corruption')}
           </SelectItem>
           <SelectItem key={'anti_terrorism'}>
-          anti_terrorism
+            {t('anti_terrorism')}
           </SelectItem>
       </Select>
        <Input 
@@ -79,7 +79,7 @@ export default function ContactUsForm() {
         variant='bordered'  
         classNames={{ inputWrapper:"group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white" }} 
         type="text" 
-        label="Номер телефона*" 
+        label={t('phonenumber')} 
         {...register('phone', { required: 'phoneNumber is required' })}
         />
         <Input 
@@ -88,7 +88,7 @@ export default function ContactUsForm() {
         variant='bordered'  
         classNames={{inputWrapper:"group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white" }} 
         type="text" 
-        label="Тема" 
+        label={t('topic')}
         {...register('theme', { required: 'theme is required' })}
       />
       <Input 
@@ -97,7 +97,7 @@ export default function ContactUsForm() {
         variant='bordered'  
         classNames={{inputWrapper:"group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white" }} 
         type="email" 
-        label="Почта" 
+        label={t('email')} 
         {...register('email', { required: 'email is required' })}
       />
       <Input 
@@ -106,10 +106,10 @@ export default function ContactUsForm() {
         variant='bordered'  
         classNames={{inputWrapper:"group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white" }} 
         type="text" 
-        label="Описание" 
+        label={t('description')} 
         {...register('message', { required: 'message is required' })}
       />
-       <Button type='submit'  size="lg" className='colm1 dark:text-black'>
+       <Button type='submit' isLoading={loading}  size="lg" className='colm1 dark:text-black'>
         {t('send')}
        </Button>
       </div>

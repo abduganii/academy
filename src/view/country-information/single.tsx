@@ -5,13 +5,16 @@ import TextParag from '@/components/text'
 import { hoc } from '@/utils'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { usePageIdProps } from './props/index'
 
 export const CountryInformationSinglePage:any = hoc(usePageIdProps, props => {
     const { legislations, anti_corruptions, international_cooperations, indexes, national_cooperations } = props
     const [open,setOpen] = useState<boolean | string | number>(false)
     const [open1,setOpen1] = useState<any>(international_cooperations?.[0])
+      useEffect(()=>{
+        setOpen1(international_cooperations?.[0] )
+        },[international_cooperations])
     const t = useTranslations()
   return (
     <>
@@ -22,7 +25,7 @@ export const CountryInformationSinglePage:any = hoc(usePageIdProps, props => {
     <div className='w-full h-[372px] bg-gradient-to-r from-black/90 to-black/30 absolute z-10  top-0 left-0'></div>
     </div>
     <Container>
-        <TextParag type='title' font={32} line={46} className='font-semibold mb-[16px]'>Основное законодательство</TextParag>
+        <TextParag type='title' font={32} line={46} className='font-semibold mb-[16px]'> {t('legislations')}</TextParag>
               <ol className='pl-[20px] list-decimal  font-normal mb-[68px]'>
                   {
                       legislations?.length && legislations?.map((e: any) => (
@@ -33,7 +36,7 @@ export const CountryInformationSinglePage:any = hoc(usePageIdProps, props => {
                       ))
                   }
         </ol>  
-        <TextParag type='title' font={32} line={46} className='font-semibold mb-[16px]'>Антикоррупционные органы</TextParag>
+        <TextParag type='title' font={32} line={46} className='font-semibold mb-[16px]'>{t('legislations')}  {t('anti_corruption')}</TextParag>
         { anti_corruptions?.length && anti_corruptions?.map((e:any)=>( 
         <OrganizationsCard
             className='mb-4'
@@ -46,7 +49,7 @@ export const CountryInformationSinglePage:any = hoc(usePageIdProps, props => {
       />
       ))}
 
-    <TextParag type='title' font={32} line={46} className='font-semibold mb-[16px]'>Международное сотрудничество</TextParag>
+    <TextParag type='title' font={32} line={46} className='font-semibold mb-[16px]'>{t('international_cooperations')}</TextParag>
         <div className='flex gap-5'>
             <div className='w-full'>
             { international_cooperations?.length && international_cooperations?.map((e:any)=>( 
@@ -75,7 +78,7 @@ export const CountryInformationSinglePage:any = hoc(usePageIdProps, props => {
             </div>
         </div>
 
-        <h4 className='text-[32px] font-semibold leading-[46px] mt-[50px] mb-[16px]'>Индексы</h4>
+        <h4 className='text-[32px] font-semibold leading-[46px] mt-[50px] mb-[16px]'>{t('indexes')}</h4>
         <div className='flex flex-wrap gap-4 mb-[68px]'>
         {indexes?.length && indexes?.map((e:any)=>( 
             <div key={e?.id} className='colm1 p-5 rounded-lg bg-[#F5F5F5] dark:bg-[#27272A] dark:text-[#FFFFFF] '>
@@ -83,13 +86,13 @@ export const CountryInformationSinglePage:any = hoc(usePageIdProps, props => {
                 <div className='flex'>
                     <div className='w-full'>
                         <p className='font-inter text-[14px] font-normal leading-[24px] text-left'>
-                        Итоговая оценка
+                       {t('allRating')}
                         </p>
                         <p className='font-inter text-[16px] font-semibold leading-[26px]'>{ e?.grade}/100</p>
                     </div>
                     <div className='w-full'>
                         <p className='font-inter text-[14px] font-normal leading-[24px] text-left'>
-                        Рейтинг
+                        {t('rate')}
                         </p>
                         <p className='font-inter text-[16px] font-semibold leading-[26px]'>{ e?.rate}/100</p>
                     </div>
@@ -99,7 +102,7 @@ export const CountryInformationSinglePage:any = hoc(usePageIdProps, props => {
               ))}
         </div>
 
-        <h4 className='text-[32px] font-semibold leading-[46px] mb-[16px]'>Сотрудничество с Узбекистаном</h4>
+        <h4 className='text-[32px] font-semibold leading-[46px] mb-[16px]'>{t('national_cooperations')}</h4>
         <ol className='pl-[20px] list-decimal text-[16px] font-normal leading-[26px] mb-[68px]'>
             
             {

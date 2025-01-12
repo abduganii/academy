@@ -3,9 +3,11 @@ import { DoneIcon } from '@/components/icons'
 import { Button } from '@nextui-org/react'
 import { useRouter } from '@/i18n/routing';
 import React from 'react'
+import { useTranslations } from 'next-intl';
 
 export default function SeccesAuth({onClose,text}:any) {
   const router = useRouter()
+  const t = useTranslations()
   return (
     <div  className='text-center'>  
         <DoneIcon className="m-auto"/>
@@ -15,7 +17,7 @@ export default function SeccesAuth({onClose,text}:any) {
         router.push('/profile/information')
       }
       }>
-      Продолжить
+      {t('countinion')}
       </Button>
 </div>
   )

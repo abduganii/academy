@@ -8,12 +8,14 @@ import React, { useState } from 'react'
 import { useAppDispatch } from '@/lib/hooks';
 import { setToken } from '@/lib/features/index';
 import Cookies from 'js-cookie';
+import { useTranslations } from 'next-intl';
 interface iPops {
     steComp: any
     email:any
 }
 export default function RegisterCode({ steComp, email }: iPops) {
   const dispatch = useAppDispatch();
+  const t = useTranslations()
   const [loading, setloading] = useState(false)
     const { register,reset, handleSubmit, formState: { errors } } = useForm<any>();
     const onSubmit = async (data: any) => {
@@ -51,7 +53,7 @@ export default function RegisterCode({ steComp, email }: iPops) {
             className='mb-[31px] text-left'
             type={'number'}
             label='код' 
-            placeholder="Введите код"
+            placeholder={t('code')}
             key="outside" 
               labelPlacement={'outside'}
               errorMessage={(errors?.password?.message as string)||""}
@@ -67,7 +69,7 @@ export default function RegisterCode({ steComp, email }: iPops) {
             )}
             />
         <Button isLoading={loading}  type={"submit"}  className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' >
-        Зарегистрироваться
+        {t('register')}
         </Button>
     </form>
   )

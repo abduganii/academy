@@ -3,7 +3,22 @@ import OrganizationsCard from '@/components/card/organizations-card'
 import Container from '@/components/container'
 import { useTranslations } from 'next-intl'
 import React from 'react'
-
+const data = [
+  {
+    text: 'natlib.uz',
+  },
+  {
+    text: 'diss.natlib.uz',
+  },
+  {
+    text: 'nodir.natlib.uz',
+  },
+  {
+    text: 'qr.natlib.uz',
+  }, {
+    text: 'press.natlib.uz',
+  }
+]
 export default function InformationDatabasesPage() {
   const t = useTranslations()
   return (
@@ -16,17 +31,19 @@ export default function InformationDatabasesPage() {
     </div>
 
     <Container className='mb-[70px]'>
-     { [1,2,3,4,5,].map((e)=>( 
+     { data.map((e,i)=>( 
       <OrganizationsCard 
         className='mb-4'
-        key={e}
+        key={i}
         image={'/Elibrary.png'}
-        dicr={`Научная электронная библиотека eLIBRARY.RU - это крупнейший российский информационно-аналитический портал в области науки, технологии, медицины и образования, содержащий рефераты и полные тексты более 38 млн научных публикаций и патентов, в том числе электронные версии более 5600 российских научно-технических журналов, из которых более 4800 журналов в открытом доступе.`} 
-        title={"Elibrary"}
-        link={'https://www.un.org/ru/'}
+        dicr={`InformationDatabases${i+1}`} 
+        title={e?.text}
+        link={`https://${e?.text}`}
       />
       ))}
     </Container>
     </>
   )
 }
+
+

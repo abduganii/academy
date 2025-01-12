@@ -4,6 +4,7 @@ import { useAppSelector } from '@/lib/hooks';
 import { mutationFn } from '@/utils';
 import { Button, Input } from '@nextui-org/react'
 import { useQueryClient } from '@tanstack/react-query';
+import { useTranslations } from 'next-intl';
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -21,6 +22,7 @@ type FormData = {
   avatar: string;
 };
 export default function SettingForm() {
+    const t = useTranslations()
       const { userMe } = useAppSelector((store: any) => store.userMe);
     const { register,setValue, handleSubmit,watch, formState: { errors } } = useForm<FormData>();
     const watchedFiles = watch();
@@ -64,7 +66,7 @@ export default function SettingForm() {
           variant='bordered' 
           size={'sm'} 
           type="text" 
-          label="firstName" 
+          label={t('firstName')} 
           value={watchedFiles?.firstName || ""}
           errorMessage={(errors?.firstName?.message as string) || ""}
           isInvalid={Boolean(errors?.firstName?.message)}
@@ -75,7 +77,7 @@ export default function SettingForm() {
           variant='bordered' 
           size={'sm'} 
           type="text" 
-          label="lastName" 
+          label={t('lastName')} 
           value={watchedFiles?.lastName || ""}
           errorMessage={(errors?.lastName?.message as string) || ""}
           isInvalid={Boolean(errors?.lastName?.message)}
@@ -86,7 +88,7 @@ export default function SettingForm() {
           variant='bordered' 
           size={'sm'} 
           type="text" 
-          label="middleName" 
+          label={t('middleName')}
           value={watchedFiles?.middleName || ""}
           errorMessage={(errors?.middleName?.message as string) || ""}
           isInvalid={Boolean(errors?.middleName?.message)}
@@ -97,7 +99,7 @@ export default function SettingForm() {
           variant='bordered' 
           size={'sm'} 
           type="text" 
-          label="Номер телефона" 
+          label={t('phonenumber')} 
           value={watchedFiles?.phone || ""}
           errorMessage={(errors?.phone?.message as string) || ""}
           isInvalid={Boolean(errors?.phone?.message)}
@@ -114,7 +116,7 @@ export default function SettingForm() {
           variant='bordered'
           size={'sm'} 
           type="email" 
-          label="Email"  
+          label={t('email')}  
           value={watchedFiles?.email || ""}
           errorMessage={(errors?.email?.message as string) || ""}
           isInvalid={Boolean(errors?.email?.message)}
@@ -131,7 +133,7 @@ export default function SettingForm() {
           variant='bordered' 
           size={'sm'} 
           type="text" 
-          label="password" 
+          label={t('password')}
           value={watchedFiles?.password || ""}
           errorMessage={(errors?.password?.message as string) || ""}
           isInvalid={Boolean(errors?.password?.message)}
@@ -142,7 +144,7 @@ export default function SettingForm() {
           variant='bordered' 
           size={'sm'} 
           type="text" 
-          label="country" 
+          label={t('country')} 
           value={watchedFiles?.country || ""}
           errorMessage={(errors?.country?.message as string) || ""}
           isInvalid={Boolean(errors?.country?.message)}
@@ -153,7 +155,7 @@ export default function SettingForm() {
             variant='bordered' 
             size={'sm'} 
             type="text" 
-            label="city" 
+            label={t('city')} 
             value={watchedFiles?.city || ""}
             errorMessage={(errors?.city?.message as string) || ""}
             isInvalid={Boolean(errors?.city?.message)}
@@ -163,7 +165,7 @@ export default function SettingForm() {
             variant='bordered' 
             size={'sm'} 
             type="text" 
-            label="organization" 
+            label={t('organization')}
             value={watchedFiles?.organization || ""}
             errorMessage={(errors?.organization?.message as string) || ""}
             isInvalid={Boolean(errors?.organization?.message)}
@@ -173,8 +175,8 @@ export default function SettingForm() {
         <p className='font-semibold text-[15px] leading-[20px]'>Настройки уведомлений</p>
         <Switch color="primary" />
       </div> */}
-      <Button size='lg' className='colm1 rounded-lg bg-[#DDE2E4]'>Отменить</Button>
-      <Button type='submit' size='lg' className='colm1 rounded-lg bg-[#2962FF] text-white'>Обновить</Button>
+      <Button size='lg' className='colm1 rounded-lg bg-[#DDE2E4]'>{t('cancel')}</Button>
+      <Button type='submit' size='lg' className='colm1 rounded-lg bg-[#2962FF] text-white'>{t('reflesh')}</Button>
     </form>
   )
 }

@@ -2,7 +2,7 @@
 import BooksCard from '@/components/card/books-card'
 import CommitCard from '@/components/card/commit-card'
 import Container from '@/components/container'
-import {  SaveIcons, StartIcons } from '@/components/icons'
+import {  MoreDownIcons, SaveIcons, StartIcons } from '@/components/icons'
 import SwiperWithScrollIcons from '@/components/swiper'
 import TextParag from '@/components/text'
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea, useDisclosure } from '@nextui-org/react'
@@ -38,7 +38,7 @@ import { useAppSelector } from '@/lib/hooks'
        method: updateId? "PUT":"POST",
        data: updateId ? data : {
         comment:data?.comment,
-        star:5,
+        star:data?.star,
         type:"book",
         item:oneBooks?.id
       }})
@@ -85,7 +85,7 @@ import { useAppSelector } from '@/lib/hooks'
                 <p className="text-sm font-normal leading-6 text-left flex items-center gap-2 " >
                     <span className='flex items-center'><StartIcons/>  {oneBooks?.rating}</span>
                     <span className="bg-[#D5DADD] w-[6px] h-[6px] rounded-full"></span>
-                    {stat?.total} отзывов
+                    {stat?.total} {t('reviews')}
                   
                 </p>
                 <div className='flex gap-2 mt-4 mb-6'>
@@ -97,8 +97,8 @@ import { useAppSelector } from '@/lib/hooks'
                 </div>
                 <h3 className='text-[24px] font-semibold leading-[29px] mb-2'>{oneBooks?.price} сум</h3>
                 <div className='flex gap-4'>
-                    <Button className='w-full bg-[#323232] text-white max-w-[220px] rounded-lg' size='md'>Купить</Button>
-                    <Button onClick={()=>router.push('/books/1/book-read')} className='w-full bg-[#69696926] text-[#323232] dark:bg-white max-w-[220px] px-6 rounded-lg' size='md'>Читать фрагмент</Button>
+                    <Button className='w-full bg-[#323232] text-white max-w-[220px] rounded-lg' size='md'>{t('buy')}</Button>
+                    <Button onClick={()=>router.push(`/books/${oneBooks?.id}/book-read`)} className='w-full bg-[#69696926] text-[#323232] dark:bg-white max-w-[220px] px-6 rounded-lg' size='md'>Читать фрагмент</Button>
                     <Button className='bg-[#69696926] text-[#323232] rounded-full w-[40px] min-w-[40px] p-[9px] dark:bg-white ' ><SaveIcons/></Button>
                 </div>
             </div>
@@ -106,26 +106,26 @@ import { useAppSelector } from '@/lib/hooks'
         <div className='w-full max-w-[760px] my-[56px]'>
             <TextParag type={'title'} font={24} line={29} className=' font-semibold  mb-4'>{t('description')}</TextParag>
             <TextParag className=' font-normal text-[#5B6871] dark:text-white mb-[32px]'>{oneBooks?.annotation}
-                <span className='font-semibold underline decoration-solid text-[#2D2D2D] dark:text-white  ml-1 cursor-pointer'>{t('more')}</span>
+                {/* <span className='font-semibold underline decoration-solid text-[#2D2D2D] dark:text-white  ml-1 cursor-pointer'>{t('more')}</span> */}
             </TextParag>
             <div className='flex items-end gap-2 w-full mb-[12px]'>
-                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'>langs</p>
+                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'>{t('langs')}</p>
                 <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
                 <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white text-nowrap'>{oneBooks?.lang}</p>
             </div>
 
             <div className='flex items-end gap-2 w-full mb-[12px]'>
-                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'> Переводчик</p>
+                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'>{t('translator')}</p>
                 <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
                 <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white text-nowrap'>{oneBooks?.translator?.name}</p>
             </div>
             <div className='flex items-end gap-2 w-full mb-[12px]'>
-                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'>Количество страниц</p>
+                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'>{t('pageCount')}</p>
                 <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
                 <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white text-nowrap '>{oneBooks?.pageCount}</p>
             </div>
             <div className='flex items-end gap-2 w-full mb-[12px]'>
-                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'>Издательство</p>
+                <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'>{t('publisher')}</p>
                 <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
                 <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white text-nowrap '>{oneBooks?.publisher?.name}</p>
             </div>
@@ -176,6 +176,8 @@ import { useAppSelector } from '@/lib/hooks'
                       onOpen()
                       setUpdateId(e?.id)
                       setValue('comment',e?.comment)
+                      console.log(e)
+                      
                     }}
                 />
               ))
@@ -191,11 +193,11 @@ import { useAppSelector } from '@/lib/hooks'
             <form onSubmit={handleSubmit(onSubmit)}>
               <ModalHeader className="flex flex-col gap-1">{t('leave-feedback')}</ModalHeader>
               <ModalBody>
-              {/* <Rate className='text-[18px]'  defaultValue={2.5} /> */}
+              <Rate className='text-[18px]' onChange={(e)=>setValue('star',e)}  value={ watchedFiles.star|| stat?.avg} />
               <Textarea
                classNames={{ inputWrapper:"bg-white border-[2px] border-white  group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white group-data-[focus=true]:bg-white group-data-[hover=true]:bg-white" }} 
-                label="Description"
-                placeholder="Enter your description"
+                label={t('description')}
+                placeholder={t('description')}
                 className="w-full"
                 value={watchedFiles.comment || ""}
                 {...register('comment', { required: 'comment is required' })}
@@ -203,11 +205,11 @@ import { useAppSelector } from '@/lib/hooks'
                 />
               </ModalBody>
               <ModalFooter>
-                <Button className='w-full  max-w-[200px] rounded-lg' isLoading={loading}  color="danger" variant="light" onPress={onClose}>
+                <Button className='w-full  max-w-[200px] rounded-lg'  color="danger" variant="light" onPress={onClose}>
                   {t('close')}
                 </Button>
-                <Button className='w-full bg-[#2962FF] text-white max-w-[200px] rounded-lg' size='md' type='submit'>
-                  Action
+                <Button isLoading={loading}  className='w-full bg-[#2962FF] text-white max-w-[200px] rounded-lg' size='md' type='submit'>
+                  {t('action')}
                 </Button>
               </ModalFooter>
             </form>

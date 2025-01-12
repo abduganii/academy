@@ -9,6 +9,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { usePageProps } from './props'
+import { useTranslations } from 'next-intl';
 
 type FormData = {
   type:string;
@@ -20,6 +21,7 @@ type FormData = {
 
 export const CooperationPage:any = hoc(usePageProps, props => {
     const {MyMaterialTypes} = props
+    const t = useTranslations()
     const { register,reset,setValue, handleSubmit, formState: { errors } } = useForm<FormData>();
     const onSubmit = async (data: FormData) => {
       mutationFn({
@@ -40,9 +42,9 @@ export const CooperationPage:any = hoc(usePageProps, props => {
   return (
     <div className='w-full flex gap-5'>  
     <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-[616px] bg-[#F5F5F5] rounded-lg gap-4 flex flex-wrap justify-end p-[32px]'>
-      <h3 className='text-[28px] leading-[34px] mb-[16px] font-semibold w-full'>Заполнить заявку</h3>
+      <h3 className='text-[28px] leading-[34px] mb-[16px] font-semibold w-full'>{t('fill-application')}</h3>
       <Select
-        label="Тип контента" 
+        label={t('type-content')}
         size={'sm'}
         variant='bordered'
         errorMessage={(errors?.type?.message as string) || ""}
@@ -60,7 +62,7 @@ export const CooperationPage:any = hoc(usePageProps, props => {
       }
       </Select>
       <Textarea
-        label="Сообщение модератору "
+        label={t('message-moderator')}
         className="w-full"
         variant='bordered'
           cols={2}
@@ -76,7 +78,7 @@ export const CooperationPage:any = hoc(usePageProps, props => {
         variant='bordered' 
         size={'sm'} 
         type="email" 
-        label="Email" 
+        label={t('email')} 
         errorMessage={(errors?.email?.message as string) || ""}
         isInvalid={Boolean(errors?.email?.message)}
         {...register("email", {
@@ -92,13 +94,13 @@ export const CooperationPage:any = hoc(usePageProps, props => {
       onUpload={(e:any)=>setValue("file",e?.data?.id)}
       
       />
-      <Button size='lg' className='colm1 rounded-lg bg-[#DDE2E4]'>Отменить</Button>
-      <Button type='submit' size='lg' className='colm1 rounded-lg bg-[#2962FF] text-white'>Обновить</Button>
+      <Button size='lg' className='colm1 rounded-lg bg-[#DDE2E4]'>{t('cancel')}</Button>
+      <Button type='submit' size='lg' className='colm1 rounded-lg bg-[#2962FF] text-white'>{t('reflesh')}</Button>
     </form>
     <div className='w-full max-w-[244px]'>
-        <Button size='lg' className='w-full rounded-lg bg-[#1C43AE] text-white mb-[10px]'>Прейскурант</Button>
-        <Button size='lg' className='w-full rounded-lg bg-[#1C43AE] text-white mb-[10px]'>Скачать договор</Button>
-        <Button size='lg' className='w-full rounded-lg bg-[#1C43AE] text-white mb-[18px]'>Связаться с бухгалтерией</Button>
+        <Button size='lg' className='w-full rounded-lg bg-[#1C43AE] text-white mb-[10px]'>{t('price-list')}</Button>
+        <Button size='lg' className='w-full rounded-lg bg-[#1C43AE] text-white mb-[10px]'>{t('download-contract')}</Button>
+        <Button size='lg' className='w-full rounded-lg bg-[#1C43AE] text-white mb-[18px]'>{t('contact-accounting')}</Button>
         <a href='tel:+998711234545' className='flex mb-[5px] ml-[10px] text-[#1C43AE] items-center gap-[6px] text-[17px] leading-[26px] font-semibold'>
          <TelIcons/> +998(71) 123-45-45
         </a>

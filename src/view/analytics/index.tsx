@@ -5,13 +5,16 @@ import AnalyticsCard from '@/components/card/analytics-card'
 import Container from '@/components/container'
 import { hoc } from '@/utils'
 import { useTranslations } from 'next-intl'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { usePageProps } from './props'
 
   
     export const AnalyticsPage:any = hoc(usePageProps, props => {
       const {analytics}=props
-  const [Isopen,setIsopen] = useState<number | boolean>(1)
+  const [Isopen,setIsopen] = useState<number | boolean>(analytics?.[0]?.id)
+  useEffect(()=>{
+    setIsopen(analytics?.[0]?.id)
+  },[analytics])
   const t = useTranslations()
   return (
     <>

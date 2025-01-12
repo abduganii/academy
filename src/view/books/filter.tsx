@@ -6,7 +6,9 @@ import { useRouter } from '@/i18n/routing';
 import { useSearchParams } from 'next/navigation'
 import { Input } from '@nextui-org/react';
 import { Debounce } from '@/hooks/debounce';
+import { useTranslations } from 'next-intl';
 export default function FilterPage({authors,publishers,translators,section}:any) {
+    const t = useTranslations()
     const { replace } = useRouter();
     const pathname = usePathname();
       const searchParams = useSearchParams();
@@ -22,7 +24,7 @@ export default function FilterPage({authors,publishers,translators,section}:any)
     <div className='flex justify-end gap-[19px]'>
     <Select
         size='sm'
-        label="Авторы" 
+        label={t('authors')} 
         classNames={{trigger:"bg-[#FFFFFF99]"}}
         className="w-full max-w-[220px]" 
         onChange={(e)=>handlePage(e?.target?.value,'authorId')}
@@ -38,7 +40,7 @@ export default function FilterPage({authors,publishers,translators,section}:any)
     </Select>
     <Select
         size='sm'
-        label="publisher" 
+        label={t('publisher')} 
         classNames={{trigger:"bg-[#FFFFFF99]"}}
         className="w-full max-w-[220px]" 
         onChange={(e)=>handlePage(e?.target?.value,'publisherId')}
@@ -54,7 +56,7 @@ export default function FilterPage({authors,publishers,translators,section}:any)
     </Select>
     <Select
         size='sm'
-        label="translator" 
+        label={t('translator')}
         classNames={{trigger:"bg-[#FFFFFF99]"}}
         className="w-full max-w-[220px]" 
         onChange={(e)=>handlePage(e?.target?.value,'translatorId')}
@@ -70,7 +72,7 @@ export default function FilterPage({authors,publishers,translators,section}:any)
     </Select>
     <Select
         size='sm'
-        label="section" 
+        label={t('sections')} 
         classNames={{trigger:"bg-[#FFFFFF99]"}}
         className="w-full max-w-[220px]" 
         onChange={(e)=>handlePage(e?.target?.value,'type')}
@@ -89,7 +91,7 @@ export default function FilterPage({authors,publishers,translators,section}:any)
     classNames={{inputWrapper:"bg-[#FFFFFF99] rounded-lg" }} 
         className='w-full max-w-[220px] rounded-sm'
         type={'text'}
-        placeholder="select Title"
+        placeholder={t('select-title')}
         key="outside" 
         onChange={Debounce((e)=>handlePage(e.target?.value,'name'),500)}
         />

@@ -3,19 +3,20 @@ import ArticlesCardPage from "@/components/card/acticles-card-in-page";
 import { hoc } from "@/utils";
 import {Tabs, Tab} from "@nextui-org/react";
 import { useArticlesProps } from "./props";
+import { useTranslations } from "next-intl";
 
 
 export const MaterialsPage:any = hoc(useArticlesProps, props => {
     const {articles} = props
-    console.log(articles)
+    const t = useTranslations()
   let tabs = [
     {
       id: "articles",
-      label: "Статьи",
+      label: t("articles"),
     },
     {
       id: "books",
-      label: "Книги",
+      label: t("books"),
     },
   
   ];

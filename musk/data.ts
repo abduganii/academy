@@ -2,6 +2,8 @@ import {
   ApplicationIcons,
   FeedbackIcons,
   MaterialsIcons,
+  MyApplicationsIcons,
+  NotificationIcons,
   ProfileIcons,
   RecommendationsIcons,
 } from "@/components/icons";
@@ -27,17 +29,17 @@ export const LangArr = [
 export const HeaderSiteBarrArr = [
   {
     id: 1,
-    title: "Главная",
+    title: "main",
     child: [
       {
         id: 11,
         link: "/anticorrosive",
-        text: "Виртуальная академия",
+        text: "anticorrosive",
       },
       {
         id: 12,
         link: "/glossary",
-        text: "Словарь",
+        text: "glossary",
       },
       {
         id: 13,
@@ -47,7 +49,7 @@ export const HeaderSiteBarrArr = [
       {
         id: 14,
         link: "/faq",
-        text: "FAQ",
+        text: "faq",
       },
     ],
   },
@@ -58,7 +60,7 @@ export const HeaderSiteBarrArr = [
       {
         id: 21,
         link: "/news?type=anti_terrorism",
-        text: "Новости",
+        text: "news",
       },
       {
         id: 22,
@@ -68,12 +70,12 @@ export const HeaderSiteBarrArr = [
       {
         id: 23,
         link: "/country-information?type=anti_terrorism",
-        text: "Страновая информация",
+        text: "country-information",
       },
       {
         id: 24,
         link: "/international-organizations?type=anti_terrorism",
-        text: "Международные организации",
+        text: "international-organizations",
       },
       {
         id: 25,
@@ -83,12 +85,12 @@ export const HeaderSiteBarrArr = [
       {
         id: 26,
         link: "/analytics?type=anti_terrorism",
-        text: "Аналитические данные",
+        text: "analytics",
       },
       {
         id: 27,
         link: "/video-materials?type=anti_terrorism",
-        text: "Видеоматериалы",
+        text: "video-materials",
       },
     ],
   },
@@ -99,7 +101,7 @@ export const HeaderSiteBarrArr = [
       {
         id: 31,
         link: "/news?type=anti_corruption",
-        text: "Новости",
+        text: "news",
       },
       {
         id: 32,
@@ -109,12 +111,12 @@ export const HeaderSiteBarrArr = [
       {
         id: 33,
         link: "/country-information?type=anti_corruption",
-        text: "Страновая информация",
+        text: "country-information",
       },
       {
         id: 34,
         link: "/international-organizations?type=anti_corruption",
-        text: "Международные организации",
+        text: "international-organizations",
       },
       {
         id: 35,
@@ -124,12 +126,12 @@ export const HeaderSiteBarrArr = [
       {
         id: 36,
         link: "/analytics?type=anti_corruption",
-        text: "Аналитические данные",
+        text: "analytics",
       },
       {
         id: 37,
         link: "/video-materials?type=anti_corruption",
-        text: "Видеоматериалы",
+        text: "video-materials",
       },
     ],
   },
@@ -252,37 +254,37 @@ export const SitebarArr = [
 export const ResourcesArr = [
   {
     id: 1,
-    text: "Источники",
+    text: "sources",
     link: "/sources",
     image: "/r1.png",
   },
   {
     id: 2,
-    text: "Страновая информация",
+    text: "country-information",
     link: "/country-information",
     image: "/r2.png",
   },
   {
     id: 3,
-    text: "Международные организации",
+    text: "international-organizations",
     link: "/international-organizations",
     image: "/r3.png",
   },
   {
     id: 4,
-    text: "Информационные базы данных",
+    text: "information-databases",
     link: "/information-databases",
     image: "/r4.png",
   },
   {
     id: 5,
-    text: "Аналитика",
+    text: "analytics",
     link: "/analytics",
     image: "/r5.png",
   },
   {
     id: 6,
-    text: "Видеоматериалы",
+    text: "video-materials",
     link: "/video-materials",
     image: "/r6.jfif",
   },
@@ -291,38 +293,44 @@ export const ResourcesArr = [
 export const ProfileLayoutArr = [
   {
     id: 1,
-    text: "Personal-information",
+    text: "personal-information",
     link: "/profile/information",
     icons: () => ProfileIcons(),
   },
   {
     id: 2,
-    text: "My-materials",
+    text: "my-materials",
     link: "/profile/materials",
     icons: () => MaterialsIcons(),
   },
   {
     id: 3,
-    text: "Recommendations",
+    text: "recommendations",
     link: "/profile/recommendations",
     icons: () => RecommendationsIcons(),
   },
   {
     id: 4,
-    text: "Feedback",
+    text: "feedback",
     link: "/profile/feedback",
     icons: () => FeedbackIcons(),
   },
   {
     id: 5,
-    text: "Cooperation",
+    text: "cooperation",
     link: "/profile/cooperation",
     icons: () => ApplicationIcons(),
   },
   {
     id: 6,
-    text: "Notification",
+    text: "my-applications",
+    link: "/profile/my-applications",
+    icons: () => MyApplicationsIcons(),
+  },
+  {
+    id: 7,
+    text: "notification",
     link: "/profile/notifications",
-    icons: () => ApplicationIcons(),
+    icons: () => NotificationIcons(),
   },
 ];

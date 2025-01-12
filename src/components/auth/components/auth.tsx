@@ -1,5 +1,6 @@
 "use client"
 import { Button } from '@nextui-org/react'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React, { useState } from 'react'
 interface iPops {
@@ -8,10 +9,11 @@ interface iPops {
 export default function AuthAuth({
     steComp}:iPops) {
         const [type,settype] = useState<number>(7)
+        const t = useTranslations()
   return (
     <div>
-        <p className='pb-1 text-[24px] font-semibold leading-[32px]'>Авторизация</p>
-        <p className='text-[14px] font-bold leading-[24px] text-[#6A6A6A]'>Выберите способ авторизации</p>
+        <p className='pb-1 text-[24px] font-semibold leading-[32px]'>{t('authorization')}</p>
+        <p className='text-[14px] font-bold leading-[24px] text-[#6A6A6A]'>{t('chooseAuthorization')}</p>
             <div className='flex my-[19px] gap-5'>
                 <div onClick={()=>settype(8)}  className={`${type == 8? 'border-[#2962FF]':'' } w-full  h-[140px] border-separate border rounded-lg shadow flex items-center justify-center cursor-pointer`}>
                     <Image
@@ -33,9 +35,9 @@ export default function AuthAuth({
                 </div>
             </div>
         <Button className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' onPress={()=>steComp(type)}>
-        Войти
+        {t('login')}
         </Button>
-        <p className='text-[16px] font-normal mt-[25px] leading-[26px] text-[#6E6E6E]'>У вас нет аккаунта? <span onClick={()=>steComp(1)} className='text-[#2962FF] cursor-pointer'>Регистрация</span></p>
+        <p className='text-[16px] font-normal mt-[25px] leading-[26px] text-[#6E6E6E]'>{t('noAccount')}<span onClick={()=>steComp(1)} className='text-[#2962FF] cursor-pointer'>{t('registration')}</span></p>
     </div>
   )
 }

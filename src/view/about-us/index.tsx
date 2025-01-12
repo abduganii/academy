@@ -35,26 +35,31 @@ export default function AboutUsPage() {
             <TextParag type='title' line={44} font={36} className='text-[#171717] mt-9 mb-[32px] font-semibold'>{t('task')}</TextParag>
 
             <ul className='list-disc gap-2 text-[#2F2CD4] '>
-                <li className='text-[#2F2CD4] pb-[46px] border-b border-spacing-1 flex gap-[32px]'>
-                    <TextParag line={24} font={20} className='mb-2 font-semibold'>01</TextParag>
+               {
+                [1,2,3,4,5]?.map((e:any)=>(
+                    <li key={e} className='text-[#2F2CD4] pb-[46px] border-b border-spacing-1 flex gap-[32px]'>
+                    <TextParag line={24} font={20} className='mb-2 font-semibold'>0{e}</TextParag>
                     <div >
-                        <TextParag line={24} font={20} className='mb-2 font-semibold'>Повышение уровня осведомленности и компетенций</TextParag>
-                        <TextParag line={24} font={18} className='font-semibold text-[#444444]'>Мы создаем образовательные программы и материалы для граждан, государственных служащих, исследователей и студентов. Эти программы направлены на углубление знаний в области противодействия коррупции, изучение национального и международного опыта. </TextParag>
+                        <TextParag line={24} font={20} className='mb-2 font-semibold'>{t(`aboutTest${e}`)}</TextParag>
+                        <TextParag line={24} font={18} className='font-semibold text-[#444444]'>{t(`aboutTestText${e}`)} </TextParag>
                     </div>
                 </li>
+                ))
+               }
             </ul>
         </Container>
         <div className='w-full py-[80px]  bg-gradient-to-l from-[#2244BF] to-[#102059]'>
             <Container >
             <TextParag type='title' line={44} font={36} className='text-white mb-[32px] font-semibold'>{t('goals')}</TextParag>
             <ul className='list-disc gap-2 rounded-xl bg-white text-[#2F2CD4] '>
-                <li className='text-[#2F2CD4] p-[30px] mb-[32px]  flex gap-[32px]'>
-                    <TextParag line={24} font={20} className='mb-2 font-semibold'>01</TextParag>
+               { [1,2,3,4,5]?.map((e:any)=>( <li className='text-[#2F2CD4] p-[30px] mb-[32px]  flex gap-[32px]'>
+                    <TextParag line={24} font={20} className='mb-2 font-semibold'>0{e}</TextParag>
                     <div >
-                        <TextParag line={24} font={20} className='mb-2 font-semibold'>Повышение уровня осведомленности и компетенций</TextParag>
-                        <TextParag line={24} font={18} className='font-semibold text-[#444444]'>Мы создаем образовательные программы и материалы для граждан, государственных служащих, исследователей и студентов. Эти программы направлены на углубление знаний в области противодействия коррупции, изучение национального и международного опыта. </TextParag>
+                        <TextParag line={24} font={20} className='mb-2 font-semibold'>{t(`aboutGoal${e}`)}</TextParag>
+                        <TextParag line={24} font={18} className='font-semibold text-[#444444]'>{t(`aboutGoalText${e}`)} </TextParag>
                     </div>
                 </li>
+                ))}
             </ul>
 
             <TextParag type='title' line={24} font={24} className='text-white mb-[30px] text-center font-semibold'>{t('partnors')}</TextParag>

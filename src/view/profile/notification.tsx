@@ -1,20 +1,21 @@
 'use client'
 import { hoc } from '@/utils'
 import { Tooltip } from '@nextui-org/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNotificationsProps } from './props'
 import dayjs from 'dayjs'
 
 export const NotificationPage:any = hoc(useNotificationsProps, props => {
     const {notifications} = props
     const [select,setSelect] = useState<any>(notifications?.[0] || {})
-    console.log(select)
+    useEffect(()=>{
+        setSelect(notifications?.[0] )
+    },[notifications])
   return (
     <div className='flex gap-5'>
         <div className='w-full'>
           {  notifications?.length && notifications?.map((e:any)=>(
             <Tooltip
-               
                 key={e?.id}
                 offset={-100}
                 placement='top-end'

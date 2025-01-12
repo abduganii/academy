@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { mutationFn } from '@/utils';
 import toast from 'react-hot-toast';
+import { useTranslations } from 'next-intl';
 interface iPops {
     steComp : any
     withCode? :boolean
@@ -14,6 +15,7 @@ export default function ForgetFrom({
     steComp,
     withCode,
 }:iPops) {
+    const t = useTranslations()
    
     const [loading, setloading] = useState(false)
     const { register,reset, handleSubmit, formState: { errors } } = useForm<any>();
@@ -55,8 +57,8 @@ export default function ForgetFrom({
         <Input
             type="email"
             className='mb-[46px] text-left'
-            label='E-mail'
-            placeholder='E-mail'
+            label={t('email')}
+            placeholder={t('email')}
             key="outside"
             errorMessage={(errors?.email?.message as string) || ""}
             isInvalid={Boolean(errors?.email?.message)}
@@ -73,7 +75,7 @@ export default function ForgetFrom({
             <Input
                 className='mb-4 text-left'
                 type={"number"}
-                label='Пароль'
+                label={t('password')}
                 placeholder="code"
                 errorMessage={(errors?.code?.message as string)||""}
                 isInvalid={Boolean(errors?.code?.message)}
@@ -97,7 +99,7 @@ export default function ForgetFrom({
             size='md'
             type={'submit'}
           >
-         Войти
+         {t('login')}
         </Button>
     </form>
   )

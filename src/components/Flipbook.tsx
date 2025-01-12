@@ -11,15 +11,16 @@ pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pd
 
 interface IPops {
   onFlip:any;
+  id:any
 }
 
 // React.forwardRef(({ data }, ref)
-const Flipbook = React.forwardRef(({onFlip}:IPops,ref:any) => {
+const Flipbook = React.forwardRef(({onFlip,id}:IPops,ref:any) => {
   const [doc,setDoc] = useState<any>()
 
     useEffect(()=>{
       const renderPdf = async () => {
-        const loadingTask = pdfjs.getDocument('https://api.proacademy.calypso.uz/books/download/1');
+        const loadingTask = pdfjs.getDocument(`https://api.proacademy.calypso.uz/books/download/${id}`);
         const pdfDocument = await loadingTask.promise;
         setDoc(pdfDocument)
       };

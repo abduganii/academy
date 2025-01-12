@@ -6,8 +6,10 @@ import { useRouter } from '@/i18n/routing';
 import { useSearchParams } from 'next/navigation'
 import { Input } from '@nextui-org/react';
 import { Debounce } from '@/hooks/debounce';
+import { useTranslations } from 'next-intl';
 export default function FilterPage({authors,section}:any) {
     const { replace } = useRouter();
+    const t = useTranslations()
     const pathname = usePathname();
       const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
@@ -21,7 +23,7 @@ export default function FilterPage({authors,section}:any) {
     <div className='flex justify-end gap-[19px]'>
     <Select
         size='sm'
-        label="Авторы" 
+        label={t('authors')} 
         classNames={{trigger:"bg-[#FFFFFF99]"}}
         className="w-full max-w-[220px]" 
         onChange={(e)=>handlePage(e?.target?.value,'authorId')}
@@ -38,7 +40,7 @@ export default function FilterPage({authors,section}:any) {
   
     <Select
         size='sm'
-        label="section" 
+        label={t('sections')} 
         classNames={{trigger:"bg-[#FFFFFF99]"}}
         className="w-full max-w-[220px]" 
         onChange={(e)=>handlePage(e?.target?.value,'type')}
@@ -57,7 +59,7 @@ export default function FilterPage({authors,section}:any) {
     classNames={{inputWrapper:"bg-[#FFFFFF99] rounded-lg" }} 
         className='w-full max-w-[220px] rounded-sm'
         type={'text'}
-        placeholder="select Title"
+        placeholder={t('select-title')}
         key="outside" 
         onChange={Debounce((e)=>handlePage(e.target?.value,'title'),500)}
         />

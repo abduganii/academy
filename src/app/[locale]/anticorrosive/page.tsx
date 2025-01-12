@@ -17,7 +17,7 @@ export default async function Anticorrosive() {
     
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <AnticorrosivePage type={'anti_corruption'} title='Антикоррупционная деятельность' text='Объявляется прием на обучение на стажера-исследователя, в базовую докторантуру.'/>
+      <AnticorrosivePage type={'anti_corruption'} title={'anticorruption'} text={'anticorruption-text'}/>
     </HydrationBoundary>
   )
 }

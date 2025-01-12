@@ -36,6 +36,19 @@ export const useNewsProps = ({ page }: any) => {
   };
 };
 
+export const useCooperationProps = ({ page }: any) => {
+  const { data: mycooperation } = useFetchData<any>({
+    url: "cooperations",
+    params: {
+      pageSize: 4,
+      page: page || 1,
+    },
+  });
+  return {
+    mycooperation: mycooperation,
+  };
+};
+
 export const useArticlesProps = ({ page }: any) => {
   const { data: articles } = useFetchData<any>({
     url: "my-materials/articles",

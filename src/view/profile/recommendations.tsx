@@ -6,20 +6,22 @@ import { hoc } from "@/utils";
 import {Tabs, Tab} from "@nextui-org/react";
 import { useNewsProps } from "./props";
 import Pagination from "@/components/pagination";
+import { useTranslations } from "next-intl";
 export const RecommendationsPage:any = hoc(useNewsProps, props => {
+  const t = useTranslations()
   const { news } = props
   let tabs = [
     {
       id: "new",
-      label: "new",
+      label: t("new"),
     },
     {
       id: "popularPublications",
-      label: "Popular Publications",
+      label: t("popularPublications"),
     },
     {
         id: "yourInterests",
-        label: "your interests",
+        label: t("yourInterests"),
       },
   ];
 

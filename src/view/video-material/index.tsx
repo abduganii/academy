@@ -9,7 +9,6 @@ import Pagination from '@/components/pagination'
 
 export const VideoMaterialPage:any = hoc(usePageProps, props => {
   const { videos } = props
-  console.log(videos)
   const t = useTranslations();
   return (
     <>

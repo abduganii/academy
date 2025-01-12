@@ -1,3 +1,4 @@
+'use client'
 import { EyeFilledIcon, EyeSlashFilledIcon, SwiperRightIcons } from '@/components/icons';
 import { Button, Input } from '@nextui-org/react'
 import React, { useState } from 'react'
@@ -7,6 +8,7 @@ import toast from 'react-hot-toast';
 import { useAppDispatch } from '@/lib/hooks';
 import { setToken } from '@/lib/features/index';
 import Cookies from 'js-cookie';
+import { useTranslations } from 'next-intl';
 interface iPops {
   steComp: any;
   setEmail:any
@@ -17,6 +19,7 @@ type FormData = {
 };
 export default function AuthForm({ steComp, setEmail }: iPops) {
   const dispatch = useAppDispatch();
+  const t = useTranslations()
   const [isVisible, setIsVisible] = React.useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
   const [loading, setloading] = useState(false)
@@ -48,13 +51,13 @@ export default function AuthForm({ steComp, setEmail }: iPops) {
            <div onClick={()=>steComp(6)} className='cursor-pointer'>
             <SwiperRightIcons/>
            </div>
-        <p className='pb-1 text-[24px] font-semibold leading-[32px] mx-auto'>Авторизация</p>
+        <p className='pb-1 text-[24px] font-semibold leading-[32px] mx-auto'>{t('authorization')}</p>
         </div>
         <Input
         type="email"
         className='mb-[46px] text-left'
-        label='E-mail'
-        placeholder='E-mail'
+        label={t('email')}
+        placeholder={t('email')}
         key="outside"
         errorMessage={(errors?.email?.message as string) || ""}
         isInvalid={Boolean(errors?.email?.message)}
@@ -70,7 +73,7 @@ export default function AuthForm({ steComp, setEmail }: iPops) {
      <Input
         className='mb-4 text-left'
         type={isVisible ? 'text' : 'password'}
-        label='Пароль'
+        label={t('password')}
         placeholder="password"
         errorMessage={(errors?.password?.message as string)||""}
         isInvalid={Boolean(errors?.password?.message)}
@@ -99,9 +102,9 @@ export default function AuthForm({ steComp, setEmail }: iPops) {
       <p className='text-end text-[13px] inline-block ml-auto font-normol underline leading-[26px]  cursor-pointer' onClick={()=>steComp(10)}>Забыли пароль?</p>
       </div>
   <Button isLoading={loading}  className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' type={'submit'}>
-    Войти
+    {t('login')}
   </Button>
-  <p className='text-[16px] font-normal mt-[25px] leading-[26px] text-[#6E6E6E]'>У вас нет аккаунта? <span onClick={()=>steComp(1)} className='text-[#2962FF] cursor-pointer'>Регистрация</span></p>
+  <p className='text-[16px] font-normal mt-[25px] leading-[26px] text-[#6E6E6E]'>{t('noAccount')} <span onClick={()=>steComp(1)} className='text-[#2962FF] cursor-pointer'>{t('registration')}</span></p>
 </form>
   )
 }

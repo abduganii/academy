@@ -9,9 +9,11 @@ import { Link } from '@/i18n/routing'
 import Cookies from "js-cookie"
 import { useQueryClient } from '@tanstack/react-query'
 import { mutationFn } from '@/utils'
+import { useTranslations } from 'next-intl'
 
 export default function ProfileLayout({children}:IChildren) {
    const pathName = usePathname()
+   const t = useTranslations()
     const value: any = ProfileLayoutArr?.find(e => pathName.includes(e?.link))
     const queryClient:any = useQueryClient();
     useEffect(() => {
@@ -32,7 +34,7 @@ export default function ProfileLayout({children}:IChildren) {
                             <span>
                                 {e?.icons()}
                             </span>
-                            {e?.text}
+                            {t(e?.text)}
                             </Link>
                     ))
                 }
@@ -47,7 +49,7 @@ export default function ProfileLayout({children}:IChildren) {
                     <span>
                     <LogoutIcons/>
                     </span> 
-                    logout
+                    {t('logout')}
                 </div>
                 <div  style={{top: 12 + (54 * (Number(value.id - 1)))}} className={`absolute  profileanimation   transition-all duration-300 ease-in-out left-[12px] h-[48px]   rounded-lg bg-white`}/>
             </div>

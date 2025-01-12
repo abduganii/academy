@@ -1,9 +1,11 @@
+'use client'
 import { EyeFilledIcon, EyeSlashFilledIcon, SwiperRightIcons } from '@/components/icons';
 import { Button, Input } from '@nextui-org/react'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { mutationFn } from '@/utils';
 import toast from 'react-hot-toast';
+import { useTranslations } from 'next-intl';
 
 interface iPops {
   steComp: any;
@@ -15,6 +17,7 @@ type FormData = {
 };
 export default function RegisterForm({ steComp,setEmail }: iPops) {
     const [isVisible, setIsVisible] = React.useState(false);
+    const t = useTranslations()
     const toggleVisibility = () => setIsVisible(!isVisible);
   const [loading, setloading] = useState(false)
     const { register,reset, handleSubmit, formState: { errors } } = useForm<FormData>();
@@ -47,8 +50,8 @@ export default function RegisterForm({ steComp,setEmail }: iPops) {
       <Input
         type="email"
         className='mb-[46px] text-left'
-        label='E-mail'
-        placeholder='E-mail'
+        label={t('email')}
+        placeholder={t('email')}
         key="outside"
         errorMessage={(errors?.email?.message as string) || ""}
         isInvalid={Boolean(errors?.email?.message)}
@@ -64,8 +67,8 @@ export default function RegisterForm({ steComp,setEmail }: iPops) {
       <Input
         className='mb-4 text-left'
         type={isVisible ? 'text' : 'password'}
-        label='Пароль'
-        placeholder="password"
+        label={t('password')}
+        placeholder={t('password')}
         errorMessage={(errors?.password?.message as string) ||""}
         isInvalid={Boolean(errors?.password?.message)}
         key="outside"
@@ -90,9 +93,9 @@ export default function RegisterForm({ steComp,setEmail }: iPops) {
         )}
       />
       <Button isLoading={loading}   className='w-full bg-[#2962FF] text-white  rounded-lg' size='md' type={"submit"}>
-      Зарегистрироваться
+      {t('register')}
       </Button>
-      <p className='text-[16px] font-normal mt-[25px] leading-[26px] text-[#6E6E6E]'>У вас уже есть аккаунт? <span onClick={()=>steComp(6)} className='text-[#2962FF] cursor-pointer'>Авторизоваться</span></p>
+      <p className='text-[16px] font-normal mt-[25px] leading-[26px] text-[#6E6E6E]'>{t('yesAccount')} <span onClick={()=>steComp(6)} className='text-[#2962FF] cursor-pointer'>{t('authorization')}</span></p>
     </form>
   )
 }
