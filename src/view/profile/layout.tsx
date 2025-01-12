@@ -23,7 +23,7 @@ export default function ProfileLayout({children}:IChildren) {
    return (
     <Container className='py-[140px]'>
         <h3 className='mb-[26px] text-[32px] font-semibold leading-[46px]'>
-        {value?.text}
+        {t(value?.text)}
         </h3>
         <div className='flex items-start  gap-[24px]'>
             <div className='relative  w-full max-w-[300px] bg-[#F5F5F5] p-[12px] rounded-lg'>

@@ -38,7 +38,7 @@ export default function ProfilefeedbackPage() {
     };
   return (
     <form onSubmit={handleSubmit(onSubmit)}  className='bg-[#F5F5F5] rounded-lg gap-4 flex flex-wrap justify-end p-[32px]'>
-        <h3 className='text-[28px] leading-[34px] mb-[16px] font-semibold w-full'>Задать вопрос</h3>
+        <h3 className='text-[28px] leading-[34px] mb-[16px] font-semibold w-full'>{t('create_quastion')}</h3>
         <Textarea
             label={t('description')}
             className="w-full"
