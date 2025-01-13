@@ -52,7 +52,7 @@ export default function ContactUsForm() {
         classNames={{inputWrapper:"group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white" }} 
         type="text" 
         label={t('fullName')} 
-        {...register('fullName', { required: 'fullName is required' })}
+        {...register('fullName', { required: 'required' })}
         />
        <Select 
        size="sm"
@@ -64,7 +64,7 @@ export default function ContactUsForm() {
       }
         label={t('sectionText')} 
         className="colm1"
-        {...register('section', { required: 'section is required' })}
+        {...register('section', { required: 'required' })}
       >
           <SelectItem  key={'anti_corruption'}>
           {t('anti_corruption')}
@@ -80,7 +80,7 @@ export default function ContactUsForm() {
         classNames={{ inputWrapper:"group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white" }} 
         type="text" 
         label={t('phonenumber')} 
-        {...register('phone', { required: 'phoneNumber is required' })}
+        {...register('phone', { required: 'required' })}
         />
         <Input 
         size="sm" 
@@ -89,7 +89,7 @@ export default function ContactUsForm() {
         classNames={{inputWrapper:"group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white" }} 
         type="text" 
         label={t('topic')}
-        {...register('theme', { required: 'theme is required' })}
+        {...register('theme', { required: 'required' })}
       />
       <Input 
         size="sm" 
@@ -98,7 +98,7 @@ export default function ContactUsForm() {
         classNames={{inputWrapper:"group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white" }} 
         type="email" 
         label={t('email')} 
-        {...register('email', { required: 'email is required' })}
+        {...register('email', { required: 'required' })}
       />
       <Input 
         size="sm" 
@@ -107,7 +107,7 @@ export default function ContactUsForm() {
         classNames={{inputWrapper:"group-data-[focus=true]:border-[2px] group-data-[focus=true]:border-white" }} 
         type="text" 
         label={t('description')} 
-        {...register('message', { required: 'message is required' })}
+        {...register('message', { required: 'required' })}
       />
        <Button type='submit' isLoading={loading}  size="lg" className='colm1 dark:text-black'>
         {t('send')}

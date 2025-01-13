@@ -137,5 +137,22 @@
   "new": "New",
   "created_at": "Created At",
   "message": "Message",
-  "create_quastion": "Ask a Question"
+  "create_quastion": "Ask a Question",
+  "book": "Book",
+  "article": "Article",
+  "visits": "Visits",
+  "general": "General",
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "for-week": "For the week",
+  "for-month": "For the month",
+  "protect": "All rights reserved",
+  "developed": "Developed by",
+  "view": "View",
+  "AI-title": "Use Copilot AI for easy work",
+  "AI-text": "Copilot AI is your smart assistant. It speeds up your work: analyze data, process information with just two clicks. Copilot AI works with external resources and local files, making complex tasks simple.",
+  "download-copilot": "Install Copilot",
+  "image-valid": "The image size must be less than 5 MB.",
+  "write-us": "Write to us",
+  "required": "This field is required"
 }   

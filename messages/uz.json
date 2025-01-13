@@ -137,6 +137,23 @@
   "new": "Yangi",
   "created_at": "Yaratilgan vaqti",
   "message": "Xabar",
-  "create_quastion": "Savol berish"
+  "create_quastion": "Savol berish",
+  "book": "kitob",
+  "article": "maqola",
+  "visits": "Tashriflar",
+  "general": "Umumiy",
+  "today": "Bugun",
+  "yesterday": "Kecha",
+  "for-week": "Hafta davomida",
+  "for-month": "Oyning davomida",
+  "protect": "Barcha huquqlar himoyalangan",
+  "developed": "Ishlab chiqilgan",
+  "view": "Ko'rinish",
+  "AI-title": "Oson ishlash uchun Copilot AI’dan foydalaning",
+  "AI-text": "Copilot AI — sizning aqlli yordamchingiz. U ishingizni tezlashtiradi: ma'lumotlarni tahlil qiling, ma'lumotlarni ikki marta bosish bilan qayta ishlang. Copilot AI tashqi resurslar va mahalliy fayllar bilan ishlaydi, murakkabliklarni soddalashtiradi.",
+  "download-copilot": "Copilotni o'rnating",
+  "image-valid": "Rasm hajmi 5 MB dan kam bo'lishi kerak.",
+  "write-us": "Bizga yozing",
+  "required": "Ushbu maydon toʻldirilishi shart"
   }
   

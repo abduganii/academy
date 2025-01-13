@@ -2,6 +2,7 @@
 import { changeLike } from '@/lib/features';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { Button, Slider, Tooltip } from '@nextui-org/react';
+import { useTranslations } from 'next-intl';
 import React, { useEffect, useState } from 'react'
 
 const useDarkMode = ():any => {
@@ -33,6 +34,7 @@ const useDarkMode = ():any => {
 export default function HeaderCongif() {
   const {fontSize} = useAppSelector(store => store.fontSize);
     const dispatch = useAppDispatch();
+    const t = useTranslations()
     const [theme, ChangeDarkMode] = useDarkMode();
 
     const ChangeLikeFunc = (e:number)=>{
@@ -41,7 +43,7 @@ export default function HeaderCongif() {
     
   return (
    <div className="w-full max-w-[400px] py-[20px]">
-    <h3>Вид</h3>
+    <h3>{t('view')}</h3>
     <div className='flex gap-1 my-[10px]'>
     <Tooltip showArrow={true} content="Simple">
       <Button className='dark:text-black' onClick={()=>ChangeDarkMode('light')} >A</Button>

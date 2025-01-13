@@ -25,16 +25,16 @@ export default function Footer() {
               ))
             }
              <div className="w-full text-white" >
-                  <h4 className="text-[20px] w-full leading-[24px] font-semibold mb-[8px]"> Посещения</h4>
-                    <p className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">Общее:  213233332</p>
-                    <p className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">Сегодня: 213233332</p>
-                    <p className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">Вчера: 213233332</p>
-                    <p className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">За неделю: 213233332</p>
-                    <p className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">За месяц: 213233332</p>
+                  <h4 className="text-[20px] w-full leading-[24px] font-semibold mb-[8px]"> {t('visits')}</h4>
+                    <p className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">{t('general')}:  213233332</p>
+                    <p className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">{t('today')}: 213233332</p>
+                    <p className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">{t('yesterday')}: 213233332</p>
+                    <p className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">{t('for-week')}: 213233332</p>
+                    <p className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">{t('for-month')}: 213233332</p>
                 </div>
            </div>
            <div className="flex items-center justify-between pt-10 border-t border-slate-600">
-              <p className="font-inter text-[14px] font-normal leading-[24px] text-slate-400">© 2024. Все права защищены</p>
+              <p className="font-inter text-[14px] font-normal leading-[24px] text-slate-400">© 2024. {t('protect')} </p>
 
               <div className="flex items-center gap-4">
                 <TelegramIcons color={"transparent"}/>
@@ -44,7 +44,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center">
-                <p className="font-inter text-[14px] font-normal leading-[24px] text-slate-400">Разработано</p>
+                <p className="font-inter text-[14px] font-normal leading-[24px] text-slate-400">{t('developed')}</p>
               <Link href={'/'}>
                 <Image src={'/logoCol.svg'} width={153} height={42} alt={"logo"}/>
               </Link> 

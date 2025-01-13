@@ -13,13 +13,14 @@ import MassageAnimation from "@/components/Animation-message";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Button } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
 export const BaseLayout:any = hoc(usePageProps, props => {
   const { me, children }:any = props
   const [isOpen ,setIsopen] = useState(false)
   const pathName = usePathname()
   const dispatch = useAppDispatch()
-
   const [visble,setVisble] = useState(true)
+  const t = useTranslations()
   useEffect(() => {
     const timeout = setTimeout(() => {
       setVisble(false)
@@ -28,6 +29,7 @@ export const BaseLayout:any = hoc(usePageProps, props => {
       clearTimeout(timeout)
     }; 
   }, []);
+
   useEffect(() => {
     AOS.init({
       duration: 500,
@@ -66,6 +68,7 @@ export const BaseLayout:any = hoc(usePageProps, props => {
     }
   };
   const OpenFuct = () => {
+    setVisble(true)
     setIsopen(true)
     const chatraDivs = document.getElementsByClassName("chatra--pos-right");
     for (let i = 0; i < chatraDivs.length; i++) {
@@ -83,8 +86,6 @@ export const BaseLayout:any = hoc(usePageProps, props => {
     return () => {
       window.removeEventListener("click", CloseFunc);
     };
-
-    
   }, []);
 
   return (
@@ -98,7 +99,7 @@ export const BaseLayout:any = hoc(usePageProps, props => {
         className={`${visble ? "":"hidden"} ${isOpen? "right-[300px]":"right-[-40px]"}  transition-all duration-500 ease-in-out w-96 h-96 fixed bottom-[5px] z-50  cursor-pointer`}
       />
       <Button  className="fixed bg-[#0d8bcd] w-[180px] text-white bottom-[20px] z-[9000000] right-[20px]" onClick={OpenFuct}>
-        whrite us
+        {t('write-us')}
       </Button>
         {children}
       {!pathName.includes('book-read') && <Footer/>}

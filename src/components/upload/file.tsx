@@ -3,10 +3,12 @@ import React, { useState } from 'react'
 import { UploadFileIcons } from '../icons'
 import toast from 'react-hot-toast';
 import { UploadFile } from '@/hooks/upload';
+import { useTranslations } from 'next-intl';
 
 export default function FileUpload({errors, onUpload}:any) {
   const [loadingFile, setLoadingFile] = useState<boolean>(false);
   const [fileName, setfileName] = useState<string>('');
+  const t = useTranslations()
   const hendleimg = async (e: any) => {
     setLoadingFile(true)
     if (e.target.files[0] && e.target.files[0]?.size < 5000000) {
@@ -22,7 +24,7 @@ export default function FileUpload({errors, onUpload}:any) {
             .finally(()=>setLoadingFile(false))
     } else {
       setLoadingFile(false)
-      toast.error("The image size must be less than 5 MB.");
+      toast.error(t('image-valid'));
     }
   }; 
 

@@ -5,6 +5,7 @@ import { EyeIcons } from '../icons'
 import { Link } from '@/i18n/routing'
 import TextParag from '../text'
 import dayjs from 'dayjs'
+import { useTranslations } from 'next-intl'
 interface iNewsCard {
     Isgrey: boolean,
     image: string,
@@ -27,10 +28,11 @@ export default function NewsCard({
         className,
         view,
         }:iNewsCard) {
+            const t = useTranslations()
   return (
     <Link href={link}   className={`${className && className} ${Isgrey ? "bg-[#F5F5F5] rounded-lg":""} dark:bg-black group`}>
                 <div className='relative w-full aspect-[1.6/1]'>
-                        {category &&<p className='absolute top-2 left-2 px-4 py-[7px] dark:text-black rounded-3xl bg-[#FFFFFFCC]' >{category}</p>}
+                        {category &&<p className='absolute top-2 left-2 px-4 py-[7px] dark:text-black rounded-3xl bg-[#FFFFFFCC]' >{t(category)}</p>}
                     <Image className=' w-full aspect-[1.6/1] mx-h-[220px] object-cover rounded-lg' src={image} width={368} height={220} alt='img' title={title}/>
                 </div>
                 <div className='px-3 py-4'>

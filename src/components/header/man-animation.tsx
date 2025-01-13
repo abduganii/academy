@@ -8,6 +8,7 @@ import animationSalData from "../../../public/salom.json";
 import animationidData from "../../../public/idle.json";
 import { Button, Modal, ModalBody, ModalContent, useDisclosure } from '@nextui-org/react';
 import { AIIcons } from "../icons";
+import { useTranslations } from "next-intl";
 
 interface LottieAnimationProps {
   loop?: boolean;
@@ -25,7 +26,7 @@ const LottieAnimation: FC<LottieAnimationProps> = ({
 }) => {
   const [file,setFile] = useState<any>(animationData)
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  
+  const t = useTranslations()
   useEffect(() => {
     const timeout = setTimeout(() => {
       setFile(animationidData)
@@ -34,10 +35,8 @@ const LottieAnimation: FC<LottieAnimationProps> = ({
     return () => {
       clearTimeout(timeout)
     }; 
-  }, []);
+  }, [isPOpen]);
 
-
-  
   
   return (
     <>
@@ -59,13 +58,12 @@ const LottieAnimation: FC<LottieAnimationProps> = ({
           <ModalContent className="bg-[#fff] max-w-[480px] py-[25px] px-[32px]">
                 {() => (
               <ModalBody  className='p-0 '>
-                  <h3 className="text-center  text-[24px] leading-[32px]  font-semibold">Для лёгкой работы
-                  используйте Сopilot Ai  <AIIcons/>
+                  <h3 className="text-center  text-[24px] leading-[32px]  font-semibold">  {t('AI-title')}<AIIcons/>
                   </h3>
-                  <p className="pt-[25px] pb-[29px]">Сopilot AI — вашим умный помощник. Он ускорит вашу работу: анализируйте данные, обрабатывайте информацию в два клика. Copilot AI работает с внешними ресурсами и локальными файлами, делая сложное простым.</p>
+                  <p className="pt-[25px] pb-[29px]">{t('AI-text')}</p>
                     <a target="_blank" className="text-center" href={`https://chromewebstore.google.com/detail/copilot-sidebar-for-chrom/ncjedehfkpnliaafimjhdjjeggmfmlgf?hl=ru&utm_source=ext_sidebar`}>
                   <Button  className="bg-[#2962FF] text-white">
-                  Установить Copilot
+                  {t('download-copilot')}
                   </Button>
                     </a>
               </ModalBody>
