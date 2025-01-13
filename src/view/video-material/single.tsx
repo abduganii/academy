@@ -3,7 +3,7 @@ import CommitCard from '@/components/card/commit-card'
 import Container from '@/components/container'
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea, useDisclosure } from '@nextui-org/react'
 import { Rate, Progress } from 'antd';
-import { useRouter } from '@/i18n/routing';
+import { usePathname, useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React, { useRef, useState } from 'react'
@@ -14,6 +14,7 @@ import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form'
 import { useQueryClient } from '@tanstack/react-query'
 import { useAppSelector } from '@/lib/hooks';
+import { useSearchParams } from 'next/navigation';
 const VideoPlayer: React.FC<{ videoUrl: string ,onPlay:any,onPause:any}> = ({ videoUrl,onPlay,onPause }) => {
     return (
       <div className="video-container">
@@ -34,6 +35,10 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
      const [ updateId,setUpdateId] = useState(false)
     const { register,reset,setValue,watch, handleSubmit, formState: { errors } } = useForm<any>();
     const watchedFiles = watch();
+    const { replace } = useRouter();
+    const pathname = usePathname();
+      const searchParams = useSearchParams();
+    const params = new URLSearchParams(searchParams);
     const intervalRef = useRef<any>(null);
     const onSubmit = async (data: any) => {
       setloading(true)
@@ -176,7 +181,10 @@ export const VideoMaterialIdPage:any = hoc(usePageIdProps, props => {
                 </div>
             </div>
              <div className='flex justify-end'>
-            <Button onClick={()=>reset()} onPress={userMe ? onOpen: ()=>{}} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
+            <Button onClick={()=>reset()} onPress={userMe ? onOpen: ()=>{
+                params.set('register', "true"  );
+                replace(`${pathname}?${params.toString()}`);
+            }} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
             </div>
             {
                 comments?.map((e:any)=>(

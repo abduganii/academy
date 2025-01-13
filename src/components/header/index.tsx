@@ -3,7 +3,7 @@ import { Avatar } from '@nextui-org/react'
 import Image from "next/image";
 import Container from "../container";
 import { BurgerIcons, HendmenIcons, SearchIcons, XIcons } from "../icons";
-import { Link ,useRouter} from "@/i18n/routing";
+import { Link ,usePathname,useRouter} from "@/i18n/routing";
 import { Button, Input, Modal, Popover, PopoverContent, PopoverTrigger, Select, SelectItem, useDisclosure } from "@nextui-org/react";
 import Lang from "../lang";
 import AuthMadal from "../auth";
@@ -11,14 +11,19 @@ import { useState } from "react";
 import { HeaderSiteBarrArr } from "../../../musk/data";
 import HeaderCongif from "./congif";
 import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
 
 export default function Header({ user }: any) {
+  const searchParams = useSearchParams();
+    const { replace } = useRouter();
+  const params = new URLSearchParams(searchParams);
+  const pathname = usePathname();
   const router = useRouter()
   const t = useTranslations()
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const {isOpen, onOpen, onClose,onOpenChange} = useDisclosure();
   const [openSiteBar,setOpenSiteBar] = useState(false)
   const [openSearch, setOpenSearch] = useState(false)
-
+ 
     return (
       <header className="w-full fixed  border-black border-b z-40 py-4 bg-[#01263A] text-white">
         <Container className={"flex items-center gap-8"}>
@@ -58,7 +63,12 @@ export default function Header({ user }: any) {
             </Button>
           }
         </Container>
-        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal isOpen={params.get('register') =="true" ||isOpen } onOpenChange={onOpenChange}
+         onClose={()=>{
+          params.set('register',"")
+          replace(`${pathname}?${params.toString()}`);
+          onClose()
+          }} >
           <AuthMadal />
         </Modal>
 

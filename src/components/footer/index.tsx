@@ -34,7 +34,7 @@ export default function Footer() {
                 </div>
            </div>
            <div className="flex items-center justify-between pt-10 border-t border-slate-600">
-              <p className="font-inter text-[14px] font-normal leading-[24px] text-slate-400">© 2024. {t('protect')} </p>
+              <p className="font-inter text-[14px] font-normal leading-[24px] text-slate-400">© 2025. {t('protect')} </p>
 
               <div className="flex items-center gap-4">
                 <TelegramIcons color={"transparent"}/>

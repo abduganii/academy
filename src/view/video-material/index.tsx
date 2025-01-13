@@ -26,7 +26,7 @@ export const VideoMaterialPage:any = hoc(usePageProps, props => {
         link={`/video-materials/${e?.id}`}
         className='colm4'
         image={`${process.env.NEXT_PUBLIC_BASE_URL}${e?.poster?.path}`}
-        avatar='/avatar.jfif'
+        avatar={''}
         title={e?.name}
         name={e?.description}
       />

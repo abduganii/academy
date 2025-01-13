@@ -9,7 +9,7 @@ import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Texta
 import { useTranslations } from 'next-intl'
 import { Progress, Rate } from "antd";
 import Image from 'next/image'
-import { useRouter } from '@/i18n/routing';
+import { usePathname, useRouter } from '@/i18n/routing';
 import React, { useState } from 'react'
 import { hoc, mutationFn } from '@/utils'
 import { usePageIdProps } from './props'
@@ -18,12 +18,18 @@ import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form'
 import { useQueryClient } from '@tanstack/react-query'
 import { useAppSelector } from '@/lib/hooks'
+import {  useSearchParams } from 'next/navigation'
 
   export const BookByIdPage:any = hoc(usePageIdProps, props => {
     const {oneBooks,comments,books,stat} = props
     const queryClient:any = useQueryClient()
     const { userMe } = useAppSelector((store: any) => store.userMe);
     const {isOpen,onClose, onOpen, onOpenChange} = useDisclosure();
+    const { replace } = useRouter();
+    const pathname = usePathname();
+      const searchParams = useSearchParams();
+    const params = new URLSearchParams(searchParams);
+  
     const router = useRouter()
     const t = useTranslations()
     const [ loading,setloading] = useState(false)
@@ -111,7 +117,7 @@ import { useAppSelector } from '@/lib/hooks'
             <div className='flex items-end gap-2 w-full mb-[12px]'>
                 <p className='text-[14px] font-normal text-[#5B6871] text-nowrap dark:text-white  leading-[24px]'>{t('langs')}</p>
                 <hr className='w-full inline-block border-0 border-t-2 border-dotted border-gray-500 '/>
-                <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white text-nowrap'>{oneBooks?.lang}</p>
+                <p className='text-[14px] font-normal leading-[24px] text-[#2D2D2D] dark:text-white text-nowrap'>{oneBooks?.lang.toUpperCase()}</p>
             </div>
 
             <div className='flex items-end gap-2 w-full mb-[12px]'>
@@ -160,7 +166,10 @@ import { useAppSelector } from '@/lib/hooks'
                 </div>
             </div>
             <div className='flex justify-end'>
-            <Button onClick={()=>reset()} onPress={userMe ? onOpen: ()=>{}} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
+            <Button onClick={()=>reset()} onPress={userMe ? onOpen: ()=>{
+               params.set('register', "true"  );
+               replace(`${pathname}?${params.toString()}`);
+            }} className='w-full my-[24px] bg-[#2962FF1A] text-[#2962FF] dark:bg-white  dark:text-black max-w-[192px] rounded-lg' size='md'>{t('leave-feedback')}</Button>
             </div>
             {
               comments?.map((e:any)=>(
