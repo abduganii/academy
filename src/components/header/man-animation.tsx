@@ -6,7 +6,6 @@ import  { useEffect, useState } from "react";
 import animationData from "../../../public/hiii.json";
 import animationSalData from "../../../public/salom.json";
 import animationidData from "../../../public/idle.json";
-import animationcloudData from "../../../public/text_cloud.json";
 import { Button, Modal, ModalBody, ModalContent, useDisclosure } from '@nextui-org/react';
 import { AIIcons } from "../icons";
 
@@ -14,14 +13,15 @@ interface LottieAnimationProps {
   loop?: boolean;
   autoplay?: boolean;
   className?: string;
-  onClick?:any
+  isPOpen?:boolean
 }
 
 const LottieAnimation: FC<LottieAnimationProps> = ({
   loop = true,
   autoplay = true,
   className, 
-  onClick,
+  isPOpen
+  
 }) => {
   const [file,setFile] = useState<any>(animationData)
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -30,6 +30,7 @@ const LottieAnimation: FC<LottieAnimationProps> = ({
     const timeout = setTimeout(() => {
       setFile(animationidData)
     }, 2000);
+    
     return () => {
       clearTimeout(timeout)
     }; 
@@ -37,22 +38,20 @@ const LottieAnimation: FC<LottieAnimationProps> = ({
 
 
   
+  
   return (
     <>
-  
       <Lottie
       loop={loop}
       play={autoplay}
-      animationData={file}
+      animationData={isPOpen?animationSalData: file}
       className={className}
       onClick={()=>{
-        setFile(animationSalData)
         onOpen()
-        onClick()
       }}
       onMouseLeave={()=>{
         setFile(animationidData)
-       
+
       }}
     />
 

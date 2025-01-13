@@ -12,8 +12,10 @@ import animationData from "../../../public/hiii.json";
 import MassageAnimation from "@/components/Animation-message";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Button } from "@nextui-org/react";
 export const BaseLayout:any = hoc(usePageProps, props => {
   const { me, children }:any = props
+  const [isOpen ,setIsopen] = useState(false)
   const pathName = usePathname()
   const dispatch = useAppDispatch()
 
@@ -54,42 +56,50 @@ export const BaseLayout:any = hoc(usePageProps, props => {
     }
   },[me])
 
- 
-  // useEffect(() => {
-  //   // Ensure Chatra object is initialized
-  //   window.Chatra = window.Chatra || function () {
-  //     (window.Chatra.q = window.Chatra.q || []).push(arguments);
-  //   };
+  const CloseFunc = () => {
+    setIsopen(false)
+    const chatraDivs = document.getElementsByClassName("chatra--pos-right");
+    for (let i = 0; i < chatraDivs.length; i++) {
+      const chatraDiv = chatraDivs[i] as HTMLElement;
+      chatraDiv.style.display = "none"; 
+      (window as any).Chatra?.closeChat()
+    }
+  };
+  const OpenFuct = () => {
+    setIsopen(true)
+    const chatraDivs = document.getElementsByClassName("chatra--pos-right");
+    for (let i = 0; i < chatraDivs.length; i++) {
+      const chatraDiv = chatraDivs[i] as HTMLElement;
+      chatraDiv.style.display = "inline-block"; // Example style change
+    }
+    (window as any).Chatra?._openChat()
+  };
 
-  //   // Open Chatra programmatically based on an external event
-  //   const openChat = () => {
-  //     console.log('Chatra modal opened');
-  //   };
+  useEffect(() => {
+    CloseFunc()
+    setIsopen(false)
+    window.addEventListener("click", CloseFunc);
 
-  //   const closeChat = () => {
-  //     console.log('Chatra modal closed');
-  //   };
+    return () => {
+      window.removeEventListener("click", CloseFunc);
+    };
 
-  //   // Example: Trigger open/close based on an application event
-  //   document.addEventListener('chat-open', openChat);
-  //   document.addEventListener('chat-close', closeChat);
-
-  //   // Cleanup
-  //   return () => {
-  //     document.removeEventListener('chat-open', openChat);
-  //     document.removeEventListener('chat-close', closeChat);
-  //   };
-  // }, []);
+    
+  }, []);
 
   return (
     <>
       {!pathName.includes('book-read') && <Header user={ me?.data} />}
-      <MassageAnimation/>
+      {isOpen ?<MassageAnimation/>:""}
       <LottieAnimation
         autoplay
         loop
-        className={`${visble ? "":"hidden"} w-96 h-96 fixed bottom-[1px] z-50 right-[1px] cursor-pointer`}
+        isPOpen={isOpen}
+        className={`${visble ? "":"hidden"} ${isOpen? "right-[300px]":"right-[-40px]"}  transition-all duration-500 ease-in-out w-96 h-96 fixed bottom-[5px] z-50  cursor-pointer`}
       />
+      <Button  className="fixed bg-[#0d8bcd] w-[180px] text-white bottom-[20px] z-[9000000] right-[20px]" onClick={OpenFuct}>
+        whrite us
+      </Button>
         {children}
       {!pathName.includes('book-read') && <Footer/>}
     </>

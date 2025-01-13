@@ -67,10 +67,10 @@ export default function Header({ user }: any) {
               {
                 HeaderSiteBarrArr?.map(e=>(
                   <div className="w-full text-white" key={e?.id}>
-                    <h4 className="text-[20px] w-full leading-[24px] font-semibold mb-[8px]"> {t(e?.title)}</h4>
-                    {e?.child?.map(ch=>(
+                    {/* <h4 className="text-[20px] w-full leading-[24px] font-semibold mb-[8px]"> {t(e?.title)}</h4> */}
+                    {/* {e?.child?.map(ch=>(
                       <Link href={ch?.link} onClick={()=>setOpenSiteBar(false)} key={ch.id} className="text-[16px]  w-full inline-block mb-2 leading-[24px] font-medium">{t(ch.text)}</Link>
-                    ))}
+                    ))} */}
                   </div>
                 ))
               }
